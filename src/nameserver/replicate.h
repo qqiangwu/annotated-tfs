@@ -34,6 +34,8 @@ namespace tfs
   {
 
     class ReplicateLauncher;
+    
+    // Do the actual task
     class ReplicateExecutor
     {
       friend class ReplicateLauncher;
@@ -85,6 +87,13 @@ namespace tfs
       MetaManager& meta_mgr_;
     };
 
+    // Somehow misnamed
+    //
+    // It does the following thing
+    //  After block scanning, push replication task to pipeline
+    //  Send rebalance msg to underlying pipeline by NameServer::check_balance()
+    //
+    // Note that the code is inconsistent, Compact/HeartManager use one pattern, but this one use another which is quite confusing
     class ReplicateLauncher: public Launcher
     {
       friend class ReplicateExecutor;
@@ -135,8 +144,10 @@ namespace tfs
     private:
       MetaManager& meta_mgr_;
       ReplicateExecutor executor_;
+      
       ProactorDataPipe<std::deque<uint32_t>, ReplicateExecutor> first_thread_;
       ProactorDataPipe<PipeDataAdaptor<common::ReplBlock*> , ReplicateExecutor> second_thread_;
+      
       int64_t stop_balance_count_;
       int8_t pause_flag_;
       NsDestroyFlag destroy_flag_;

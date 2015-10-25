@@ -27,6 +27,12 @@ namespace tfs
 {
   namespace nameserver
   {
+      /* Manage a block and its replications
+       *
+       * These blocks of the same id reside in multiple data servers, but
+       * only one is master.
+       * 
+       */
     class BlockCollect
     {
     public:
@@ -139,6 +145,7 @@ namespace tfs
       {
         return size > common::SYSPARAM_NAMESERVER.max_block_size_;
       }
+      
     private:
 
       DISALLOW_COPY_AND_ASSIGN( BlockCollect);

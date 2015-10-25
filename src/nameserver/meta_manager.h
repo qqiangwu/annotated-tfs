@@ -29,6 +29,9 @@ namespace tfs
   namespace nameserver
   {
     class NameServer;
+   
+    // Maintain all meta info, typically BlockAndDataServerManager.
+    // Basically, all meaningful data can be found here and all thread access them directly, really a bad design!
     class MetaManager
     {
     public:
@@ -96,12 +99,14 @@ namespace tfs
 
       int wait_for_shut_down();
       int destroy();
+      
     private:
       DISALLOW_COPY_AND_ASSIGN( MetaManager);
       uint32_t elect_write_block(const common::VINT64& fail_ds);
       uint32_t register_expire_block(EXPIRE_BLOCK_LIST & expireList, const uint64_t ds_id, const uint32_t block_id);
 
       NameServer* fs_name_system_;
+      
       LayoutManager meta_mgr_;
       LeaseClerk lease_mgr_;
       OpLogSyncManager oplog_sync_mgr_;

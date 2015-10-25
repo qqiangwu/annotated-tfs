@@ -30,6 +30,9 @@ namespace tfs
 {
   namespace nameserver
   {
+      /* Block managers, manage all blocks
+       * I don't know why they call it `Chunk`.
+       */
     class BlockChunk: public tbutil::Shared
     {
     public:

@@ -62,6 +62,9 @@ namespace tfs
       common::VUINT64& m_dsList;
     };
 
+
+    // Data servers and blocks are all kept here.
+    // You can view it as BlockAndDataServerManager
     class LayoutManager
     {
     public:

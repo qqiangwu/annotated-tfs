@@ -26,6 +26,7 @@ namespace tfs
 {
   namespace nameserver
   {
+      /* scanner interface for meta scanning */
     class MetaScanner
     {
     public:
@@ -34,7 +35,9 @@ namespace tfs
         CONTINUE = 0x00,
         BREAK
       };
+      
       virtual int process(const BlockCollect* blkcol) const = 0;
+      
       virtual ~MetaScanner()
       {
 

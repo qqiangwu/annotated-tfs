@@ -33,6 +33,7 @@ namespace tfs
 {
   namespace nameserver
   {
+      // The entrypoint for the server.
     class Service
     {
     public:

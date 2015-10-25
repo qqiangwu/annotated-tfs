@@ -28,6 +28,7 @@ namespace tfs
   namespace nameserver
   {
 
+      // remove redundant blocks.
     class RedundantLauncher: public Launcher
     {
       struct CompareBlockCount
@@ -37,6 +38,7 @@ namespace tfs
           return x->block_count_ < y->block_count_;
         }
       };
+      
     public:
       RedundantLauncher(MetaManager& m);
       virtual ~RedundantLauncher();
@@ -44,6 +46,7 @@ namespace tfs
     public:
       virtual bool check(const BlockCollect* block_collect);
       virtual int build_plan(const common::VUINT32& lose_block_list);
+      
       int check_redundant_block(const BlockCollect* block_collect);
       int check_group_block(const BlockCollect* block_collect);
       int cacl_max_capacity_ds(const common::VUINT64& ds, int32_t count, common::VUINT64& rds);

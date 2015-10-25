@@ -82,6 +82,9 @@ namespace tfs
       return EXIT_GENERAL_ERROR;
     }
 
+    // Note: HeartManager run in its own thread(started by HeartManager:run)
+    // New heartbeat message will be push into the pipeline and execute by
+    // this function asynchonously
     // event handler
     int HeartManagement::execute(Message* msg, void*)
     {
@@ -198,6 +201,8 @@ namespace tfs
       return TFS_SUCCESS;
     }
 
+
+    ///////////////////////////////////////////////////////////////////////////
     CheckOwnerIsMasterTimerTask::CheckOwnerIsMasterTimerTask(MetaManager* mm) :
       meta_mgr_(mm)
     {
@@ -511,6 +516,7 @@ namespace tfs
       while (ngi->other_side_status_ != NS_STATUS_INITIALIZED && ngi->owner_status_ == NS_STATUS_INITIALIZED);
     }
 
+    ////////////////////////////////////////////////////////////////////////////
     MasterAndSlaveHeartManager::MasterAndSlaveHeartManager(MetaManager* mm, tbutil::TimerPtr& timer) :
       meta_mgr_(mm), timer_(timer)
     {
@@ -519,7 +525,6 @@ namespace tfs
 
     MasterAndSlaveHeartManager::~MasterAndSlaveHeartManager()
     {
-
     }
 
     int MasterAndSlaveHeartManager::initialize()
@@ -541,6 +546,7 @@ namespace tfs
       return TFS_SUCCESS;
     }
 
+    // Response heartbeat from master or slave.
     int MasterAndSlaveHeartManager::execute(Message* message, void* args)
     {
       NsRuntimeGlobalInformation* ngi = meta_mgr_->get_fs_name_system()->get_ns_global_info();

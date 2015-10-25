@@ -27,6 +27,7 @@ namespace tfs
 {
   namespace nameserver
   {
+     // check blocks and launch new processing optionally
     class Launcher
     {
     public:
@@ -37,6 +38,7 @@ namespace tfs
       virtual int build_plan(const common::VUINT32& blocks) = 0;
     };
 
+    /* Conduct scanning */
     class ScannerManager: public MetaScanner
     {
     public:
@@ -47,6 +49,7 @@ namespace tfs
         common::VUINT32& result_;
         int32_t limits_;
         bool is_check_;
+        
         Scanner(bool is_check, int32_t limits, Launcher& launcher, common::VUINT32& result) :
           launcher_(launcher), result_(result), limits_(limits), is_check_(is_check)
         {
@@ -56,6 +59,7 @@ namespace tfs
         Scanner();
         DISALLOW_COPY_AND_ASSIGN( Scanner);
       };
+      
     public:
 
       ScannerManager(MetaManager & m);
@@ -69,6 +73,7 @@ namespace tfs
         destroy_ = true;
       }
       int run();
+      
     private:
       DISALLOW_COPY_AND_ASSIGN( ScannerManager);
       MetaManager& meta_mgr_;

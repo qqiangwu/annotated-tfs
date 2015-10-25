@@ -60,6 +60,14 @@ namespace tfs
       }
     };
 
+    /* A standalone thread for compacting
+     *
+     * ProactorDataPipe provides asynchronous execution support.
+     * Launcher provides a callback interface for block scanning.
+     *
+     * This structure maintains compacting status for all ds and blocks.
+     *
+     */
     class CompactLauncher: public ProactorDataPipe<PipeDataAdaptor<uint32_t> , CompactLauncher> , public Launcher
     {
     public:

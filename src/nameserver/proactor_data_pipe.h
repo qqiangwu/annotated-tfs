@@ -26,6 +26,11 @@ namespace tfs
 {
   namespace nameserver
   {
+      // \param     Container: underlying queue implementation
+      // \param     Executor: underlying task processer, tasks will be delegated to it
+      //
+      // You can think of this as a data pipeline reading in a provided thread.
+      // You can submit new data by this->push().
     template<typename Container, typename Executor>
     class ProactorDataPipe: public tbsys::CDefaultRunnable
     {

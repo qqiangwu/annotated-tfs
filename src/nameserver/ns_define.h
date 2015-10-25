@@ -27,6 +27,7 @@
 
 namespace tfs
 {
+    /* Information for the current server */
   namespace nameserver
   {
     struct NsGlobalInfo

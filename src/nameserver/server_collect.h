@@ -32,11 +32,13 @@ namespace tfs
     class ServerCollect
     {
       typedef std::set<uint32_t> BLOCK_SET;
+      
     public:
       ServerCollect()
       {
         reset();
       }
+      
       virtual ~ServerCollect()
       {
       }
@@ -55,26 +57,32 @@ namespace tfs
       {
         alive = false;
       }
+      
       inline bool is_alive() const
       {
         return alive;
       }
+      
       const common::DataServerStatInfo *get_ds() const
       {
         return &ds_stat_info_;
       }
+      
       common::DataServerStatInfo* get_ds()
       {
         return &ds_stat_info_;
       }
+      
       inline const BLOCK_SET& get_block_list() const
       {
         return block_list_;
       }
+      
       inline const BLOCK_SET* get_writable_block_list() const
       {
         return &writable_block_list_;
       }
+      
       inline const BLOCK_SET* get_primary_writable_block_list() const
       {
         return &primary_block_list_;

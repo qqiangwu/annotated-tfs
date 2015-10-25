@@ -57,11 +57,17 @@ namespace tfs
       mutex_.unlock();
     }
 
+    /* we only do compacting in specific time range */
     bool CompactLauncher::is_compacting_time()
     {
       return Func::hour_range(SYSPARAM_NAMESERVER.compact_time_lower_, SYSPARAM_NAMESERVER.compact_time_upper_);
     }
 
+    /* check wheter the block is compacting.
+     *
+     *
+     * Note that this object retains all compacting related info for ds and blocks. And update these info in block scanning
+     */
     bool CompactLauncher::is_compacting_block(const uint32_t block_id)
     {
       ScopedRWLock lock(mutex_, READ_LOCKER);
@@ -149,27 +155,37 @@ namespace tfs
       return TFS_SUCCESS;
     }
 
+    /* Scanning 
+     *
+     */
     bool CompactLauncher::check(const BlockCollect* block_collect)
     {
       uint32_t count = SYSPARAM_NAMESERVER.min_replication_;
 
+      // ignore this block
       if (!block_collect->is_full())
         return false;
 
+      // ignore this block
       if (block_collect->get_ds()->size() != count)
         return false;
 
+      // ignore this block
       const BlockInfo* blkinfo = block_collect->get_block_info();
       if (blkinfo->file_count_ == 0 || blkinfo->size_ == 0)
         return false;
 
       int32_t fr = (int32_t)(100.0 * blkinfo->del_file_count_ / blkinfo->file_count_);
       int32_t sr = (int32_t)(100.0 * blkinfo->del_size_ / blkinfo->size_);
+      
+      // yeah, I want this block for more proccessing
       if (fr > SYSPARAM_NAMESERVER.compact_delete_ratio_ || sr > SYSPARAM_NAMESERVER.compact_delete_ratio_)
       {
         TBSYS_LOG(INFO, "block(%u) need compact", blkinfo->block_id_);
         return true;
       }
+      
+      // ignore this block
       return false;
     }
 

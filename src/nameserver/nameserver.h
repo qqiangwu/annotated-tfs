@@ -51,7 +51,9 @@ namespace tfs
     public:
       OwnerCheckTimerTask(NameServer* fsnm);
       virtual ~OwnerCheckTimerTask();
+      
       virtual void runTimerTask();
+      
     private:
       DISALLOW_COPY_AND_ASSIGN( OwnerCheckTimerTask);
       NameServer* fs_name_system_;
@@ -60,6 +62,7 @@ namespace tfs
       tbutil::Time max_owner_check_time_;
       tbutil::Time owner_check_time_;
     };
+    
     typedef tbutil::Handle<OwnerCheckTimerTask> OwnerCheckTimerTaskPtr;
 
     // the main class for run timer, start threads and handle packets.
@@ -77,56 +80,96 @@ namespace tfs
       tbnet::IPacketHandler::HPRetCode handlePacket(tbnet::Connection *connection, tbnet::Packet *packet);
       bool handlePacketQueue(tbnet::Packet *packet, void *args);
 
+    public:
       static int rm_block_from_ds(const uint64_t server_id, const uint32_t block_id);
       static int rm_block_from_ds(const uint64_t server_id, const vector<uint32_t>& block_ids);
 
+    public:
+      // queries
       MetaManager* get_meta_mgr()
       {
         return &meta_mgr_;
       }
+      
       NsRuntimeGlobalInformation* get_ns_global_info()
       {
         return &ns_global_info_;
       }
+      
       const tbutil::TimerPtr& get_timer() const
       {
         return timer_;
       }
+      
       tbnet::PacketQueueThread* get_packet_queue_thread()
       {
         return &main_task_queue_thread_;
       }
 
     private:
+        // meta
       MetaManager meta_mgr_;
       NsRuntimeGlobalInformation ns_global_info_;
-      tbutil::TimerPtr timer_;
-      MasterHeartTimerTaskPtr master_heart_task_;
-      SlaveHeartTimerTaskPtr slave_heart_task_;
-      OwnerCheckTimerTaskPtr owner_check_task_;
-      CheckOwnerIsMasterTimerTaskPtr check_owner_is_master_task_;
-      MasterAndSlaveHeartManager master_slave_heart_mgr_;
-
+      tbutil::TimerPtr timer_;      
+      
+    private:
       message::TfsPacketStreamer streamer_;
       tbnet::Transport transport_;
       message::MessageFactory msg_factory_;
 
       int32_t main_task_queue_size_;
+      
+      // main thread
+      tbnet::PacketQueueThread main_task_queue_thread_;
 
-      // threads
+    private:
+      // workers
       tbsys::CThread check_ds_thread_; // check dataserver heartbeat
       tbsys::CThread check_block_thread_; // check replication count
       tbsys::CThread balance_thread_; // blocks balance
       tbsys::CThread time_out_thread_; // check timeout task
-      ReplicateLauncher replicate_thread_; // replicate blocks thread
+      
+      //! @{
+      // when conduct block scanning, these scanner will be involved
+      // and optionally launch a background processing
+      
+      // rebalancing is done in `balance_thread_`
       CompactLauncher compact_thread_; // compact blocks thread
+      
+      // no underlying thread
       RedundantLauncher redundant_thread_;
-      tbnet::PacketQueueThread main_task_queue_thread_;
-      HeartManagement heart_mgr_;
+      
+      
+      // it has two underlying pipeline, one for balancing, one for replication.
+      ReplicateLauncher replicate_thread_; // replicate blocks thread
+      
+      // All scanning are done in `check_block_thread`
       ScannerManager pass_mgr_;
+      //! @}
+            
+      // run on their own thread, they are both `ProactorDataPipe`
+      // when a heartbeat packet arrives, dispatch it to heartbean manager.
+      //    ds heartbeat -> HeartManager
+      //    master/slave heartbean -> MasterAndSlaveHeartManager
+      HeartManagement heart_mgr_;
+      MasterAndSlaveHeartManager master_slave_heart_mgr_;
 
+      // tasks
+      // send heartbeat to the slave
+      MasterHeartTimerTaskPtr master_heart_task_;
+      // send heartbeat to the master
+      SlaveHeartTimerTaskPtr slave_heart_task_;
+      
+      // don't send heartbeat to ds, ds will send the message.
+      
+      // check block owners
+      OwnerCheckTimerTaskPtr owner_check_task_;
+      CheckOwnerIsMasterTimerTaskPtr check_owner_is_master_task_;
+      
+    private:
       // thread runner functions
       void run(tbsys::CThread *thread, void *arg);
+      
       int do_check_ds();
       int do_check_blocks();
       int do_time_out();
@@ -153,7 +196,6 @@ namespace tfs
       void initialize_handle_task_and_heart_threads();
       int wait_for_ds_report();
     };
-
   }
 } // end namespace tfs::nameserver
 #endif

@@ -106,6 +106,10 @@ namespace tfs
       return true;
     }
 
+    /* Connect a data server with a block 
+     *
+     * The data server will be put into that block's block_collect object.
+     */
     bool BlockChunk::connect(const uint32_t block_id, const uint64_t server_id, const bool master /*= false*/)
     {
       TBSYS_LOG(DEBUG, "master(%s)", master ? "true" : "false");

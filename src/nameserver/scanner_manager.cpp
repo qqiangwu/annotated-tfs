@@ -56,7 +56,10 @@ namespace tfs
       {
         return TFS_SUCCESS;
       }
+      
+      // call this->process() to check
       meta_mgr_.get_block_ds_mgr().foreach(*this);
+      
       std::map<int32_t, Scanner*>::iterator iter = scanners_.begin();
       for (; iter != scanners_.end(); ++iter)
       {
@@ -68,13 +71,16 @@ namespace tfs
 
         if (scanner->result_.size() > 0)
         {
+            // push blocks to scanners that are interested in them
           scanner->launcher_.build_plan(scanner->result_);
         }
+        
         if (destroy_)
         {
           return MetaScanner::BREAK;
         }
       }
+      
       return TFS_SUCCESS;
     }
 

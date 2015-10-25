@@ -145,6 +145,7 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
       TBSYS_LOG(ERROR, "listen port failed(%d)", server_port);
       return EXIT_NETWORK_ERROR;
     }
+    
     //start thread for handling heartbeat from the other ns
     master_slave_heart_mgr_.initialize();
 
@@ -194,10 +195,12 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
     ret = timer_->scheduleRepeated(master_heart_task_, tbutil::Time::seconds(SYSPARAM_NAMESERVER.heart_interval_));
     if (ret < 0)
     return EXIT_GENERAL_ERROR;
+    
     slave_heart_task_ = new SlaveHeartTimerTask(&meta_mgr_, timer_);
     ret = timer_->scheduleRepeated(slave_heart_task_, tbutil::Time::seconds(SYSPARAM_NAMESERVER.heart_interval_));
     if (ret < 0)
     return EXIT_GENERAL_ERROR;
+    
     int32_t percent_size = CONFIG.get_int_value(CONFIG_NAMESERVER, CONF_TASK_PRECENT_SEC_SIZE, 1);
     int32_t owner_check_interval = main_task_queue_size_ * percent_size * 1000;
     owner_check_task_ = new OwnerCheckTimerTask(this);
@@ -205,11 +208,13 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
     if (ret < 0)
     return EXIT_GENERAL_ERROR;
     TBSYS_LOG(DEBUG, "owner_check_interval(%d)(us)", owner_check_interval);
+    
     check_owner_is_master_task_ = new CheckOwnerIsMasterTimerTask(&meta_mgr_);
     ret = timer_->scheduleRepeated(check_owner_is_master_task_, tbutil::Time::seconds(
             SYSPARAM_NAMESERVER.heart_interval_));
     if (ret < 0)
     return EXIT_GENERAL_ERROR;
+    
     return TFS_SUCCESS;
   }
 
@@ -232,6 +237,7 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
     timer_->cancel(slave_heart_task_);
     timer_->cancel(owner_check_task_);
     timer_->cancel(check_owner_is_master_task_);
+    
     pass_mgr_.destroy();
     heart_mgr_.stop(true);
     master_slave_heart_mgr_.destroy();
@@ -239,7 +245,9 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
     replicate_thread_.destroy();
     compact_thread_.stop();
     main_task_queue_thread_.stop();
+    
     timer_->destroy();
+    
     return TFS_SUCCESS;
   }
 
@@ -268,6 +276,9 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
     return ret;
   }
 
+///////////////////////////////////////////////////////////////////////////
+// Workers
+///////////////////////////////////////////////////////////////////////////
   // check the dead ds list and the writable ds list
   int NameServer::check_ds(const time_t now)
   {
@@ -371,6 +382,7 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
   }
 
   // check whether the blocks need to be replicate, compact or redundant
+  // Block scanning!
   int NameServer::do_check_blocks()
   {
     Func::sleep(SYSPARAM_NAMESERVER.safe_mode_time_ * 10, reinterpret_cast<int32_t*> (&ns_global_info_.destroy_flag_));
@@ -491,6 +503,7 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
     return TFS_SUCCESS;
   }
 
+//////////////////////////////////////////////////////////////////////////////
   tbnet::IPacketHandler::HPRetCode NameServer::handlePacket(tbnet::Connection *connection, tbnet::Packet *packet)
   {
 
@@ -1320,12 +1333,15 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
   }
 
   // start threads
+  //    all workers started here
+  //    
   void NameServer::initialize_handle_threads()
   {
     check_ds_thread_.start(this, NULL);
     check_block_thread_.start(this, NULL);
     balance_thread_.start(this, NULL);
     time_out_thread_.start(this, NULL);
+    
     replicate_thread_.initialize();
     compact_thread_.start();
   }
@@ -1334,15 +1350,18 @@ TBSYS_LOG    (INFO, "ownerchecktime(%"PRI64_PREFIX"d)(us), maxownerchecktime(%"P
   {
     // start thread for main task queue
     int32_t thead_count = CONFIG.get_int_value(CONFIG_NAMESERVER, CONF_THREAD_COUNT, 1);
+    
     main_task_queue_thread_.setThreadParameter(thead_count, this, NULL);
     main_task_queue_thread_.start();
 
     // start thread for handling heartbeat from ds
     int32_t heart_thread_count = CONFIG.get_int_value(CONFIG_NAMESERVER, CONF_HEART_THREAD_COUNT, 2);
     int32_t heart_max_queue_size = CONFIG.get_int_value(CONFIG_NAMESERVER, CONF_HEART_MAX_QUEUE_SIZE, 10);
+    
     heart_mgr_.initialize(heart_thread_count, heart_max_queue_size);
 
     main_task_queue_size_ = CONFIG.get_int_value(CONFIG_NAMESERVER, CONF_TASK_MAX_QUEUE_SIZE, 100);
+    
     TBSYS_LOG(INFO, "fsnamesystem::start: %s", tbsys::CNetUtil::addrToString(ns_global_info_.owner_ip_port_).c_str());
   }
 
