@@ -1,22 +1,3 @@
-/*
- * (C) 2007-2010 Alibaba Group Holding Limited.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
- *
- *
- * Version: $Id: lease_clerk.cpp 5 2010-09-29 07:44:56Z duanfei@taobao.com $
- *
- * Authors:
- *   duolong <duolong@taobao.com>
- *      - initial release
- *   qushan<qushan@taobao.com> 
- *      - modify 2009-03-27
- *   duanfei <duanfei@taobao.com> 
- *      - modify 2010-04-23
- *
- */
 #include <limits.h>
 #include <Memory.hpp>
 #include "common/func.h"
@@ -38,11 +19,6 @@ namespace tfs
     uint32_t WriteLease::get_new_lease_id()
     {
       uint32_t lease_id = atomic_add_return(1, &global_lease_id_);
-      /*if (lease_id > UINT32_MAX - 1)
-       {
-       atomic_set(global_lease_id_, 1);
-       lease_id = atomic_add_return(1, &global_lease_id_);
-       }*/
       return lease_id;
     }
 
@@ -326,4 +302,3 @@ namespace tfs
     }
   }
 }
-

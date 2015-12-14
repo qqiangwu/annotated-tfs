@@ -20,6 +20,12 @@
 #include <stdint.h>
 #include <sys/types.h>
 
+/**
+ * Done.
+ *
+ * Measure CPU Metrics on demand via /proc/stat. Nothing special
+ *
+ */
 namespace tfs
 {
   namespace dataserver
@@ -29,8 +35,10 @@ namespace tfs
     {
       public:
         static const uint32_t MAX_CPU_COUNT = 20;
+
         typedef uint64_t TIC_t;
         typedef int64_t SIC_t;
+
         struct CpuInfo
         {
             TIC_t u, n, s, i, w, x, y, z; // as represented in /proc/stat
@@ -54,10 +62,12 @@ namespace tfs
         }
 
         int32_t summary();
+
         inline uint32_t get_cpu_count() const
         {
           return cpu_count_;
         }
+
         inline const UsageInfo& get_usage(const uint32_t index) const
         {
           return usage_data_[index];
@@ -66,7 +76,9 @@ namespace tfs
       private:
         bool valided_;
         FILE* fp_;
+
         uint32_t cpu_count_;
+
         CpuInfo cpu_data_[MAX_CPU_COUNT];
         UsageInfo usage_data_[MAX_CPU_COUNT];
 

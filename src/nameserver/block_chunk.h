@@ -11,14 +11,14 @@
  * Authors:
  *   duolong <duolong@taobao.com>
  *      - initial release
- *   qushan<qushan@taobao.com> 
+ *   qushan<qushan@taobao.com>
  *      - modify 2009-03-27
- *   duanfei <duanfei@taobao.com> 
+ *   duanfei <duanfei@taobao.com>
  *      - modify 2010-04-23
  *
  */
 #ifndef TFS_NAMESERVER_BLOCK_CHUNK_H_
-#define TFS_NAMESERVER_BLOCK_CHUNK_H_ 
+#define TFS_NAMESERVER_BLOCK_CHUNK_H_
 
 #include <Shared.h>
 #include <Handle.h>
@@ -26,13 +26,14 @@
 #include "common/define.h"
 #include "block_collect.h"
 
+/*
+ * Block managers, manage all blocks
+ * I don't know why they call it `Chunk`.
+ */
 namespace tfs
 {
   namespace nameserver
   {
-      /* Block managers, manage all blocks
-       * I don't know why they call it `Chunk`.
-       */
     class BlockChunk: public tbutil::Shared
     {
     public:

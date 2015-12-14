@@ -1,22 +1,3 @@
-/*
- * (C) 2007-2010 Alibaba Group Holding Limited.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
- *
- *
- * Version: $Id: heart_manager.cpp 14 2010-10-12 04:54:13Z chuyu@taobao.com $
- *
- * Authors:
- *   duolong <duolong@taobao.com>
- *      - initial release
- *   qushan<qushan@taobao.com> 
- *      - modify 2009-03-27
- *   duanfei <duanfei@taobao.com> 
- *      - modify 2010-04-23
- *
- */
 #include <Memory.hpp>
 #include <Mutex.h>
 #include "ns_define.h"
@@ -74,9 +55,14 @@ namespace tfs
         return TFS_SUCCESS;
 
       // threadpool busy..cannot handle it
-      MessageFactory::send_error_message(message, TBSYS_LOG_LEVEL(WARN), STATUS_MESSAGE_ERROR, 0,
-          "nameserver heartbeat busy! cannot accept this request from (%s)", tbsys::CNetUtil::addrToString(
-              message->get_connection()->getPeerId()).c_str());
+      MessageFactory::send_error_message(
+          message,
+          TBSYS_LOG_LEVEL(WARN),
+          STATUS_MESSAGE_ERROR,
+          0,
+          "nameserver heartbeat busy! cannot accept this request from (%s)",
+          tbsys::CNetUtil::addrToString(message->get_connection()->getPeerId()).c_str());
+
       // already repsonse, now can free this message object.
       message->free();
       return EXIT_GENERAL_ERROR;
@@ -94,6 +80,7 @@ namespace tfs
       return join_ds(message);
     }
 
+    // process the msg
     int HeartManagement::join_ds(Message* msg)
     {
       SetDataserverMessage* message = dynamic_cast<SetDataserverMessage*> (msg);
@@ -101,6 +88,7 @@ namespace tfs
       uint64_t server_id = ds_stat_info->id_;
       RespHeartMessage *result_msg = new RespHeartMessage();
 
+      // case1: if the ds is dead, remove ds from MetaManager
       if (ds_stat_info->status_ == DATASERVER_STATUS_DEAD)
       {
         meta_mgr_.leave_ds(server_id);
@@ -110,28 +98,38 @@ namespace tfs
         return TFS_SUCCESS;
       }
 
+      // case2: update time and check expiration
       MetaManager::EXPIRE_BLOCK_LIST expire_list;
 
       bool isnew = false;
 
+      // update DS list
       // get the latest ds status info
       meta_mgr_.join_ds(*ds_stat_info, isnew);
+
       if (isnew)
       {
-        TBSYS_LOG(INFO, "dataserver(%s) join: use capacity(%" PRI64_PREFIX "u),total capacity(%" PRI64_PREFIX "u), has_block(%s)",
-            tbsys::CNetUtil::addrToString(server_id).c_str(), ds_stat_info->use_capacity_,
-            ds_stat_info->total_capacity_, message->get_has_block() == HAS_BLOCK_FLAG_YES ? "Yes" : "No");
+        TBSYS_LOG(INFO,
+            "dataserver(%s) join: use capacity(%" PRI64_PREFIX "u),total capacity(%" PRI64_PREFIX "u), has_block(%s)",
+            tbsys::CNetUtil::addrToString(server_id).c_str(),
+            ds_stat_info->use_capacity_,
+            ds_stat_info->total_capacity_,
+            message->get_has_block() == HAS_BLOCK_FLAG_YES ? "Yes" : "No");
+
         if (meta_mgr_.get_fs_name_system()->get_ns_global_info()->owner_role_ == NS_ROLE_MASTER)
         {
           replicate_lancher_.inc_stop_balance_count();
         }
       }
 
+      // Update Block list
       // if the ds has blocks
       // mark the expire blocks in this ds and remove the expire blocks in other ds
       if (message->get_has_block() == HAS_BLOCK_FLAG_YES)
       {
         meta_mgr_.report_blocks(server_id, *message->get_blocks(), expire_list);
+
+        // Master only!
         if (meta_mgr_.get_fs_name_system()->get_ns_global_info()->owner_role_ == NS_ROLE_MASTER)
         {
           uint32_t expire_blocks_size = 0;
@@ -151,14 +149,19 @@ namespace tfs
             }
             else
             {
+                // remove expired blocks
               NameServer::rm_block_from_ds(iter->first, iter->second);
             }
           }
         }
+
         result_msg->set_status(HEART_EXP_BLOCK_ID);
-        TBSYS_LOG(INFO, "dataserver(%s) join: use capacity(%" PRI64_PREFIX "u),total capacity(%" PRI64_PREFIX "u), block count(%u)",
-            tbsys::CNetUtil::addrToString(server_id).c_str(), ds_stat_info->use_capacity_,
-            ds_stat_info->total_capacity_, message->get_blocks()->size());
+        TBSYS_LOG(INFO,
+            "dataserver(%s) join: use capacity(%" PRI64_PREFIX "u),total capacity(%" PRI64_PREFIX "u), block count(%u)",
+            tbsys::CNetUtil::addrToString(server_id).c_str(),
+            ds_stat_info->use_capacity_,
+            ds_stat_info->total_capacity_,
+            message->get_blocks()->size());
       }
       // ns has no block info, reply the ds to send block info.
       else
@@ -167,10 +170,13 @@ namespace tfs
         int32_t block_count = -1;
         if (servre_collect != NULL)
           block_count = servre_collect->get_block_list().size();
+
         if (isnew || servre_collect->get_block_list().size() == 0)
         {
           TBSYS_LOG(INFO, "reply dataserver(%s) heart msg need send block, isnew(%s),current block count(%u)",
-              tbsys::CNetUtil::addrToString(server_id).c_str(), isnew ? "true" : "false", block_count);
+              tbsys::CNetUtil::addrToString(server_id).c_str(),
+              isnew ? "true" : "false",
+              block_count);
           result_msg->set_status(HEART_NEED_SEND_BLOCK_INFO);
         }
         else
@@ -178,8 +184,8 @@ namespace tfs
           result_msg->set_status(HEART_MESSAGE_OK);
         }
 
-        if ((meta_mgr_.get_fs_name_system()->get_ns_global_info()->switch_time_ != 0) && (block_count
-            != ds_stat_info->block_count_))
+        if ((meta_mgr_.get_fs_name_system()->get_ns_global_info()->switch_time_ != 0) &&
+            (block_count!= ds_stat_info->block_count_))
         {
           TBSYS_LOG(DEBUG, "new ds block count(%d): old ds block count(%d)", ds_stat_info->block_count_, block_count);
 
@@ -189,10 +195,11 @@ namespace tfs
           else
             meta_mgr_.get_fs_name_system()->get_ns_global_info()->switch_time_ = 0;
         }
-
       }
 
       message->reply_message(result_msg);
+
+      // case3: check block master
       if (message->get_has_block() == HAS_BLOCK_FLAG_YES)
         meta_mgr_.check_primary_writable_block(server_id, SYSPARAM_NAMESERVER.add_primary_block_count_);
 
@@ -213,12 +220,16 @@ namespace tfs
     {
       int count = 0;
       int iret = -1;
+
       Message* rmsg = NULL;
       MasterAndSlaveHeartMessage mashm;
       NsStatus other_side_status = NS_STATUS_OTHERSIDEDEAD;
       NsSyncDataFlag ns_sync_flag = NS_SYNC_DATA_FLAG_NO;
+
       NsRuntimeGlobalInformation* ngi = meta_mgr_->get_fs_name_system()->get_ns_global_info();
       ngi->dump(TBSYS_LOG_LEVEL(DEBUG));
+
+      // case1: old master change to slave
       if (!tbsys::CNetUtil::isLocalAddr(ngi->vip_)) //vip != local ip
       {
         if (ngi->owner_role_ == NS_ROLE_MASTER)
@@ -236,7 +247,7 @@ namespace tfs
         return;
       }
 
-      //owner is master
+      // case2: owner is master
       if (ngi->owner_role_ == NS_ROLE_MASTER)
       {
         // owner role == master and otherside role == slave, do nothing
@@ -244,6 +255,7 @@ namespace tfs
         {
           return;
         }
+
         // owner role == master and otherside role == master
         // make sure owner role master,set otherside role == NS_ROLE_SLAVE
         if (tbsys::CNetUtil::isLocalAddr(ngi->vip_))
@@ -253,6 +265,7 @@ namespace tfs
         return;
       }
 
+      // case3: owner is master, other is master too, notify
       //owner is slave
       mashm.set_ip_port(ngi->owner_ip_port_);
       mashm.set_role(ngi->owner_role_);
@@ -260,11 +273,13 @@ namespace tfs
       mashm.set_flags(HEART_GET_DATASERVER_LIST_FLAGS_NO);
       ngi->dump(TBSYS_LOG_LEVEL(DEBUG));
       iret = send_message_to_server(ngi->other_side_ip_port_, &mashm, &rmsg);
+
       // if master is dead, switch roles
       if ((iret != TFS_SUCCESS) || (rmsg == NULL))
       {
         goto ns_switch;
       }
+
       if ((iret == TFS_SUCCESS) && (rmsg != NULL))
       {
         MasterAndSlaveHeartResponseMessage* tmsg = dynamic_cast<MasterAndSlaveHeartResponseMessage*> (rmsg);
@@ -284,6 +299,7 @@ namespace tfs
             goto ns_switch;
             //switch
           }
+
           // otherside role == master, but vip in local
           if (tbsys::CNetUtil::isLocalAddr(ngi->vip_))// make sure vip in local
           {
@@ -354,6 +370,7 @@ namespace tfs
       return;
     }
 
+/////////////////////////////////////////////////////////////////////////////////
     MasterHeartTimerTask::MasterHeartTimerTask(MetaManager* mm) :
       meta_mgr_(mm)
     {
@@ -430,10 +447,10 @@ namespace tfs
       ngi->other_side_status_ = NS_STATUS_UNINITIALIZE;
     }
 
+//////////////////////////////////////////////////////////////////////////////////////
     SlaveHeartTimerTask::SlaveHeartTimerTask(MetaManager* mm, tbutil::TimerPtr& timer) :
       meta_mgr_(mm), timer_(timer)
     {
-
     }
 
     // when owner is slave, and the status is initailzied.
@@ -445,14 +462,17 @@ namespace tfs
       {
         return;
       }
+
       Message* rmsg = NULL;
       MasterAndSlaveHeartMessage mashm;
       mashm.set_ip_port(ngi->owner_ip_port_);
       mashm.set_role(ngi->owner_role_);
       mashm.set_status(ngi->owner_status_);
       mashm.set_flags(HEART_GET_DATASERVER_LIST_FLAGS_NO);
+
       int count(0);
       ngi->dump(TBSYS_LOG_LEVEL(DEBUG));
+
       do
       {
         ++count;
@@ -487,9 +507,10 @@ namespace tfs
           ngi->switch_time_ = time(NULL);
           return;
         }
+
         tbsys::gDelete(rmsg);
-      }
-      while (count < 0x03);
+    } while (count < 0x03);
+
       tbsys::gDelete(rmsg);
 
       //make sure master dead
@@ -558,10 +579,12 @@ namespace tfs
         tbsys::gDelete(message);
         return TFS_SUCCESS;
       }
+
       if (ngi->owner_role_ == NS_ROLE_MASTER) //master
         iret = do_master_msg(message, args);
       else if (ngi->owner_role_ == NS_ROLE_SLAVE) //slave
         iret = do_slave_msg(message, args);
+
       tbsys::gDelete(message);
       return iret;
     }

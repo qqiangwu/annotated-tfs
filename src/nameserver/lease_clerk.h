@@ -1,22 +1,3 @@
-/*
- * (C) 2007-2010 Alibaba Group Holding Limited.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
- *
- *
- * Version: $Id: lease_clerk.h 5 2010-09-29 07:44:56Z duanfei@taobao.com $
- *
- * Authors:
- *   duolong <duolong@taobao.com>
- *      - initial release
- *   qushan<qushan@taobao.com> 
- *      - modify 2009-03-27
- *   duanfei <duanfei@taobao.com> 
- *      - modify 2010-04-23
- *
- */
 #ifndef TFS_NAMESERVER_LEASE_CLERK_H_
 #define TFS_NAMESERVER_LEASE_CLERK_H_
 
@@ -25,10 +6,17 @@
 #include <Mutex.h>
 #include "ns_define.h"
 
+/**
+ *
+ * A trivial data class(data manager) maintain the lease states
+ *
+ * Lease is obque type which is access by block_id
+ */
 namespace tfs
 {
   namespace nameserver
   {
+      // internal data class
     struct WriteLease
     {
       enum LeaseStatus
@@ -40,6 +28,7 @@ namespace tfs
         CANCELED,
         OBSOLETE
       };
+
       int64_t last_write_time_;
       int64_t expire_time_;
       uint32_t lease_id_;
@@ -57,6 +46,7 @@ TBSYS_LOG      (DEBUG, "block id(%u) last wirte time(%"PRI64_PREFIX"d), expire t
           status_ == WRITING ? "writing" : status_ == DONE ? "done" : status_ == FAILED ? "failed" :
           status_ == EXPIRED ? "expired" : status_ == CANCELED ? "canceled" : status_ == OBSOLETE ? "obsolet" : "unkown" );
     }
+
     static atomic_t global_lease_id_;
     static uint32_t get_new_lease_id();
     static const uint32_t LEASE_EXPIRE_TIME = 3000;
@@ -68,6 +58,7 @@ TBSYS_LOG      (DEBUG, "block id(%u) last wirte time(%"PRI64_PREFIX"d), expire t
     typedef __gnu_cxx ::hash_map<uint32_t, WriteLease*, hash<uint32_t> > LEASE_MAP;
     typedef LEASE_MAP::iterator LEASE_MAP_ITER;
     typedef LEASE_MAP::const_iterator LEASE_MAP_CONST_ITER;
+
   public:
     LeaseClerk();
     virtual ~LeaseClerk();
@@ -101,5 +92,4 @@ TBSYS_LOG      (DEBUG, "block id(%u) last wirte time(%"PRI64_PREFIX"d), expire t
 }
 }
 
-#endif 
-
+#endif

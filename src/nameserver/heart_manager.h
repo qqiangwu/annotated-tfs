@@ -1,22 +1,3 @@
-/*
- * (C) 2007-2010 Alibaba Group Holding Limited.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
- *
- *
- * Version: $Id: heart_manager.h 14 2010-10-12 04:54:13Z chuyu@taobao.com $
- *
- * Authors:
- *   duolong <duolong@taobao.com>
- *      - initial release
- *   qushan<qushan@taobao.com> 
- *      - modify 2009-03-27
- *   duanfei <duanfei@taobao.com> 
- *      - modify 2010-04-23
- *
- */
 #ifndef TFS_NAMESERVER_HEART_MANAGEMENT_
 #define TFS_NAMESERVER_HEART_MANAGEMENT_
 
@@ -26,20 +7,33 @@
 #include "proactor_data_pipe.h"
 #include "message/message_factory.h"
 
+//
+//  HeartManagement:
+//      a class for handling the heartbeat from ds using a pipeline
+//      When the server received a heartbeat from a ds, the msg will be push into this pipeline.
+//
+//  Tasks:
+//      MasterHeartTimerTask: check whether self is the master
+//      MasterAndSlaveHeartManager: slave nameserver sends heartbeat to master
+//
+//  MasterAndSlaveHeartManager:
+//      pipeline
+//      process heartbeat msg from other nameservers.
 namespace tfs
 {
   namespace nameserver
   {
-
-    // a class for handling the heartbeat from ds
     class HeartManagement: public ProactorDataPipe<std::deque<message::Message*>, HeartManagement>
     {
     public:
       typedef ProactorDataPipe<std::deque<message::Message*>, HeartManagement> base_type;
+
     public:
       HeartManagement(MetaManager& m, ReplicateLauncher& l);
       virtual ~HeartManagement();
+
       int initialize(const int32_t thread_count, const int32_t max_queue_size);
+
       int execute(message::Message* msg, void* args);
       int push(message::Message* msg);
 
@@ -122,5 +116,4 @@ namespace tfs
   }
 }
 
-#endif 
-
+#endif
