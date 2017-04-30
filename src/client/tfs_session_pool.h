@@ -20,32 +20,33 @@
 #include <tbsys.h>
 #include <Mutex.h>
 #include "tfs_session.h"
-namespace tfs
-{
-  namespace client
-  {
-    class TfsSessionPool
-    {
-      typedef std::map<std::string, TfsSession*> SESSION_MAP;
-    public:
-      TfsSessionPool();
-      virtual ~TfsSessionPool();
 
-      inline static TfsSessionPool& get_instance()
-      {
-        return gSessionPool;
-      }
+namespace tfs {
+    namespace client {
+        class TfsSessionPool {
+            typedef std::map<std::string, TfsSession*> SESSION_MAP;
+        public:
+            TfsSessionPool();
 
-      TfsSession* get(const std::string& ns_ip_port, const int32_t cache_time, const int32_t cache_items);
-      void release(TfsSession* session);
+            virtual ~TfsSessionPool();
 
-    private:
-      DISALLOW_COPY_AND_ASSIGN( TfsSessionPool);
-      tbutil::Mutex mutex_;
-      SESSION_MAP pool_;
-      static TfsSessionPool gSessionPool;
-    };
-  }
+            inline static TfsSessionPool& get_instance()
+            {
+                return gSessionPool;
+            }
+
+            TfsSession* get(const std::string& ns_ip_port, const int32_t cache_time, const int32_t cache_items);
+
+            void release(TfsSession* session);
+
+        private:
+            DISALLOW_COPY_AND_ASSIGN(TfsSessionPool);
+
+            tbutil::Mutex mutex_;
+            SESSION_MAP pool_;
+            static TfsSessionPool gSessionPool;
+        };
+    }
 }
 
 #endif /* TFSSESSION_POOL_H_ */

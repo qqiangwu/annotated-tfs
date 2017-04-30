@@ -27,69 +27,83 @@
 // the common::DataServerStatInfo information of block
 // format:
 // common::DataServerStatInfo, block_count, block_id, block_version, ...
-namespace tfs
-{
-  namespace message
-  {
-    class SetDataserverMessage: public Message
-    {
-      public:
-        SetDataserverMessage();
-        virtual ~SetDataserverMessage();
-        virtual int parse(char* data, int32_t len);
-        virtual int build(char* data, int32_t len);
-        virtual int32_t message_length();
-        virtual char* get_name();
+namespace tfs {
+    namespace message {
+        class SetDataserverMessage : public Message {
+        public:
+            SetDataserverMessage();
 
-        void set_ds(common::DataServerStatInfo* ds);
-        inline void set_has_block(const common::HasBlockFlag has_block)
-        {
-          has_block_ = has_block;
-        }
-        void add_block(common::BlockInfo* block_info);
-        inline common::HasBlockFlag get_has_block() const
-        {
-          return has_block_;
-        }
-        inline common::DataServerStatInfo* get_ds() const
-        {
-          return ds_;
-        }
-        inline const common::BLOCK_INFO_LIST* get_blocks() const
-        {
-          return &blocks_;
-        }
+            virtual ~SetDataserverMessage();
 
-        static Message* create(const int32_t type);
+            virtual int parse(char* data, int32_t len);
 
-      protected:
-        common::DataServerStatInfo* ds_;
-        common::BLOCK_INFO_LIST blocks_;
-        common::HasBlockFlag has_block_;
-    };
+            virtual int build(char* data, int32_t len);
 
-    class SuspectDataserverMessage: public Message
-    {
-      public:
-        SuspectDataserverMessage();
-        virtual ~SuspectDataserverMessage();
-        virtual int parse(char* data, int32_t len);
-        virtual int build(char* data, int32_t len);
-        virtual int32_t message_length();
-        virtual char* get_name();
-        static Message* create(const int32_t type);
+            virtual int32_t message_length();
 
-        inline void set_server_id(const uint64_t server_id)
-        {
-          server_id_ = server_id;
-        }
-        inline uint64_t get_server_id() const
-        {
-          return server_id_;
-        }
-      protected:
-        uint64_t server_id_;
-    };
-  }
+            virtual char* get_name();
+
+            void set_ds(common::DataServerStatInfo* ds);
+
+            inline void set_has_block(const common::HasBlockFlag has_block)
+            {
+                has_block_ = has_block;
+            }
+
+            void add_block(common::BlockInfo* block_info);
+
+            inline common::HasBlockFlag get_has_block() const
+            {
+                return has_block_;
+            }
+
+            inline common::DataServerStatInfo* get_ds() const
+            {
+                return ds_;
+            }
+
+            inline const common::BLOCK_INFO_LIST* get_blocks() const
+            {
+                return &blocks_;
+            }
+
+            static Message* create(const int32_t type);
+
+        protected:
+            common::DataServerStatInfo* ds_;
+            common::BLOCK_INFO_LIST blocks_;
+            common::HasBlockFlag has_block_;
+        };
+
+        class SuspectDataserverMessage : public Message {
+        public:
+            SuspectDataserverMessage();
+
+            virtual ~SuspectDataserverMessage();
+
+            virtual int parse(char* data, int32_t len);
+
+            virtual int build(char* data, int32_t len);
+
+            virtual int32_t message_length();
+
+            virtual char* get_name();
+
+            static Message* create(const int32_t type);
+
+            inline void set_server_id(const uint64_t server_id)
+            {
+                server_id_ = server_id;
+            }
+
+            inline uint64_t get_server_id() const
+            {
+                return server_id_;
+            }
+
+        protected:
+            uint64_t server_id_;
+        };
+    }
 }
 #endif

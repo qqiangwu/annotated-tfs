@@ -32,73 +32,95 @@
 #include "common/file_queue.h"
 #include "common/file_queue_thread.h"
 
-namespace tfs
-{
-  namespace nameserver
-  {
-    class MetaManager;
-    class FlushOpLogTimerTask: public tbutil::TimerTask
-    {
-    public:
-      FlushOpLogTimerTask(MetaManager* mm);
-      virtual void runTimerTask();
-    private:
-      DISALLOW_COPY_AND_ASSIGN( FlushOpLogTimerTask);
-      MetaManager* meta_mgr_;
-    };
-    typedef tbutil::Handle<FlushOpLogTimerTask> FlushOpLogTimerTaskPtr;
+namespace tfs {
+    namespace nameserver {
+        class MetaManager;
 
-    class OpLogSyncManager: public ProactorDataPipe<std::deque<message::Message*>, OpLogSyncManager>
-    {
-      friend class FlushOpLogTimerTask;
-      template<typename Container, typename Executor> friend class ProactorDataPipe;
-    public:
-      OpLogSyncManager(MetaManager* mm);
-      virtual ~OpLogSyncManager();
-      int initialize(LayoutManager& blkMaps);
-      int wait_for_shut_down();
-      int destroy();
-      int register_slots(const char* const data, const int64_t length);
-      int register_msg(const message::Message* msg);
-      void notify_all();
-      int rotate();
-      int flush_oplog();
-      int log(const common::BlockInfo* const block, int32_t type, const common::VUINT64& dsList);
-      static std::string printDsList(const common::VUINT64& dsList);//only debug
-    public:
-      const FileSystemImage* get_ns_fs_image() const
-      {
-        return &ns_fs_image_;
-      }
+        class FlushOpLogTimerTask : public tbutil::TimerTask {
+        public:
+            FlushOpLogTimerTask(MetaManager* mm);
 
-      FileSystemImage* get_ns_fs_image()
-      {
-        return &ns_fs_image_;
-      }
+            virtual void runTimerTask();
 
-      common::FileQueueThread* get_file_queue_thread() const
-      {
-        return file_queue_thread_;
-      }
+        private:
+            DISALLOW_COPY_AND_ASSIGN(FlushOpLogTimerTask);
 
-    private:
-      DISALLOW_COPY_AND_ASSIGN( OpLogSyncManager);
-      static int do_sync_oplog(const void* const data, const int64_t len, const int32_t threadIndex, void *arg);
-      int do_sync_oplog(const char* const data, const int64_t length);
-      int execute(const message::Message *msg, const void* args);
-      int do_master_msg(const message::Message* msg, const void* args);
-      int do_slave_msg(const message::Message* msg, const void* args);
-      int do_sync_oplog(const message::Message* msg, const void* args);
-    private:
-      bool is_destroy_;
-      MetaManager* meta_mgr_;
-      FileSystemImage ns_fs_image_;
-      OpLog* oplog_;
-      common::FileQueue* file_queue_;
-      common::FileQueueThread* file_queue_thread_;
-      tbutil::Mutex mutex_;
-      tbutil::Monitor<tbutil::Mutex> monitor_;
-    };
-  }//end namespace nameserver
+            MetaManager* meta_mgr_;
+        };
+
+        typedef tbutil::Handle <FlushOpLogTimerTask> FlushOpLogTimerTaskPtr;
+
+        class OpLogSyncManager : public ProactorDataPipe<std::deque<message::Message*>, OpLogSyncManager> {
+            friend class FlushOpLogTimerTask;
+
+            template<typename Container, typename Executor> friend
+            class ProactorDataPipe;
+
+        public:
+            OpLogSyncManager(MetaManager* mm);
+
+            virtual ~OpLogSyncManager();
+
+            int initialize(LayoutManager& blkMaps);
+
+            int wait_for_shut_down();
+
+            int destroy();
+
+            int register_slots(const char* const data, const int64_t length);
+
+            int register_msg(const message::Message* msg);
+
+            void notify_all();
+
+            int rotate();
+
+            int flush_oplog();
+
+            int log(const common::BlockInfo* const block, int32_t type, const common::VUINT64& dsList);
+
+            static std::string printDsList(const common::VUINT64& dsList);//only debug
+        public:
+            const FileSystemImage* get_ns_fs_image() const
+            {
+                return &ns_fs_image_;
+            }
+
+            FileSystemImage* get_ns_fs_image()
+            {
+                return &ns_fs_image_;
+            }
+
+            common::FileQueueThread* get_file_queue_thread() const
+            {
+                return file_queue_thread_;
+            }
+
+        private:
+            DISALLOW_COPY_AND_ASSIGN(OpLogSyncManager);
+
+            static int do_sync_oplog(const void* const data, const int64_t len, const int32_t threadIndex, void* arg);
+
+            int do_sync_oplog(const char* const data, const int64_t length);
+
+            int execute(const message::Message* msg, const void* args);
+
+            int do_master_msg(const message::Message* msg, const void* args);
+
+            int do_slave_msg(const message::Message* msg, const void* args);
+
+            int do_sync_oplog(const message::Message* msg, const void* args);
+
+        private:
+            bool is_destroy_;
+            MetaManager* meta_mgr_;
+            FileSystemImage ns_fs_image_;
+            OpLog* oplog_;
+            common::FileQueue* file_queue_;
+            common::FileQueueThread* file_queue_thread_;
+            tbutil::Mutex mutex_;
+            tbutil::Monitor <tbutil::Mutex> monitor_;
+        };
+    }//end namespace nameserver
 }//end namespace tfs
 #endif

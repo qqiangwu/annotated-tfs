@@ -18,66 +18,63 @@
 
 #include <pthread.h>
 
-namespace tfs
-{
-  namespace common
-  {
+namespace tfs {
+    namespace common {
 
-    enum ELockMode
-    {   
-      NO_PRIORITY,
-      WRITE_PRIORITY,
-      READ_PRIORITY
-    }; 
+        enum ELockMode {
+            NO_PRIORITY,
+            WRITE_PRIORITY,
+            READ_PRIORITY
+        };
 
-    class RWLock
-    {
-      public:
-        RWLock(ELockMode lockMode = NO_PRIORITY);
-        ~RWLock();
+        class RWLock {
+        public:
+            RWLock(ELockMode lockMode = NO_PRIORITY);
 
-        int rdlock();
-        int wrlock();
-        int tryrdlock();
-        int trywrlock();
-        int unlock();
+            ~RWLock();
 
-      private:    
-        pthread_rwlock_t rwlock_;
-    };
+            int rdlock();
 
-    enum ELockType
-    {
-      READ_LOCKER,
-      WRITE_LOCKER
-    };
+            int wrlock();
 
-    class ScopedRWLock
-    {
-      public:
-        ScopedRWLock(RWLock& locker, const ELockType lock_type)
-          : locker_(locker)
-        {
-          if (lock_type == READ_LOCKER)
-          {
-            locker_.rdlock();
-          }
-          else
-          {
-            locker_.wrlock();
-          }
-        }
+            int tryrdlock();
 
-        ~ScopedRWLock()
-        {
-          locker_.unlock();
-        }
+            int trywrlock();
 
-      private:
-        RWLock& locker_;
-    };
+            int unlock();
 
-  }
+        private:
+            pthread_rwlock_t rwlock_;
+        };
+
+        enum ELockType {
+            READ_LOCKER,
+            WRITE_LOCKER
+        };
+
+        class ScopedRWLock {
+        public:
+            ScopedRWLock(RWLock& locker, const ELockType lock_type)
+                    :locker_(locker)
+            {
+                if (lock_type==READ_LOCKER) {
+                    locker_.rdlock();
+                }
+                else {
+                    locker_.wrlock();
+                }
+            }
+
+            ~ScopedRWLock()
+            {
+                locker_.unlock();
+            }
+
+        private:
+            RWLock& locker_;
+        };
+
+    }
 }
 
 #endif //TFS_COMMON_LOCK_H_

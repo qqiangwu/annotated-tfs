@@ -25,65 +25,67 @@
 #include "common/interval.h"
 #include "message.h"
 
-namespace tfs
-{
-  namespace message
-  {
-    // ReplicateBlock
-    enum CommandStatus
-    {
-      COMMAND_REPLICATE = 1,
-      COMMAND_REPL_COMPLETE,
-      COMMAND_REPL_FAILURE,
-      COMMAND_CLIENT_REPL = 100
-    };
+namespace tfs {
+    namespace message {
+        // ReplicateBlock
+        enum CommandStatus {
+            COMMAND_REPLICATE = 1,
+            COMMAND_REPL_COMPLETE,
+            COMMAND_REPL_FAILURE,
+            COMMAND_CLIENT_REPL = 100
+        };
 
-    class ReplicateBlockMessage: public Message
-    {
-    public:
-      ReplicateBlockMessage();
-      virtual ~ReplicateBlockMessage();
-      virtual int parse(char* data, int32_t len);
-      virtual int build(char* data, int32_t len);
-      virtual int32_t message_length();
-      virtual char* get_name();
-      static Message* create(const int32_t type);
+        class ReplicateBlockMessage : public Message {
+        public:
+            ReplicateBlockMessage();
 
-      inline void set_command(const int32_t command)
-      {
-        command_ = command;
-      }
+            virtual ~ReplicateBlockMessage();
 
-      inline int32_t get_command() const
-      {
-        return command_;
-      }
+            virtual int parse(char* data, int32_t len);
 
-      inline void set_expire(const int32_t expire)
-      {
-        expire_ = expire;
-      }
+            virtual int build(char* data, int32_t len);
 
-      inline int32_t get_expire() const
-      {
-        return expire_;
-      }
+            virtual int32_t message_length();
 
-      inline void set_repl_block(const common::ReplBlock* repl_block)
-      {
-        memcpy(&repl_block_, repl_block, sizeof(common::ReplBlock));
-      }
+            virtual char* get_name();
 
-      inline const common::ReplBlock* get_repl_block() const
-      {
-        return &repl_block_;
-      }
+            static Message* create(const int32_t type);
 
-    protected:
-      int32_t command_;
-      int32_t expire_;
-      common::ReplBlock repl_block_;
-    };
-  }
+            inline void set_command(const int32_t command)
+            {
+                command_ = command;
+            }
+
+            inline int32_t get_command() const
+            {
+                return command_;
+            }
+
+            inline void set_expire(const int32_t expire)
+            {
+                expire_ = expire;
+            }
+
+            inline int32_t get_expire() const
+            {
+                return expire_;
+            }
+
+            inline void set_repl_block(const common::ReplBlock* repl_block)
+            {
+                memcpy(&repl_block_, repl_block, sizeof(common::ReplBlock));
+            }
+
+            inline const common::ReplBlock* get_repl_block() const
+            {
+                return &repl_block_;
+            }
+
+        protected:
+            int32_t command_;
+            int32_t expire_;
+            common::ReplBlock repl_block_;
+        };
+    }
 }
 #endif

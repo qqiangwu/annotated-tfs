@@ -18,25 +18,27 @@
 
 #include <stdint.h>
 
-namespace tfs
-{
-  namespace client
-  {
-    class Stat
-    {
-    public:
-      virtual ~Stat()
-      {
-      }
-      virtual int32_t summary();
-      virtual int32_t init() = 0;
-      virtual int32_t output() = 0;
+namespace tfs {
+    namespace client {
+        class Stat {
+        public:
+            virtual ~Stat()
+            {
+            }
 
-    protected:
-      virtual int32_t calc() = 0;
-      virtual int32_t save() = 0;
-      virtual int32_t refresh() = 0;
-    };
-  }
+            virtual int32_t summary();
+
+            virtual int32_t init() = 0;
+
+            virtual int32_t output() = 0;
+
+        protected:
+            virtual int32_t calc() = 0;
+
+            virtual int32_t save() = 0;
+
+            virtual int32_t refresh() = 0;
+        };
+    }
 }
 #endif //TFS_DSTOOL_TASK_H_

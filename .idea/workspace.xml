@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="annotated_tfs" targetName="annotated_tfs" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5472a489-6776-413a-abd2-c00c7f25db32" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/adminserver/adminserver.cpp" afterPath="$PROJECT_DIR$/src/adminserver/adminserver.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/adminserver/adminserver.h" afterPath="$PROJECT_DIR$/src/adminserver/adminserver.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/fsname.cpp" afterPath="$PROJECT_DIR$/src/client/fsname.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/fsname.h" afterPath="$PROJECT_DIR$/src/client/fsname.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/lru.h" afterPath="$PROJECT_DIR$/src/client/lru.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_client_api.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_client_api.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_client_api.h" afterPath="$PROJECT_DIR$/src/client/tfs_client_api.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_client_metrics.h" afterPath="$PROJECT_DIR$/src/client/tfs_client_metrics.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_file.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_file.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_file.h" afterPath="$PROJECT_DIR$/src/client/tfs_file.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_session.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session.h" afterPath="$PROJECT_DIR$/src/client/tfs_session.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session_pool.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_session_pool.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session_pool.h" afterPath="$PROJECT_DIR$/src/client/tfs_session_pool.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/config.cpp" afterPath="$PROJECT_DIR$/src/common/config.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/config.h" afterPath="$PROJECT_DIR$/src/common/config.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/config_item.h" afterPath="$PROJECT_DIR$/src/common/config_item.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/define.h" afterPath="$PROJECT_DIR$/src/common/define.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/directory_op.cpp" afterPath="$PROJECT_DIR$/src/common/directory_op.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/directory_op.h" afterPath="$PROJECT_DIR$/src/common/directory_op.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/error_msg.h" afterPath="$PROJECT_DIR$/src/common/error_msg.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue.cpp" afterPath="$PROJECT_DIR$/src/common/file_queue.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue.h" afterPath="$PROJECT_DIR$/src/common/file_queue.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue_thread.cpp" afterPath="$PROJECT_DIR$/src/common/file_queue_thread.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue_thread.h" afterPath="$PROJECT_DIR$/src/common/file_queue_thread.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/func.cpp" afterPath="$PROJECT_DIR$/src/common/func.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/func.h" afterPath="$PROJECT_DIR$/src/common/func.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/interval.h" afterPath="$PROJECT_DIR$/src/common/interval.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/lock.cpp" afterPath="$PROJECT_DIR$/src/common/lock.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/lock.h" afterPath="$PROJECT_DIR$/src/common/lock.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/parameter.cpp" afterPath="$PROJECT_DIR$/src/common/parameter.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/parameter.h" afterPath="$PROJECT_DIR$/src/common/parameter.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/bit_map.cpp" afterPath="$PROJECT_DIR$/src/dataserver/bit_map.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/bit_map.h" afterPath="$PROJECT_DIR$/src/dataserver/bit_map.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/block_checker.cpp" afterPath="$PROJECT_DIR$/src/dataserver/block_checker.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/block_checker.h" afterPath="$PROJECT_DIR$/src/dataserver/block_checker.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/block_status.h" afterPath="$PROJECT_DIR$/src/dataserver/block_status.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/blockfile_format.h" afterPath="$PROJECT_DIR$/src/dataserver/blockfile_format.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/blockfile_manager.cpp" afterPath="$PROJECT_DIR$/src/dataserver/blockfile_manager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/blockfile_manager.h" afterPath="$PROJECT_DIR$/src/dataserver/blockfile_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/compact_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/compact_block.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/compact_block.h" afterPath="$PROJECT_DIR$/src/dataserver/compact_block.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/cpu_metrics.cpp" afterPath="$PROJECT_DIR$/src/dataserver/cpu_metrics.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/cpu_metrics.h" afterPath="$PROJECT_DIR$/src/dataserver/cpu_metrics.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_file.cpp" afterPath="$PROJECT_DIR$/src/dataserver/data_file.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_file.h" afterPath="$PROJECT_DIR$/src/dataserver/data_file.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_handle.cpp" afterPath="$PROJECT_DIR$/src/dataserver/data_handle.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_handle.h" afterPath="$PROJECT_DIR$/src/dataserver/data_handle.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_management.cpp" afterPath="$PROJECT_DIR$/src/dataserver/data_management.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_management.h" afterPath="$PROJECT_DIR$/src/dataserver/data_management.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataserver.cpp" afterPath="$PROJECT_DIR$/src/dataserver/dataserver.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataserver.h" afterPath="$PROJECT_DIR$/src/dataserver/dataserver.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataserver_define.h" afterPath="$PROJECT_DIR$/src/dataserver/dataserver_define.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataservice.cpp" afterPath="$PROJECT_DIR$/src/dataserver/dataservice.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataservice.h" afterPath="$PROJECT_DIR$/src/dataserver/dataservice.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_op.cpp" afterPath="$PROJECT_DIR$/src/dataserver/file_op.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_op.h" afterPath="$PROJECT_DIR$/src/dataserver/file_op.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_repair.cpp" afterPath="$PROJECT_DIR$/src/dataserver/file_repair.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_repair.h" afterPath="$PROJECT_DIR$/src/dataserver/file_repair.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/index_handle.cpp" afterPath="$PROJECT_DIR$/src/dataserver/index_handle.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/index_handle.h" afterPath="$PROJECT_DIR$/src/dataserver/index_handle.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/logic_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/logic_block.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/logic_block.h" afterPath="$PROJECT_DIR$/src/dataserver/logic_block.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file.cpp" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file.h" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file_op.cpp" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file_op.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file_op.h" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file_op.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/physical_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/physical_block.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/physical_block.h" afterPath="$PROJECT_DIR$/src/dataserver/physical_block.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/replicate_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/replicate_block.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/replicate_block.h" afterPath="$PROJECT_DIR$/src/dataserver/replicate_block.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/requester.cpp" afterPath="$PROJECT_DIR$/src/dataserver/requester.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/requester.h" afterPath="$PROJECT_DIR$/src/dataserver/requester.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/superblock.h" afterPath="$PROJECT_DIR$/src/dataserver/superblock.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/superblock_impl.cpp" afterPath="$PROJECT_DIR$/src/dataserver/superblock_impl.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/superblock_impl.h" afterPath="$PROJECT_DIR$/src/dataserver/superblock_impl.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_backup.cpp" afterPath="$PROJECT_DIR$/src/dataserver/sync_backup.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_backup.h" afterPath="$PROJECT_DIR$/src/dataserver/sync_backup.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_base.cpp" afterPath="$PROJECT_DIR$/src/dataserver/sync_base.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_base.h" afterPath="$PROJECT_DIR$/src/dataserver/sync_base.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/version.cpp" afterPath="$PROJECT_DIR$/src/dataserver/version.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/version.h" afterPath="$PROJECT_DIR$/src/dataserver/version.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/visit_stat.cpp" afterPath="$PROJECT_DIR$/src/dataserver/visit_stat.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/visit_stat.h" afterPath="$PROJECT_DIR$/src/dataserver/visit_stat.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/admin_cmd_message.cpp" afterPath="$PROJECT_DIR$/src/message/admin_cmd_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/admin_cmd_message.h" afterPath="$PROJECT_DIR$/src/message/admin_cmd_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/async_client.cpp" afterPath="$PROJECT_DIR$/src/message/async_client.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/async_client.h" afterPath="$PROJECT_DIR$/src/message/async_client.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/block_info_message.cpp" afterPath="$PROJECT_DIR$/src/message/block_info_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/block_info_message.h" afterPath="$PROJECT_DIR$/src/message/block_info_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client.cpp" afterPath="$PROJECT_DIR$/src/message/client.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client.h" afterPath="$PROJECT_DIR$/src/message/client.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_cmd_message.cpp" afterPath="$PROJECT_DIR$/src/message/client_cmd_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_cmd_message.h" afterPath="$PROJECT_DIR$/src/message/client_cmd_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_pool.cpp" afterPath="$PROJECT_DIR$/src/message/client_pool.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_pool.h" afterPath="$PROJECT_DIR$/src/message/client_pool.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/close_file_message.cpp" afterPath="$PROJECT_DIR$/src/message/close_file_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/close_file_message.h" afterPath="$PROJECT_DIR$/src/message/close_file_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/compact_block_message.cpp" afterPath="$PROJECT_DIR$/src/message/compact_block_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/compact_block_message.h" afterPath="$PROJECT_DIR$/src/message/compact_block_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/crc_error_message.cpp" afterPath="$PROJECT_DIR$/src/message/crc_error_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/crc_error_message.h" afterPath="$PROJECT_DIR$/src/message/crc_error_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/create_filename_message.cpp" afterPath="$PROJECT_DIR$/src/message/create_filename_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/create_filename_message.h" afterPath="$PROJECT_DIR$/src/message/create_filename_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/dataserver_message.cpp" afterPath="$PROJECT_DIR$/src/message/dataserver_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/dataserver_message.h" afterPath="$PROJECT_DIR$/src/message/dataserver_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/file_info_message.cpp" afterPath="$PROJECT_DIR$/src/message/file_info_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/file_info_message.h" afterPath="$PROJECT_DIR$/src/message/file_info_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/heart_message.cpp" afterPath="$PROJECT_DIR$/src/message/heart_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/heart_message.h" afterPath="$PROJECT_DIR$/src/message/heart_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/message.h" afterPath="$PROJECT_DIR$/src/message/message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/message_factory.cpp" afterPath="$PROJECT_DIR$/src/message/message_factory.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/message_factory.h" afterPath="$PROJECT_DIR$/src/message/message_factory.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/oplog_sync_message.cpp" afterPath="$PROJECT_DIR$/src/message/oplog_sync_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/oplog_sync_message.h" afterPath="$PROJECT_DIR$/src/message/oplog_sync_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/read_data_message.cpp" afterPath="$PROJECT_DIR$/src/message/read_data_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/read_data_message.h" afterPath="$PROJECT_DIR$/src/message/read_data_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/reload_message.cpp" afterPath="$PROJECT_DIR$/src/message/reload_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/reload_message.h" afterPath="$PROJECT_DIR$/src/message/reload_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rename_file_message.cpp" afterPath="$PROJECT_DIR$/src/message/rename_file_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rename_file_message.h" afterPath="$PROJECT_DIR$/src/message/rename_file_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/replicate_block_message.cpp" afterPath="$PROJECT_DIR$/src/message/replicate_block_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/replicate_block_message.h" afterPath="$PROJECT_DIR$/src/message/replicate_block_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rollback_message.cpp" afterPath="$PROJECT_DIR$/src/message/rollback_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rollback_message.h" afterPath="$PROJECT_DIR$/src/message/rollback_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_meta_info_message.cpp" afterPath="$PROJECT_DIR$/src/message/server_meta_info_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_meta_info_message.h" afterPath="$PROJECT_DIR$/src/message/server_meta_info_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_status_message.cpp" afterPath="$PROJECT_DIR$/src/message/server_status_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_status_message.h" afterPath="$PROJECT_DIR$/src/message/server_status_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/status_message.cpp" afterPath="$PROJECT_DIR$/src/message/status_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/status_message.h" afterPath="$PROJECT_DIR$/src/message/status_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/tfs_packet_streamer.cpp" afterPath="$PROJECT_DIR$/src/message/tfs_packet_streamer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/tfs_packet_streamer.h" afterPath="$PROJECT_DIR$/src/message/tfs_packet_streamer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/unlink_file_message.cpp" afterPath="$PROJECT_DIR$/src/message/unlink_file_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/unlink_file_message.h" afterPath="$PROJECT_DIR$/src/message/unlink_file_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/write_data_message.cpp" afterPath="$PROJECT_DIR$/src/message/write_data_message.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/write_data_message.h" afterPath="$PROJECT_DIR$/src/message/write_data_message.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/monitor/cibrsc.xml" afterPath="$PROJECT_DIR$/src/monitor/cibrsc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/monitor/nameserver_ha_monitor.cpp" afterPath="$PROJECT_DIR$/src/monitor/nameserver_ha_monitor.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/block_chunk.cpp" afterPath="$PROJECT_DIR$/src/nameserver/block_chunk.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/block_chunk.h" afterPath="$PROJECT_DIR$/src/nameserver/block_chunk.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/block_collect.h" afterPath="$PROJECT_DIR$/src/nameserver/block_collect.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/compact.cpp" afterPath="$PROJECT_DIR$/src/nameserver/compact.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/compact.h" afterPath="$PROJECT_DIR$/src/nameserver/compact.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/data_container.h" afterPath="$PROJECT_DIR$/src/nameserver/data_container.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/file_system_image.cpp" afterPath="$PROJECT_DIR$/src/nameserver/file_system_image.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/file_system_image.h" afterPath="$PROJECT_DIR$/src/nameserver/file_system_image.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/heart_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/heart_manager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/heart_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/heart_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/layout_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/layout_manager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/layout_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/layout_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/lease_clerk.cpp" afterPath="$PROJECT_DIR$/src/nameserver/lease_clerk.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/lease_clerk.h" afterPath="$PROJECT_DIR$/src/nameserver/lease_clerk.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/meta_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/meta_manager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/meta_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/meta_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/meta_scanner.h" afterPath="$PROJECT_DIR$/src/nameserver/meta_scanner.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/nameserver.cpp" afterPath="$PROJECT_DIR$/src/nameserver/nameserver.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/nameserver.h" afterPath="$PROJECT_DIR$/src/nameserver/nameserver.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/ns_define.h" afterPath="$PROJECT_DIR$/src/nameserver/ns_define.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog.cpp" afterPath="$PROJECT_DIR$/src/nameserver/oplog.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog.h" afterPath="$PROJECT_DIR$/src/nameserver/oplog.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/proactor_data_pipe.h" afterPath="$PROJECT_DIR$/src/nameserver/proactor_data_pipe.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/redundant.cpp" afterPath="$PROJECT_DIR$/src/nameserver/redundant.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/redundant.h" afterPath="$PROJECT_DIR$/src/nameserver/redundant.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/replicate.cpp" afterPath="$PROJECT_DIR$/src/nameserver/replicate.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/replicate.h" afterPath="$PROJECT_DIR$/src/nameserver/replicate.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/scanner_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/scanner_manager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/scanner_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/scanner_manager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/server_collect.h" afterPath="$PROJECT_DIR$/src/nameserver/server_collect.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/service.cpp" afterPath="$PROJECT_DIR$/src/nameserver/service.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/service.h" afterPath="$PROJECT_DIR$/src/nameserver/service.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/strategy.cpp" afterPath="$PROJECT_DIR$/src/nameserver/strategy.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/strategy.h" afterPath="$PROJECT_DIR$/src/nameserver/strategy.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/adminserver/admintool.cpp" afterPath="$PROJECT_DIR$/src/tools/adminserver/admintool.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/clear_file_system.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/clear_file_system.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/convert_name.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/convert_name.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_client.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_client.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_task.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_task.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_task.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_task.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_util.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_util.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_util.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_util.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/format_file_system.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/format_file_system.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/modify_super_block.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/modify_super_block.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/read_index_tool.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/read_index_tool.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/read_super_block.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/read_super_block.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/reloadconfig.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/reloadconfig.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/replblk.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/replblk.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/reverse_name.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/reverse_name.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/stat.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/stat.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/stat.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/stat.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/tfsping.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/tfsping.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/nameserver/showssm.cpp" afterPath="$PROJECT_DIR$/src/tools/nameserver/showssm.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/nameserver/showsyncoplog.cpp" afterPath="$PROJECT_DIR$/src/tools/nameserver/showsyncoplog.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/nameserver/tfstool.cpp" afterPath="$PROJECT_DIR$/src/tools/nameserver/tfstool.cpp" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="service.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nameserver/service.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1830">
+              <caret line="201" column="47" lean-forward="true" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
+              <folding>
+                <element signature="e#905#1409#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>m</find>
+      <find>main</find>
+      <find>main(</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/nameserver</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/nameserver/service.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotated_tfs" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotated-tfs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotated_tfs" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotated-tfs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotated_tfs" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotated-tfs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.annotated_tfs">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CLion_Remote" factoryName="GDB Remote Debug" remoteCommand="" symbolFile="" sysroot="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeCatchTestRunConfigurationType" factoryName="Catch Test" PASS_PARENT_ENVS_2="true" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="annotated-tfs" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="annotated-tfs" />
+      <method />
+    </configuration>
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="annotated-tfs" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="annotated-tfs" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="annotated-tfs" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="annotated-tfs" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="annotated_tfs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="annotated_tfs" TARGET_NAME="annotated_tfs" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="annotated_tfs" RUN_TARGET_NAME="annotated_tfs">
+      <envs />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="1" class="java.lang.String" itemvalue="Application.annotated_tfs" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5472a489-6776-413a-abd2-c00c7f25db32" name="Default" comment="" />
+      <created>1493486694086</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1493486694086</updated>
+      <workItem from="1493486695733" duration="73000" />
+      <workItem from="1493486784620" duration="1057000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1130000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25274727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/Makefile.am">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/tfs.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1330">
+          <caret line="70" column="22" lean-forward="true" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/stfs.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/tfs.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/Makefile.am">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/tfs.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6436">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/stfs.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/COPYING">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile.am">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configure.ac">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1648">
+          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="228">
+            <caret line="12" column="46" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/adminserver/Makefile.am">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/adminserver/adminserver.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-394">
+          <caret line="59" column="11" lean-forward="true" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monitor/nameserver_ha_monitor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="102" column="3" lean-forward="true" selection-start-line="102" selection-start-column="3" selection-end-line="102" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monitor/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monitor/NameServer">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4973">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/adminserver/admintool.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/scanner_manager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="41" lean-forward="false" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/config.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="88" column="8" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/tfs.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/parameter.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/parameter.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1107">
+          <caret line="66" column="22" lean-forward="false" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/adminserver/adminserver.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="211" column="31" lean-forward="true" selection-start-line="211" selection-start-column="31" selection-end-line="211" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/nameserver.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="253" column="24" lean-forward="false" selection-start-line="253" selection-start-column="24" selection-end-line="253" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/service.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1830">
+          <caret line="201" column="47" lean-forward="true" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
+          <folding>
+            <element signature="e#905#1409#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

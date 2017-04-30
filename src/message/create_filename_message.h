@@ -24,87 +24,101 @@
 #include "common/interval.h"
 #include "message.h"
 
-namespace tfs
-{
-  namespace message
-  {
-    class CreateFilenameMessage: public Message
-    {
-      public:
-        CreateFilenameMessage();
-        virtual ~CreateFilenameMessage();
+namespace tfs {
+    namespace message {
+        class CreateFilenameMessage : public Message {
+        public:
+            CreateFilenameMessage();
 
-        inline void set_block_id(const uint32_t block_id)
-        {
-          block_id_ = block_id;
-        }
-        inline uint32_t get_block_id() const
-        {
-          return block_id_;
-        }
-        inline void set_file_id(const uint64_t file_id)
-        {
-          file_id_ = file_id;
-        }
-        inline uint64_t get_file_id() const
-        {
-          return file_id_;
-        }
+            virtual ~CreateFilenameMessage();
 
-        virtual int parse(char* data, int32_t len);
-        virtual int build(char* data, int32_t len);
-        virtual int32_t message_length();
-        virtual char* get_name();
+            inline void set_block_id(const uint32_t block_id)
+            {
+                block_id_ = block_id;
+            }
 
-        static Message* create(const int32_t type);
-      protected:
-        uint32_t block_id_;
-        uint64_t file_id_;
-    };
+            inline uint32_t get_block_id() const
+            {
+                return block_id_;
+            }
 
-    class RespCreateFilenameMessage: public Message
-    {
-      public:
-        RespCreateFilenameMessage();
-        virtual ~RespCreateFilenameMessage();
+            inline void set_file_id(const uint64_t file_id)
+            {
+                file_id_ = file_id;
+            }
 
-        inline void set_block_id(const uint32_t block_id)
-        {
-          block_id_ = block_id;
-        }
-        inline uint32_t get_block_id() const
-        {
-          return block_id_;
-        }
-        inline void set_file_id(const uint64_t file_id)
-        {
-          file_id_ = file_id;
-        }
-        inline uint64_t get_file_id() const
-        {
-          return file_id_;
-        }
-        inline void set_file_number(const uint64_t file_number)
-        {
-          file_number_ = file_number;
-        }
-        inline uint64_t get_file_number() const
-        {
-          return file_number_;
-        }
+            inline uint64_t get_file_id() const
+            {
+                return file_id_;
+            }
 
-        virtual int parse(char* data, int32_t len);
-        virtual int build(char* data, int32_t len);
-        virtual int32_t message_length();
-        virtual char* get_name();
+            virtual int parse(char* data, int32_t len);
 
-        static Message* create(const int32_t type);
-      protected:
-        uint32_t block_id_;
-        uint64_t file_id_;
-        uint64_t file_number_;
-    };
-  }
+            virtual int build(char* data, int32_t len);
+
+            virtual int32_t message_length();
+
+            virtual char* get_name();
+
+            static Message* create(const int32_t type);
+
+        protected:
+            uint32_t block_id_;
+            uint64_t file_id_;
+        };
+
+        class RespCreateFilenameMessage : public Message {
+        public:
+            RespCreateFilenameMessage();
+
+            virtual ~RespCreateFilenameMessage();
+
+            inline void set_block_id(const uint32_t block_id)
+            {
+                block_id_ = block_id;
+            }
+
+            inline uint32_t get_block_id() const
+            {
+                return block_id_;
+            }
+
+            inline void set_file_id(const uint64_t file_id)
+            {
+                file_id_ = file_id;
+            }
+
+            inline uint64_t get_file_id() const
+            {
+                return file_id_;
+            }
+
+            inline void set_file_number(const uint64_t file_number)
+            {
+                file_number_ = file_number;
+            }
+
+            inline uint64_t get_file_number() const
+            {
+                return file_number_;
+            }
+
+            virtual int parse(char* data, int32_t len);
+
+            virtual int build(char* data, int32_t len);
+
+            virtual int32_t message_length();
+
+            virtual char* get_name();
+
+            static Message* create(const int32_t type);
+
+        protected:
+            uint32_t block_id_;
+            uint64_t file_id_;
+            uint64_t file_number_;
+        };
+    }
 }
 
 #endif

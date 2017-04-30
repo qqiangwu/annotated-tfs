@@ -22,46 +22,43 @@
 
 #include <vector>
 
-namespace tfs
-{
-  namespace nameserver
-  {
-    template<typename ElementT>
-    class PipeDataAdaptor
-    {
-    public:
-      virtual ~PipeDataAdaptor()
-      {
-      }
-      ;
-      typedef std::vector<ElementT> value_type;
+namespace tfs {
+    namespace nameserver {
+        template<typename ElementT>
+        class PipeDataAdaptor {
+        public:
+            virtual ~PipeDataAdaptor()
+            {
+            };
+            typedef std::vector<ElementT> value_type;
 
-      void push_back(const value_type & v)
-      {
-        inventory_.assign(v.begin(), v.end());
-      }
+            void push_back(const value_type& v)
+            {
+                inventory_.assign(v.begin(), v.end());
+            }
 
-      const value_type front() const
-      {
-        return inventory_;
-      }
+            const value_type front() const
+            {
+                return inventory_;
+            }
 
-      void pop_front()
-      {
-        inventory_.clear();
-      }
+            void pop_front()
+            {
+                inventory_.clear();
+            }
 
-      uint32_t size() const
-      {
-        if (inventory_.size())
-          return 1;
-        else
-          return 0;
-      }
-    private:
-      value_type inventory_;
-    };
-  }
+            uint32_t size() const
+            {
+                if (inventory_.size())
+                    return 1;
+                else
+                    return 0;
+            }
+
+        private:
+            value_type inventory_;
+        };
+    }
 }
 #endif 
 

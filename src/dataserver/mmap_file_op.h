@@ -24,91 +24,92 @@
 #include "mmap_file.h"
 #include <Memory.hpp>
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    class ParaInfo
-    {
-      public:
-        ParaInfo(const int32_t size) :
-          flag_(false)
-        {
-          new_buf_ = new char[size];
-          self_buf_ = NULL;
-        }
+namespace tfs {
+    namespace dataserver {
+        class ParaInfo {
+        public:
+            ParaInfo(const int32_t size)
+                    :
+                    flag_(false)
+            {
+                new_buf_ = new char[size];
+                self_buf_ = NULL;
+            }
 
-        ~ParaInfo()
-        {
-          tbsys::gDeleteA(new_buf_);
-        }
+            ~ParaInfo()
+            {
+                tbsys::gDeleteA(new_buf_);
+            }
 
-        inline char* get_actual_buf() const
-        {
-          if (flag_)
-          {
-            return self_buf_;
-          }
-          else
-          {
-            return new_buf_;
-          }
-        }
+            inline char* get_actual_buf() const
+            {
+                if (flag_) {
+                    return self_buf_;
+                }
+                else {
+                    return new_buf_;
+                }
+            }
 
-        inline char* get_new_buf()
-        {
-          flag_ = false;
-          return new_buf_;
-        }
+            inline char* get_new_buf()
+            {
+                flag_ = false;
+                return new_buf_;
+            }
 
-        inline bool get_flag() const
-        {
-          return flag_;
-        }
+            inline bool get_flag() const
+            {
+                return flag_;
+            }
 
-        inline void set_self_buf(char* buf)
-        {
-          self_buf_ = buf;
-          flag_ = true;
-        }
+            inline void set_self_buf(char* buf)
+            {
+                self_buf_ = buf;
+                flag_ = true;
+            }
 
-      private:
-        bool flag_;
-        char* self_buf_;
-        char* new_buf_;
-    };
+        private:
+            bool flag_;
+            char* self_buf_;
+            char* new_buf_;
+        };
 
-    class MMapFileOperation: public FileOperation
-    {
-      public:
-        MMapFileOperation(const std::string& file_name, int open_flags = O_RDWR | O_LARGEFILE) :
-          FileOperation(file_name, open_flags), is_mapped_(false), map_file_(NULL)
-        {
+        class MMapFileOperation : public FileOperation {
+        public:
+            MMapFileOperation(const std::string& file_name, int open_flags = O_RDWR | O_LARGEFILE)
+                    :
+                    FileOperation(file_name, open_flags), is_mapped_(false), map_file_(NULL)
+            {
 
-        }
+            }
 
-        ~MMapFileOperation()
-        {
-          tbsys::gDelete(map_file_);
-        }
+            ~MMapFileOperation()
+            {
+                tbsys::gDelete(map_file_);
+            }
 
-        int pread_file(char* buf, const int32_t size, const int64_t offset);
-        int pread_file(ParaInfo& m_meta_info, const int32_t size, const int64_t offset);
-        int pwrite_file(const char* buf, const int32_t size, const int64_t offset);
+            int pread_file(char* buf, const int32_t size, const int64_t offset);
 
-        int mmap_file(const MMapOption& mmap_option);
-        int munmap_file();
-        void* get_map_data() const;
-        int flush_file();
+            int pread_file(ParaInfo& m_meta_info, const int32_t size, const int64_t offset);
 
-      private:
-        MMapFileOperation();
-        DISALLOW_COPY_AND_ASSIGN(MMapFileOperation);
+            int pwrite_file(const char* buf, const int32_t size, const int64_t offset);
 
-        bool is_mapped_;
-        MMapFile* map_file_;
-    };
+            int mmap_file(const MMapOption& mmap_option);
 
-  }
+            int munmap_file();
+
+            void* get_map_data() const;
+
+            int flush_file();
+
+        private:
+            MMapFileOperation();
+            DISALLOW_COPY_AND_ASSIGN(MMapFileOperation);
+
+            bool is_mapped_;
+            MMapFile* map_file_;
+        };
+
+    }
 }
 #endif //TFS_DATASERVER_MMAPFILE_OP_H_

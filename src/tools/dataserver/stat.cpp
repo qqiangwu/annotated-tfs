@@ -15,35 +15,29 @@
  */
 #include "stat.h"
 
-namespace tfs
-{
-  namespace client
-  {
-    int32_t Stat::summary()
-    {
-      int32_t ret = 0;
-      ret = refresh();
-      if (ret)
-      {
-        return ret;
-      }
-      ret = calc();
-      if (ret)
-      {
-        return ret;
-      }
-      ret = output();
-      if (ret)
-      {
-        return ret;
-      }
-      ret = save();
-      if (ret)
-      {
-        return ret;
-      }
-      return 0;
+namespace tfs {
+    namespace client {
+        int32_t Stat::summary()
+        {
+            int32_t ret = 0;
+            ret = refresh();
+            if (ret) {
+                return ret;
+            }
+            ret = calc();
+            if (ret) {
+                return ret;
+            }
+            ret = output();
+            if (ret) {
+                return ret;
+            }
+            ret = save();
+            if (ret) {
+                return ret;
+            }
+            return 0;
+        }
     }
-  }
 }
 

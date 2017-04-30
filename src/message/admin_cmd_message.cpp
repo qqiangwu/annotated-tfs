@@ -19,138 +19,123 @@
 #include "admin_cmd_message.h"
 
 using namespace tfs::common;
-namespace tfs
-{
-  namespace message
-  {
-    AdminCmdMessage::AdminCmdMessage() : type_(ADMIN_CMD_NONE)
-    {
-      _packetHeader._pcode = ADMIN_CMD_MESSAGE;
-    }
-
-    AdminCmdMessage::AdminCmdMessage(int32_t cmd_type) : type_(cmd_type)
-    {
-      _packetHeader._pcode = ADMIN_CMD_MESSAGE;
-    }
-
-    AdminCmdMessage::~AdminCmdMessage()
-    {
-    }
-
-    int AdminCmdMessage::parse(char *data, int32_t len)
-    {
-      if (TFS_ERROR == get_int32(&data, &len, &type_))
-      {
-        return TFS_ERROR;
-      }
-
-      // request message only set index vector
-      // response message only set status vector,
-
-      int32_t count = 0;
-      if (TFS_ERROR == get_int32(&data, &len, &count))
-      {
-        return TFS_ERROR;
-      }
-
-      if (ADMIN_CMD_RESP != type_) // request message
-      {
-        char* tmp = NULL;
-        // get index
-        for (int32_t i = 0; i < count; i++)
+namespace tfs {
+    namespace message {
+        AdminCmdMessage::AdminCmdMessage()
+                :type_(ADMIN_CMD_NONE)
         {
-          if (TFS_ERROR == get_string(&data, &len, &tmp))
-          {
-            return TFS_ERROR;
-          }
-          index_.push_back(tmp);
+            _packetHeader._pcode = ADMIN_CMD_MESSAGE;
         }
-      }
-      else                      // response message
-      {
-        MonitorStatus* m_status = NULL;
-        // get status
-        for (int32_t i = 0; i < count; i++)
+
+        AdminCmdMessage::AdminCmdMessage(int32_t cmd_type)
+                :type_(cmd_type)
         {
-          // not copy
-          if (TFS_ERROR == get_object(&data, &len, reinterpret_cast<void**>(&m_status), sizeof(MonitorStatus)))
-          {
-            return TFS_ERROR;
-          }
-          monitor_status_.push_back(m_status);
+            _packetHeader._pcode = ADMIN_CMD_MESSAGE;
         }
-      }
-      return TFS_SUCCESS;
-    }
 
-    int AdminCmdMessage::build(char *data, int32_t len)
-    {
-      if (set_int32(&data, &len, type_) == TFS_ERROR)
-      {
-        return TFS_ERROR;
-      }
-
-      int32_t count = (ADMIN_CMD_RESP != type_) ? index_.size() : monitor_status_.size();
-      if (set_int32(&data, &len, count) == TFS_ERROR)
-      {
-        return TFS_ERROR;
-      }
-
-      if (ADMIN_CMD_RESP != type_)
-      {
-        // set index
-        for (int32_t i = 0; i < count; i++)
+        AdminCmdMessage::~AdminCmdMessage()
         {
-          if (TFS_ERROR == set_string(&data, &len, const_cast<char*>(index_[i].c_str())))
-          {
-            return TFS_ERROR;
-          }
         }
-      }
-      else                            // response message
-      {
-        // set status
-        for (int32_t i = 0; i < count; i++)
+
+        int AdminCmdMessage::parse(char* data, int32_t len)
         {
-          if (set_object(&data, &len, monitor_status_[i], sizeof(MonitorStatus)) == TFS_ERROR)
-          {
-            return TFS_ERROR;
-          }
+            if (TFS_ERROR==get_int32(&data, &len, &type_)) {
+                return TFS_ERROR;
+            }
+
+            // request message only set index vector
+            // response message only set status vector,
+
+            int32_t count = 0;
+            if (TFS_ERROR==get_int32(&data, &len, &count)) {
+                return TFS_ERROR;
+            }
+
+            if (ADMIN_CMD_RESP!=type_) // request message
+            {
+                char* tmp = NULL;
+                // get index
+                for (int32_t i = 0; i<count; i++) {
+                    if (TFS_ERROR==get_string(&data, &len, &tmp)) {
+                        return TFS_ERROR;
+                    }
+                    index_.push_back(tmp);
+                }
+            }
+            else                      // response message
+            {
+                MonitorStatus* m_status = NULL;
+                // get status
+                for (int32_t i = 0; i<count; i++) {
+                    // not copy
+                    if (TFS_ERROR
+                            ==get_object(&data, &len, reinterpret_cast<void**>(&m_status), sizeof(MonitorStatus))) {
+                        return TFS_ERROR;
+                    }
+                    monitor_status_.push_back(m_status);
+                }
+            }
+            return TFS_SUCCESS;
         }
-      }
 
-      return TFS_SUCCESS;
-    }
-
-    int32_t AdminCmdMessage::message_length()
-    {
-      int32_t size = common::INT_SIZE * 2; // type_ and vector count
-
-      if (type_ != ADMIN_CMD_RESP)
-      {
-        for (size_t i = 0; i < index_.size(); i++)
+        int AdminCmdMessage::build(char* data, int32_t len)
         {
-          size += get_string_len(const_cast<char*>(index_[i].c_str()));
+            if (set_int32(&data, &len, type_)==TFS_ERROR) {
+                return TFS_ERROR;
+            }
+
+            int32_t count = (ADMIN_CMD_RESP!=type_) ? index_.size() : monitor_status_.size();
+            if (set_int32(&data, &len, count)==TFS_ERROR) {
+                return TFS_ERROR;
+            }
+
+            if (ADMIN_CMD_RESP!=type_) {
+                // set index
+                for (int32_t i = 0; i<count; i++) {
+                    if (TFS_ERROR==set_string(&data, &len, const_cast<char*>(index_[i].c_str()))) {
+                        return TFS_ERROR;
+                    }
+                }
+            }
+            else                            // response message
+            {
+                // set status
+                for (int32_t i = 0; i<count; i++) {
+                    if (set_object(&data, &len, monitor_status_[i], sizeof(MonitorStatus))==TFS_ERROR) {
+                        return TFS_ERROR;
+                    }
+                }
+            }
+
+            return TFS_SUCCESS;
         }
-      }
-      else
-      {
-        size += sizeof(MonitorStatus)*monitor_status_.size();
-      }
-      return size;
-    }
 
-    char* AdminCmdMessage::get_name()
-    {
-      return "admincmdmessage";
-    }
+        int32_t AdminCmdMessage::message_length()
+        {
+            int32_t size = common::INT_SIZE*2; // type_ and vector count
 
-    Message* AdminCmdMessage::create(const int32_t type)
-    {
-      AdminCmdMessage *msg = new AdminCmdMessage();
-      msg->set_message_type(type);
-      return msg;
-    }
+            if (type_!=ADMIN_CMD_RESP) {
+                for (size_t i = 0; i<index_.size(); i++) {
+                    size += get_string_len(const_cast<char*>(index_[i].c_str()));
+                }
+            }
+            else {
+                size += sizeof(MonitorStatus)*monitor_status_.size();
+            }
+            return size;
+        }
 
-  }
+        char* AdminCmdMessage::get_name()
+        {
+            return "admincmdmessage";
+        }
+
+        Message* AdminCmdMessage::create(const int32_t type)
+        {
+            AdminCmdMessage* msg = new AdminCmdMessage();
+            msg->set_message_type(type);
+            return msg;
+        }
+
+    }
 }

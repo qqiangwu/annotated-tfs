@@ -16,11 +16,9 @@
 #ifndef TFS_COMMON_CONFIG_ITEM_H_
 #define TFS_COMMON_CONFIG_ITEM_H_
 
-namespace tfs
-{
-  namespace common
-  {
-  //public
+namespace tfs {
+    namespace common {
+        //public
 #define CONF_SN_PUBLIC                                "[public]"
 #define CONF_SN_NAMESERVER                            "[nameserver]"
 #define CONF_SN_DATASERVER                            "[dataserver]"
@@ -43,12 +41,12 @@ namespace tfs
 #define CONF_BLOCK_USE_RATIO                          "block_max_use_ratio"
 #define CONF_HEART_INTERVAL                           "heart_interval"
 #define CONF_HEART_MAX_QUEUE_SIZE                     "heart_max_queue_size"
-#define CONF_HEART_THREAD_COUNT												"heart_thread_count"
+#define CONF_HEART_THREAD_COUNT                                                "heart_thread_count"
 #define CONF_MAX_REPLICATION                          "max_replication"
 #define CONF_MIN_REPLICATION                          "min_replication"
 #define CONF_USE_CAPACITY_RATIO                       "use_capacity_ratio"
 
-  //adminserver
+        //adminserver
 #define CONF_NS_SCRIPT                                "ns_script"
 #define CONF_DS_SCRIPT                                "ds_script"
 #define CONF_NS_FKILL_WAITTIME                        "ns_fkill_waittime"
@@ -57,7 +55,7 @@ namespace tfs
 #define CONF_DS_INDEX_LIST                            "ds_index_list"
 #define CONF_WARN_DEAD_COUNT                          "warn_dead_count"
 
-  //nameserver
+        //nameserver
 #define CONF_IP_ADDR_LIST                             "ip_addr_list"
 #define CONF_GROUP_MASK                               "group_mask"
 #define CONF_OWNER_CHECK_INTERVAL                     "owner_check_interval"
@@ -68,7 +66,7 @@ namespace tfs
 #define CONF_ADD_PRIMARY_BLOCK_COUNT                  "add_primary_block_count"
 #define CONF_BALANCE_CHECK_INTERVAL                   "balance_check_interval"
 #define CONF_REDUNDANT_CHECK_INTERVAL                 "redundant_check_interval"
-#define CONF_SAFE_MODE_TIME														"safe_mode_time"
+#define CONF_SAFE_MODE_TIME                                                        "safe_mode_time"
 
 #define CONF_COMPACT_DELETE_RATIO                     "compact_delete_ratio"
 #define CONF_COMPACT_PRESERVE_TIME                    "compact_preserve_time"
@@ -90,7 +88,7 @@ namespace tfs
 #define CONF_CLEANUP_LEASE_THRESHOLD                  "cleanup_lease_threshold"
 #define CONF_CLEANUP_LEASE_COUNT                      "cleanup_lease_count"
 
-  //dataserver
+        //dataserver
 #define CONF_CHECK_INTERVAL                           "check_interval"
 #define CONF_DATA_THREAD_COUNT                        "data_thread_count"
 #define CONF_EXPIRE_COMPACTBLOCK_TIME                 "expire_compactblock_time"
@@ -123,6 +121,6 @@ namespace tfs
 #define CONF_BACKUP_TYPE                              "backup_type"
 #define CONF_EXPIRE_CHECKBLOCK_TIME                   "expire_checkblock_time"
 #define CONF_MAX_CPU_USAGE                            "max_cpu_usage"
-  }
+    }
 }
 #endif //TFS_COMMON_CONFDEFINE_H_

@@ -22,28 +22,24 @@
 
 #include "block_collect.h"
 
-namespace tfs
-{
-  namespace nameserver
-  {
-      /* scanner interface for meta scanning */
-    class MetaScanner
-    {
-    public:
-      enum SCANNER_STATUS
-      {
-        CONTINUE = 0x00,
-        BREAK
-      };
-      
-      virtual int process(const BlockCollect* blkcol) const = 0;
-      
-      virtual ~MetaScanner()
-      {
+namespace tfs {
+    namespace nameserver {
+        /* scanner interface for meta scanning */
+        class MetaScanner {
+        public:
+            enum SCANNER_STATUS {
+                CONTINUE = 0x00,
+                BREAK
+            };
 
-      }
-    };
-  }
+            virtual int process(const BlockCollect* blkcol) const = 0;
+
+            virtual ~MetaScanner()
+            {
+
+            }
+        };
+    }
 }
 #endif 
 

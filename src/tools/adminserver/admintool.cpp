@@ -25,28 +25,29 @@
 using namespace tfs::message;
 using namespace tfs::common;
 
-typedef int (*cmd_function)(VSTRING&);
-struct CmdNode
-{
-  const char* info_;
-  int32_t param_cnt_;
-  cmd_function func_;
+typedef int (* cmd_function)(VSTRING&);
 
-  CmdNode()
-  {
-  }
+struct CmdNode {
+    const char* info_;
+    int32_t param_cnt_;
+    cmd_function func_;
 
-  CmdNode(const char* info, int32_t param_cnt, cmd_function func) :
-    info_(info), param_cnt_(param_cnt), func_(func)
-  {
-  }
+    CmdNode()
+    {
+    }
+
+    CmdNode(const char* info, int32_t param_cnt, cmd_function func)
+            :
+            info_(info), param_cnt_(param_cnt), func_(func)
+    {
+    }
 };
 
 typedef map<string, Client*> MCLIENT;
 typedef map<string, Client*>::iterator MCLIENT_ITER;
-typedef map<string, CmdNode> MSTR_FUNC;
+typedef map <string, CmdNode> MSTR_FUNC;
 typedef MSTR_FUNC::iterator MSTR_FUNC_ITER;
-typedef map<string, VSTRING> MSTR_VSTR;
+typedef map <string, VSTRING> MSTR_VSTR;
 typedef map<string, VSTRING>::iterator MSTR_VSTR_ITER;
 
 static MCLIENT g_client_map;
@@ -231,438 +232,417 @@ char** admin_cmd_completion (const char* text, int start, int end)
 #endif
 
 int main_loop();
+
 int do_cmd(char*);
 
 int do_monitor(VSTRING&, int32_t);
 
 int cmd_show_help(VSTRING&);
+
 int cmd_quit(VSTRING&);
+
 int cmd_show_server(VSTRING&);
+
 int cmd_show_status(VSTRING&);
+
 int cmd_show_status_all(VSTRING&);
+
 int cmd_check(VSTRING&);
+
 int cmd_check_all(VSTRING&);
+
 int cmd_start_monitor(VSTRING&);
+
 int cmd_restart_monitor(VSTRING&);
+
 int cmd_stop_monitor(VSTRING&);
+
 int cmd_start_index(VSTRING&);
+
 int cmd_stop_index(VSTRING&);
+
 int cmd_kill_admin(VSTRING&);
 
 void init()
 {
-  g_cmd_map["help"] = CmdNode("help                 [show help info]", 0, cmd_show_help);
-  g_cmd_map["quit"] = CmdNode("quit                 [quit]", 0, cmd_quit);
-  g_cmd_map["exit"] = CmdNode("exit                 [exit]", 0, cmd_quit);
-  g_cmd_map["show"] = CmdNode("show                 [show server]", 0, cmd_show_server);
-  g_cmd_map["status"] = CmdNode("status server        [show server status]", 1, cmd_show_status);
-  g_cmd_map["astatus"] = CmdNode("astatus              [show all server status]", 0, cmd_show_status_all);
-  g_cmd_map["check"] = CmdNode("check server         [check  server]", 1, cmd_check);
-  g_cmd_map["acheck"] = CmdNode("acheck               [check all server]", 0, cmd_check_all);
-  g_cmd_map["mstart"] = CmdNode("mstart server        [start server monitor]", 1, cmd_start_monitor);
-  g_cmd_map["mrestart"] = CmdNode("mrestart server      [restart server monitor]", 1, cmd_restart_monitor);
-  g_cmd_map["mstop"] = CmdNode("mstop server         [stop server monitor]", 1, cmd_stop_monitor);
-  g_cmd_map["istart"] = CmdNode("istart server index  [start index in server]", -2, cmd_start_index); // -2 means at least two arguments
-  g_cmd_map["istop"] = CmdNode("istop server index   [stop index in server]", -2, cmd_stop_index);
-  g_cmd_map["kill"] = CmdNode("kill server          [kill adminserver in server]", 1, cmd_kill_admin);
+    g_cmd_map["help"] = CmdNode("help                 [show help info]", 0, cmd_show_help);
+    g_cmd_map["quit"] = CmdNode("quit                 [quit]", 0, cmd_quit);
+    g_cmd_map["exit"] = CmdNode("exit                 [exit]", 0, cmd_quit);
+    g_cmd_map["show"] = CmdNode("show                 [show server]", 0, cmd_show_server);
+    g_cmd_map["status"] = CmdNode("status server        [show server status]", 1, cmd_show_status);
+    g_cmd_map["astatus"] = CmdNode("astatus              [show all server status]", 0, cmd_show_status_all);
+    g_cmd_map["check"] = CmdNode("check server         [check  server]", 1, cmd_check);
+    g_cmd_map["acheck"] = CmdNode("acheck               [check all server]", 0, cmd_check_all);
+    g_cmd_map["mstart"] = CmdNode("mstart server        [start server monitor]", 1, cmd_start_monitor);
+    g_cmd_map["mrestart"] = CmdNode("mrestart server      [restart server monitor]", 1, cmd_restart_monitor);
+    g_cmd_map["mstop"] = CmdNode("mstop server         [stop server monitor]", 1, cmd_stop_monitor);
+    g_cmd_map["istart"] = CmdNode("istart server index  [start index in server]", -2,
+            cmd_start_index); // -2 means at least two arguments
+    g_cmd_map["istop"] = CmdNode("istop server index   [stop index in server]", -2, cmd_stop_index);
+    g_cmd_map["kill"] = CmdNode("kill server          [kill adminserver in server]", 1, cmd_kill_admin);
 }
 
 static void sign_handler(int32_t sig)
 {
-  switch (sig)
-  {
-  case SIGINT:
-  case SIGTERM:
-    fprintf(stderr, "adminserver tool exit.\n");
-    exit(TFS_ERROR);
-    break;
-  }
+    switch (sig) {
+    case SIGINT:
+    case SIGTERM:
+        fprintf(stderr, "adminserver tool exit.\n");
+        exit(TFS_ERROR);
+        break;
+    }
 }
 
 void usage(const char* name)
 {
-  fprintf(stderr, "Usage: %s -f server_list_file [-n] [-i] [-h]\n", name);
-  fprintf(stderr, "       -f server_list_file specify server list file\n");
-  fprintf(stderr, "       -n set log level\n");
-  fprintf(stderr, "       -i directly execute the command\n");
-  fprintf(stderr, "       -h help\n");
+    fprintf(stderr, "Usage: %s -f server_list_file [-n] [-i] [-h]\n", name);
+    fprintf(stderr, "       -f server_list_file specify server list file\n");
+    fprintf(stderr, "       -n set log level\n");
+    fprintf(stderr, "       -i directly execute the command\n");
+    fprintf(stderr, "       -h help\n");
 }
 
 inline int32_t get_port(char* addr)
 {
-  char *pos = strrchr(addr, ':');
-  if (pos != NULL)
-  {
-    *pos++ = '\0';
-    return atoi(pos);
-  }
-  return g_default_port;
+    char* pos = strrchr(addr, ':');
+    if (pos!=NULL) {
+        *pos++ = '\0';
+        return atoi(pos);
+    }
+    return g_default_port;
 }
 
 inline bool is_whitespace(char c)
 {
-  return (' ' == c || '\t' == c);
+    return (' '==c || '\t'==c);
 }
 
 inline char* strip_line(char* line)
 {
-  while (is_whitespace(*line))
-  {
-    line++;
-  }
-  int32_t end = strlen(line);
-  while (end && (is_whitespace(line[end-1]) || '\n' == line[end-1] || '\r' == line[end-1]))
-  {
-    end--;
-  }
-  line[end] = '\0';
-  return line;
+    while (is_whitespace(*line)) {
+        line++;
+    }
+    int32_t end = strlen(line);
+    while (end && (is_whitespace(line[end-1]) || '\n'==line[end-1] || '\r'==line[end-1])) {
+        end--;
+    }
+    line[end] = '\0';
+    return line;
 }
 
 int get_server_list(const char* conf_file)
 {
-  FILE* fp = fopen(conf_file, "r");
-  if (!fp)
-  {
-    fprintf(stderr, "can't open server list file %s : %s\n", conf_file, strerror(errno));
-    return TFS_ERROR;
-  }
-
-  char buf[CMD_MAX_LEN+1];
-  char* tmp = NULL;
-  while (fgets(buf, CMD_MAX_LEN, fp))
-  {
-    tmp = strip_line(buf);
-    if (tmp[0]) // not blank line
-    {
-      g_client_map.insert(MCLIENT::value_type(tmp, NULL)); // lazy connect
-      g_server_map.insert(MSTR_VSTR::value_type(tmp, VSTRING()));
+    FILE* fp = fopen(conf_file, "r");
+    if (!fp) {
+        fprintf(stderr, "can't open server list file %s : %s\n", conf_file, strerror(errno));
+        return TFS_ERROR;
     }
-  }
-  return TFS_SUCCESS;
+
+    char buf[CMD_MAX_LEN+1];
+    char* tmp = NULL;
+    while (fgets(buf, CMD_MAX_LEN, fp)) {
+        tmp = strip_line(buf);
+        if (tmp[0]) // not blank line
+        {
+            g_client_map.insert(MCLIENT::value_type(tmp, NULL)); // lazy connect
+            g_server_map.insert(MSTR_VSTR::value_type(tmp, VSTRING()));
+        }
+    }
+    return TFS_SUCCESS;
 }
 
 int main(int argc, char* argv[])
 {
-  int32_t i;
-  bool directly = false;
-  bool set_log_level = false;
-  const char* conf_file = NULL;
+    int32_t i;
+    bool directly = false;
+    bool set_log_level = false;
+    const char* conf_file = NULL;
 
-  // analyze arguments
-  while ((i = getopt(argc, argv, "f:nih")) != EOF)
-  {
-    switch (i)
-    {
-    case 'f':
-      conf_file = optarg;
-      break;
-    case 'n':
-      set_log_level = true;
-      break;
-    case 'i':
-      directly = true;
-      break;
-    case 'h':
-    default:
-      usage(argv[0]);
-    return TFS_ERROR;
+    // analyze arguments
+    while ((i = getopt(argc, argv, "f:nih"))!=EOF) {
+        switch (i) {
+        case 'f':
+            conf_file = optarg;
+            break;
+        case 'n':
+            set_log_level = true;
+            break;
+        case 'i':
+            directly = true;
+            break;
+        case 'h':
+        default:
+            usage(argv[0]);
+            return TFS_ERROR;
+        }
     }
-  }
 
-  if (conf_file)
-  {
-    get_server_list(conf_file);
-  }
-
-  if (set_log_level)
-  {
-    TBSYS_LOGGER.setLogLevel("ERROR");
-  }
-
-  init();
-
-  if (optind >= argc)
-  {
-    signal(SIGINT, sign_handler);
-    signal(SIGTERM, sign_handler);
-    main_loop();
-  }
-  else if (directly)
-  {
-    for (i = optind; i < argc; i++)
-    {
-      do_cmd(argv[i]);
+    if (conf_file) {
+        get_server_list(conf_file);
     }
-  }
-  else
-  {
-    usage(argv[0]);
-  }
 
-  for (MCLIENT_ITER it = g_client_map.begin(); it != g_client_map.end(); it++)
-  {
-    CLIENT_POOL.release_client(it->second); // release will check NULL
-  }
-  return TFS_SUCCESS;
+    if (set_log_level) {
+        TBSYS_LOGGER.setLogLevel("ERROR");
+    }
+
+    init();
+
+    if (optind>=argc) {
+        signal(SIGINT, sign_handler);
+        signal(SIGTERM, sign_handler);
+        main_loop();
+    }
+    else if (directly) {
+        for (i = optind; i<argc; i++) {
+            do_cmd(argv[i]);
+        }
+    }
+    else {
+        usage(argv[0]);
+    }
+
+    for (MCLIENT_ITER it = g_client_map.begin(); it!=g_client_map.end(); it++) {
+        CLIENT_POOL.release_client(it->second); // release will check NULL
+    }
+    return TFS_SUCCESS;
 }
 
 inline void print_head()
 {
-  fprintf(stderr, "\033[36m index    pid  restart   fail  dead_cnt    start_time          dead_time\033[0m\n");
-  fprintf(stderr, " ------  -----  -----   ----   ------   ----------------       ------------------ \n");
+    fprintf(stderr, "\033[36m index    pid  restart   fail  dead_cnt    start_time          dead_time\033[0m\n");
+    fprintf(stderr, " ------  -----  -----   ----   ------   ----------------       ------------------ \n");
 }
 
 int main_loop()
 {
 #ifdef _WITH_READ_LINE
-  char* cmd_line = NULL;
-  rl_attempted_completion_function = admin_cmd_completion;
+    char* cmd_line = NULL;
+    rl_attempted_completion_function = admin_cmd_completion;
 #else
-  char cmd_line[CMD_MAX_LEN];
+    char cmd_line[CMD_MAX_LEN];
 #endif
-  int ret = TFS_ERROR;
-  while (1)
-  {
+    int ret = TFS_ERROR;
+    while (1) {
 #ifdef _WITH_READ_LINE
-    cmd_line = readline("admin> ");
-    if (!cmd_line)
+        cmd_line = readline("admin> ");
+        if (!cmd_line)
 #else
-      fprintf(stderr, "admin> ");
-    if (NULL == fgets(cmd_line, CMD_MAX_LEN, stdin))
+        fprintf(stderr, "admin> ");
+        if (NULL==fgets(cmd_line, CMD_MAX_LEN, stdin))
 #endif
-    {
-      continue;
-    }
-    ret = do_cmd(cmd_line);
+        {
+            continue;
+        }
+        ret = do_cmd(cmd_line);
 #ifdef _WITH_READ_LINE
-    delete cmd_line;
-    cmd_line = NULL;
+        delete cmd_line;
+        cmd_line = NULL;
 #endif
-    if (TFS_CLIENT_QUIT == ret)
-    {
-      break;
+        if (TFS_CLIENT_QUIT==ret) {
+            break;
+        }
     }
-  }
-  return TFS_SUCCESS;
+    return TFS_SUCCESS;
 }
 
 int32_t do_cmd(char* key)
 {
-  key = strip_line(key);
-  if (!key[0])
-  {
-    return TFS_SUCCESS;
-  }
+    key = strip_line(key);
+    if (!key[0]) {
+        return TFS_SUCCESS;
+    }
 
 #ifdef _WITH_READ_LINE
-  // not blank line, add to history
-  add_history(key);
+    // not blank line, add to history
+    add_history(key);
 #endif
 
-  char* token = strchr(key, ' ');
-  if (token != NULL)
-  {
-    *token = '\0';
-  }
-
-  MSTR_FUNC_ITER it = g_cmd_map.find(Func::str_to_lower(key));
-
-  if (it == g_cmd_map.end())
-  {
-    fprintf(stderr, "unknown command. \n");
-    return TFS_ERROR;
-  }
-  // ok this is current command
-  g_cur_cmd = key;
-
-  if (token != NULL)
-  {
-    token++;
-    key = token;
-  }
-  else
-  {
-    key = NULL;
-  }
-
-  VSTRING param;
-  param.clear();
-  while ((token = strsep(&key, " ")) != NULL)
-  {
-    if ('\0' == token[0])
-    {
-      continue;
+    char* token = strchr(key, ' ');
+    if (token!=NULL) {
+        *token = '\0';
     }
-    param.push_back(token);
-  }
 
-  // check param count
-  int32_t param_cnt = g_cmd_map[g_cur_cmd].param_cnt_;
-  if ((param_cnt < 0 ? static_cast<int32_t>(param.size()) < abs(param_cnt) : static_cast<int32_t>(param.size()) != param_cnt))
-  {
-    fprintf(stderr, "%s\n\n", g_cmd_map[g_cur_cmd].info_);
-    return TFS_ERROR;
-  }
+    MSTR_FUNC_ITER it = g_cmd_map.find(Func::str_to_lower(key));
 
-  return it->second.func_(param);
+    if (it==g_cmd_map.end()) {
+        fprintf(stderr, "unknown command. \n");
+        return TFS_ERROR;
+    }
+    // ok this is current command
+    g_cur_cmd = key;
+
+    if (token!=NULL) {
+        token++;
+        key = token;
+    }
+    else {
+        key = NULL;
+    }
+
+    VSTRING param;
+    param.clear();
+    while ((token = strsep(&key, " "))!=NULL) {
+        if ('\0'==token[0]) {
+            continue;
+        }
+        param.push_back(token);
+    }
+
+    // check param count
+    int32_t param_cnt = g_cmd_map[g_cur_cmd].param_cnt_;
+    if ((param_cnt<0 ? static_cast<int32_t>(param.size())<abs(param_cnt) : static_cast<int32_t>(param.size())
+            !=param_cnt)) {
+        fprintf(stderr, "%s\n\n", g_cmd_map[g_cur_cmd].info_);
+        return TFS_ERROR;
+    }
+
+    return it->second.func_(param);
 }
 
 int do_monitor(VSTRING& param, int32_t type)
 {
-  string server = param[0];
-  MCLIENT_ITER it = g_client_map.find(server);
-  if (g_client_map.end() == it)
-  {
-    it = g_client_map.insert(MCLIENT::value_type(server, NULL)).first;
-  }
-
-  if (!it->second)
-  {
-    char ip[CMD_MAX_LEN+1];     // to support mutiple port in the same server, must copy
-    ip[CMD_MAX_LEN] = '\0';
-    int32_t port = get_port(strncpy(ip, it->first.c_str(), CMD_MAX_LEN));
-    it->second = CLIENT_POOL.get_client(Func::str_to_addr(ip, port));
-  }
-
-  AdminCmdMessage admin_msg(type);
-  for (size_t i = 1; i < param.size(); i++)
-  {
-    admin_msg.set_index(param[i]);
-  }
-
-  Message* message = it->second->call(&admin_msg);
-
-  int ret = TFS_SUCCESS;
-  if (!message)
-  {
-    fprintf(stderr, "%s cmd op fail\n \033[0m", FAIL_COLOR);
-    ret = TFS_ERROR;
-  }
-  else if (STATUS_MESSAGE == message->get_message_type())
-  {
-    StatusMessage* msg = dynamic_cast<StatusMessage*>(message);
-    ret = msg->get_status();
-    fprintf(stderr, "%s %s \033[0m\n", ret != TFS_SUCCESS ? FAIL_COLOR : SUC_COLOR, msg->get_error());
-  }
-  else if (ADMIN_CMD_MESSAGE == message->get_message_type() &&
-           ADMIN_CMD_RESP == dynamic_cast<AdminCmdMessage*>(message)->get_cmd_type())
-  {
-    vector<MonitorStatus*>* m_status =  dynamic_cast<AdminCmdMessage*>(message)->get_status();
-    int32_t size = m_status->size();
-    fprintf(stderr, "\033[36m       ================== %s count: %d ===================\033[0m\n",
-            server.c_str(), size);
-
-    // update server ==> index
-    VSTRING& index = g_server_map[server];
-    index.clear();
-
-    for (int32_t i = 0; i < size; i++)
-    {
-      (*m_status)[i]->dump();
-      index.push_back((*m_status)[i]->index_);
+    string server = param[0];
+    MCLIENT_ITER it = g_client_map.find(server);
+    if (g_client_map.end()==it) {
+        it = g_client_map.insert(MCLIENT::value_type(server, NULL)).first;
     }
-    fprintf(stderr, "\033[36m-----------------------------------------------------------------------------------\033[0m\n\n");
-  }
-  else
-  {
-    fprintf(stderr, "%s unknown message recieved, op cmd fail\n \033[0m", FAIL_COLOR);
-  }
 
-  tbsys::gDelete(message);
-  return ret;
+    if (!it->second) {
+        char ip[CMD_MAX_LEN+1];     // to support mutiple port in the same server, must copy
+        ip[CMD_MAX_LEN] = '\0';
+        int32_t port = get_port(strncpy(ip, it->first.c_str(), CMD_MAX_LEN));
+        it->second = CLIENT_POOL.get_client(Func::str_to_addr(ip, port));
+    }
+
+    AdminCmdMessage admin_msg(type);
+    for (size_t i = 1; i<param.size(); i++) {
+        admin_msg.set_index(param[i]);
+    }
+
+    Message* message = it->second->call(&admin_msg);
+
+    int ret = TFS_SUCCESS;
+    if (!message) {
+        fprintf(stderr, "%s cmd op fail\n \033[0m", FAIL_COLOR);
+        ret = TFS_ERROR;
+    }
+    else if (STATUS_MESSAGE==message->get_message_type()) {
+        StatusMessage* msg = dynamic_cast<StatusMessage*>(message);
+        ret = msg->get_status();
+        fprintf(stderr, "%s %s \033[0m\n", ret!=TFS_SUCCESS ? FAIL_COLOR : SUC_COLOR, msg->get_error());
+    }
+    else if (ADMIN_CMD_MESSAGE==message->get_message_type() &&
+            ADMIN_CMD_RESP==dynamic_cast<AdminCmdMessage*>(message)->get_cmd_type()) {
+        vector<MonitorStatus*>*m_status = dynamic_cast<AdminCmdMessage*>(message)->get_status();
+        int32_t size = m_status->size();
+        fprintf(stderr, "\033[36m       ================== %s count: %d ===================\033[0m\n",
+                server.c_str(), size);
+
+        // update server ==> index
+        VSTRING& index = g_server_map[server];
+        index.clear();
+
+        for (int32_t i = 0; i<size; i++) {
+            (*m_status)[i]->dump();
+            index.push_back((*m_status)[i]->index_);
+        }
+        fprintf(stderr,
+                "\033[36m-----------------------------------------------------------------------------------\033[0m\n\n");
+    }
+    else {
+        fprintf(stderr, "%s unknown message recieved, op cmd fail\n \033[0m", FAIL_COLOR);
+    }
+
+    tbsys::gDelete(message);
+    return ret;
 }
 
 int cmd_show_help(VSTRING&)
 {
-  fprintf(stderr, "\nsupported command:");
-  for (MSTR_FUNC_ITER it = g_cmd_map.begin(); it != g_cmd_map.end(); it++)
-  {
-    fprintf(stderr, "\n%s", it->second.info_);
-  }
-  fprintf(stderr, "\n\n");
-  return TFS_SUCCESS;
+    fprintf(stderr, "\nsupported command:");
+    for (MSTR_FUNC_ITER it = g_cmd_map.begin(); it!=g_cmd_map.end(); it++) {
+        fprintf(stderr, "\n%s", it->second.info_);
+    }
+    fprintf(stderr, "\n\n");
+    return TFS_SUCCESS;
 }
 
 int cmd_quit(VSTRING&)
 {
-  return TFS_CLIENT_QUIT;
+    return TFS_CLIENT_QUIT;
 }
 
 int cmd_show_server(VSTRING&)
 {
-  int32_t i = 1;
-  for (MCLIENT_ITER it = g_client_map.begin(); it != g_client_map.end(); it++)
-  {
-    fprintf(stderr, "== %d ==  %s\n", i++, it->first.c_str());
-  }
-  return TFS_SUCCESS;
+    int32_t i = 1;
+    for (MCLIENT_ITER it = g_client_map.begin(); it!=g_client_map.end(); it++) {
+        fprintf(stderr, "== %d ==  %s\n", i++, it->first.c_str());
+    }
+    return TFS_SUCCESS;
 }
 
 int cmd_show_status(VSTRING& param)
 {
-  print_head();
-  return do_monitor(param, ADMIN_CMD_GET_STATUS);
+    print_head();
+    return do_monitor(param, ADMIN_CMD_GET_STATUS);
 }
 
 int cmd_show_status_all(VSTRING& param)
 {
-  print_head();
-  // for uniformity, a little time waste
-  for (MCLIENT_ITER it = g_client_map.begin(); it != g_client_map.end(); it++)
-  {
-    param.clear();
-    param.push_back(it->first);
-    do_monitor(param, ADMIN_CMD_GET_STATUS);
-  }
-  return TFS_SUCCESS;
+    print_head();
+    // for uniformity, a little time waste
+    for (MCLIENT_ITER it = g_client_map.begin(); it!=g_client_map.end(); it++) {
+        param.clear();
+        param.push_back(it->first);
+        do_monitor(param, ADMIN_CMD_GET_STATUS);
+    }
+    return TFS_SUCCESS;
 }
 
 int cmd_check(VSTRING& param)
 {
-  print_head();
-  return do_monitor(param, ADMIN_CMD_CHECK);
+    print_head();
+    return do_monitor(param, ADMIN_CMD_CHECK);
 }
 
 int cmd_check_all(VSTRING& param)
 {
-  print_head();
-  // for uniformity, a little time waste
-  for (MCLIENT_ITER it = g_client_map.begin(); it != g_client_map.end(); it++)
-  {
-    param.clear();
-    param.push_back(it->first);
-    do_monitor(param, ADMIN_CMD_CHECK);
-  }
-  return TFS_SUCCESS;
+    print_head();
+    // for uniformity, a little time waste
+    for (MCLIENT_ITER it = g_client_map.begin(); it!=g_client_map.end(); it++) {
+        param.clear();
+        param.push_back(it->first);
+        do_monitor(param, ADMIN_CMD_CHECK);
+    }
+    return TFS_SUCCESS;
 }
 
 int cmd_start_monitor(VSTRING& param)
 {
-  return do_monitor(param, ADMIN_CMD_START_MONITOR);
+    return do_monitor(param, ADMIN_CMD_START_MONITOR);
 }
 
 int cmd_restart_monitor(VSTRING& param)
 {
-  return do_monitor(param, ADMIN_CMD_RESTART_MONITOR);
+    return do_monitor(param, ADMIN_CMD_RESTART_MONITOR);
 }
 
 int cmd_stop_monitor(VSTRING& param)
 {
-  return do_monitor(param, ADMIN_CMD_STOP_MONITOR);
+    return do_monitor(param, ADMIN_CMD_STOP_MONITOR);
 }
 
 int cmd_start_index(VSTRING& param)
 {
-  return do_monitor(param, ADMIN_CMD_START_INDEX);
+    return do_monitor(param, ADMIN_CMD_START_INDEX);
 }
 
 int cmd_stop_index(VSTRING& param)
 {
-  return do_monitor(param, ADMIN_CMD_STOP_INDEX);
+    return do_monitor(param, ADMIN_CMD_STOP_INDEX);
 }
 
 int cmd_kill_admin(VSTRING& param)
 {
-  return do_monitor(param, ADMIN_CMD_KILL_ADMINSERVER);
+    return do_monitor(param, ADMIN_CMD_KILL_ADMINSERVER);
 }

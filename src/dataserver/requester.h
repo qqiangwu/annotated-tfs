@@ -21,35 +21,37 @@
 #include "message/client.h"
 #include "message/message_factory.h"
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    class Requester
-    {
-      public:
-        Requester() :
-          dataserver_id_(0), ns_ip_port_(0), data_management_(NULL)
-        {
-        }
+namespace tfs {
+    namespace dataserver {
+        class Requester {
+        public:
+            Requester()
+                    :
+                    dataserver_id_(0), ns_ip_port_(0), data_management_(NULL)
+            {
+            }
 
-        ~Requester()
-        {
-        }
+            ~Requester()
+            {
+            }
 
-        int init(const uint64_t dataserver_id, const uint64_t ns_ip_port, DataManagement* data_management);
-        int req_update_block_info(const uint32_t block_id, const common::UpdateBlockType repair = common::UPDATE_BLOCK_NORMAL);
-        int req_block_write_complete(const uint32_t block_id,
-            const int32_t lease_id, const int32_t success, const common::UnlinkFlag unlink_flag = common::UNLINK_FLAG_NO);
+            int init(const uint64_t dataserver_id, const uint64_t ns_ip_port, DataManagement* data_management);
 
-      private:
-        DISALLOW_COPY_AND_ASSIGN(Requester);
+            int req_update_block_info(const uint32_t block_id,
+                    const common::UpdateBlockType repair = common::UPDATE_BLOCK_NORMAL);
 
-        uint64_t dataserver_id_;
-        uint64_t ns_ip_port_;
-        DataManagement* data_management_;
-    };
-  }
+            int req_block_write_complete(const uint32_t block_id,
+                    const int32_t lease_id, const int32_t success,
+                    const common::UnlinkFlag unlink_flag = common::UNLINK_FLAG_NO);
+
+        private:
+            DISALLOW_COPY_AND_ASSIGN(Requester);
+
+            uint64_t dataserver_id_;
+            uint64_t ns_ip_port_;
+            DataManagement* data_management_;
+        };
+    }
 }
 
 #endif //TFS_DATASERVER_REQUESTER_H_

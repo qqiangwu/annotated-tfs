@@ -25,43 +25,46 @@
 #include "client.h"
 
 typedef hash_map<int32_t, tfs::message::Callee*> CLIENTS_MAP;
-namespace tfs
-{
-  namespace message
-  {
-    class ClientManager: public tbnet::IPacketHandler
-    {
-      public:
-        ClientManager();
-        ~ClientManager();
+namespace tfs {
+    namespace message {
+        class ClientManager : public tbnet::IPacketHandler {
+        public:
+            ClientManager();
 
-        void init();
-        void init_with_transport(tbnet::Transport* transport);
+            ~ClientManager();
 
-        // IPacketHandler
-        tbnet::IPacketHandler::HPRetCode handlePacket(tbnet::Packet* packet, void* args);
-        AsyncClient* get_async_client(const common::VUINT64& ds, AsyncCallback* cb);
-        SimpleAsyncClient* get_simple_async_client(const uint64_t server_id, SimpleAsyncCallback* cb);
-        Client* get_client(const uint64_t server_id);
-        void release_client(Callee* callee);
+            void init();
 
-      public:
-        MessageFactory factory_;
-        TfsPacketStreamer streamer_;
-        tbnet::Transport* transport_;
-        tbnet::ConnectionManager* connmgr_;
+            void init_with_transport(tbnet::Transport* transport);
 
-        int32_t max_timeout_;
-        CLIENTS_MAP clients_;
-        tbsys::CThreadMutex mutex_;
-        bool init_;
-        bool own_transport_;
+            // IPacketHandler
+            tbnet::IPacketHandler::HPRetCode handlePacket(tbnet::Packet* packet, void* args);
 
-        static ClientManager gClientManager;
+            AsyncClient* get_async_client(const common::VUINT64& ds, AsyncCallback* cb);
 
-      private:
-        void store_client(Callee* callee);
-    };
-  }
+            SimpleAsyncClient* get_simple_async_client(const uint64_t server_id, SimpleAsyncCallback* cb);
+
+            Client* get_client(const uint64_t server_id);
+
+            void release_client(Callee* callee);
+
+        public:
+            MessageFactory factory_;
+            TfsPacketStreamer streamer_;
+            tbnet::Transport* transport_;
+            tbnet::ConnectionManager* connmgr_;
+
+            int32_t max_timeout_;
+            CLIENTS_MAP clients_;
+            tbsys::CThreadMutex mutex_;
+            bool init_;
+            bool own_transport_;
+
+            static ClientManager gClientManager;
+
+        private:
+            void store_client(Callee* callee);
+        };
+    }
 }
 #endif

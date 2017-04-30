@@ -19,4 +19,5 @@
 #include "common/define.h"
 
 uint64_t get_ip_addr(const char* ip);
+
 #endif

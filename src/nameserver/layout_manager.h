@@ -28,183 +28,188 @@
 #include "server_collect.h"
 #include "meta_scanner.h"
 
-namespace tfs
-{
-  namespace nameserver
-  {
-    struct AliveDataServer
-    {
-    public:
-      bool operator()(const std::pair<uint64_t, ServerCollect*>& node)
-      {
-        return node.second->is_alive();
-      }
-    };
+namespace tfs {
+    namespace nameserver {
+        struct AliveDataServer {
+        public:
+            bool operator()(const std::pair<uint64_t, ServerCollect*>& node)
+            {
+                return node.second->is_alive();
+            }
+        };
 
-    struct GetAliveDataServerList
-    {
-    public:
-      GetAliveDataServerList(common::VUINT64& ds_list) :
-        m_dsList(ds_list)
-      {
+        struct GetAliveDataServerList {
+        public:
+            GetAliveDataServerList(common::VUINT64& ds_list)
+                    :
+                    m_dsList(ds_list)
+            {
 
-      }
-      bool operator()(const std::pair<uint64_t, ServerCollect*>& node)
-      {
-        if (node.second->is_alive())
-        {
-          m_dsList.push_back(node.first);
-          return true;
-        }
-        return false;
-      }
-    private:
-      common::VUINT64& m_dsList;
-    };
+            }
 
+            bool operator()(const std::pair<uint64_t, ServerCollect*>& node)
+            {
+                if (node.second->is_alive()) {
+                    m_dsList.push_back(node.first);
+                    return true;
+                }
+                return false;
+            }
 
-    // Data servers and blocks are all kept here.
-    // You can view it as BlockAndDataServerManager
-    class LayoutManager
-    {
-    public:
-      LayoutManager();
-      explicit LayoutManager(int32_t chunk_num);
-      ~LayoutManager();
+        private:
+            common::VUINT64& m_dsList;
+        };
 
-      int init(int32_t chunk_num);
+        // Data servers and blocks are all kept here.
+        // You can view it as BlockAndDataServerManager
+        class LayoutManager {
+        public:
+            LayoutManager();
 
-      int check_ds(const time_t ds_dead_time, common::VUINT64& dead_ds_list, common::VUINT64& writable_ds_list);
+            explicit LayoutManager(int32_t chunk_num);
 
-      int join_ds(const common::DataServerStatInfo & ds_stat_info, bool& isnew);
+            ~LayoutManager();
 
-      void update_global_info(const common::DataServerStatInfo & ds_stat_info, bool isnew);
+            int init(int32_t chunk_num);
 
-      BlockChunkPtr get_block_chunk(const uint32_t block_id) const;
+            int check_ds(const time_t ds_dead_time, common::VUINT64& dead_ds_list, common::VUINT64& writable_ds_list);
 
-      BlockCollect* get_block_collect(const uint32_t block_id) const;
+            int join_ds(const common::DataServerStatInfo& ds_stat_info, bool& isnew);
 
-      BlockCollect* create_block_collect(const uint32_t block_id = 0);
+            void update_global_info(const common::DataServerStatInfo& ds_stat_info, bool isnew);
 
-      ServerCollect* get_ds_collect(const uint64_t ds_id) const;
+            BlockChunkPtr get_block_chunk(const uint32_t block_id) const;
 
-      ServerCollect* get_ds_collect(const uint64_t server_id, bool& renew);
+            BlockCollect* get_block_collect(const uint32_t block_id) const;
 
-      bool remove_ds_collect(const uint64_t server_id);
+            BlockCollect* create_block_collect(const uint32_t block_id = 0);
 
-      bool remove_block_collect(const uint32_t block_id);
+            ServerCollect* get_ds_collect(const uint64_t ds_id) const;
 
-      bool build_ds_block_relation(const uint32_t block_id, const uint64_t server_id, bool master);
+            ServerCollect* get_ds_collect(const uint64_t server_id, bool& renew);
 
-      bool release_ds_relation(const uint32_t block_id, const uint64_t server_id);
+            bool remove_ds_collect(const uint64_t server_id);
 
-      bool release_ds_relation(const uint64_t server_id);
+            bool remove_block_collect(const uint32_t block_id);
 
-      bool release_block_write_relation(const uint32_t block_id);
+            bool build_ds_block_relation(const uint32_t block_id, const uint64_t server_id, bool master);
 
-      bool server_writable(const ServerCollect* server_collect) const;
+            bool release_ds_relation(const uint32_t block_id, const uint64_t server_id);
 
-      bool block_writable(const BlockCollect* block_collect);
+            bool release_ds_relation(const uint64_t server_id);
 
-      uint32_t calc_max_block_id();
+            bool release_block_write_relation(const uint32_t block_id);
 
-      uint32_t get_avail_block_id();
+            bool server_writable(const ServerCollect* server_collect) const;
 
-      inline uint32_t get_max_block_id() const
-      {
-        return max_block_id_;
-      }
+            bool block_writable(const BlockCollect* block_collect);
 
-      inline int64_t get_elect_seq() const
-      {
-        return currnet_elect_seq_;
-      }
+            uint32_t calc_max_block_id();
 
-      inline void set_elect_seq(const int64_t seq) const
-      {
-        currnet_elect_seq_ = seq;
-      }
+            uint32_t get_avail_block_id();
 
-      // traverse all blocks in block chunk array do scanner.run
-      int foreach(const MetaScanner & scanner) const;
+            inline uint32_t get_max_block_id() const
+            {
+                return max_block_id_;
+            }
 
-      inline const common::SERVER_MAP* get_ds_map() const
-      {
-        return &ds_map_;
-      }
+            inline int64_t get_elect_seq() const
+            {
+                return currnet_elect_seq_;
+            }
 
-      inline const common::VUINT32& get_writable_block_list() const
-      {
-        return writable_block_list_;
-      }
+            inline void set_elect_seq(const int64_t seq) const
+            {
+                currnet_elect_seq_ = seq;
+            }
 
-      inline const NsGlobalInfo* get_ns_global_info() const
-      {
-        return &global_info_;
-      }
+            // traverse all blocks in block chunk array do scanner.run
+            int foreach(const MetaScanner& scanner) const;
 
-      inline int32_t get_ds_size() const
-      {
-        return ds_map_.size();
-      }
+            inline const common::SERVER_MAP* get_ds_map() const
+            {
+                return &ds_map_;
+            }
 
-      int32_t get_alive_ds_size();
+            inline const common::VUINT32& get_writable_block_list() const
+            {
+                return writable_block_list_;
+            }
 
-      int64_t cacl_all_block_bytes() const;
+            inline const NsGlobalInfo* get_ns_global_info() const
+            {
+                return &global_info_;
+            }
 
-      inline int64_t cacl_all_block_count() const
-      {
-        int64_t ret = 0;
-        for (int32_t i = 0; i < block_chunk_num_; ++i)
-        {
-          ret += block_map_array_[i]->get_block_map().size();
-        }
-        return ret;
-      }
+            inline int32_t get_ds_size() const
+            {
+                return ds_map_.size();
+            }
 
-      inline int32_t get_block_chunk_num() const
-      {
-        return block_chunk_num_;
-      }
+            int32_t get_alive_ds_size();
 
-      inline const BlockChunkPtr* get_block_chunk_array() const
-      {
-        return block_map_array_;
-      }
+            int64_t cacl_all_block_bytes() const;
 
-      bool insert(const BlockCollect* block_collect, bool overwrite);
+            inline int64_t cacl_all_block_count() const
+            {
+                int64_t ret = 0;
+                for (int32_t i = 0; i<block_chunk_num_; ++i) {
+                    ret += block_map_array_[i]->get_block_map().size();
+                }
+                return ret;
+            }
 
-      void sort();
-      inline common::RWLock& get_server_mutex()
-      {
-        return server_mutex_;
-      }
-      inline common::RWLock& get_writable_mutex()
-      {
-        return writable_mutex_;
-      }
-    private:
-      bool add_writable_block(const uint32_t block_id);
-      bool remove_writable_block(const uint32_t block_id);
-      inline bool is_writable(const uint32_t block_id) const;
-      inline bool is_writable(const BlockCollect* block_collect) const;
-      void clear_ds();
+            inline int32_t get_block_chunk_num() const
+            {
+                return block_chunk_num_;
+            }
 
-    private:
-      DISALLOW_COPY_AND_ASSIGN( LayoutManager);
-      common::SERVER_MAP ds_map_;
-      common::VUINT32 writable_block_list_;
-      NsGlobalInfo global_info_;
-      BlockChunkPtr* block_map_array_;
-      uint32_t max_block_id_;
-      mutable int64_t currnet_elect_seq_;
-      mutable int32_t alive_ds_size_;
-      int32_t block_chunk_num_;
-      common::RWLock global_mutex_;
-      common::RWLock server_mutex_;
-      common::RWLock writable_mutex_;
-    };
-  }
+            inline const BlockChunkPtr* get_block_chunk_array() const
+            {
+                return block_map_array_;
+            }
+
+            bool insert(const BlockCollect* block_collect, bool overwrite);
+
+            void sort();
+
+            inline common::RWLock& get_server_mutex()
+            {
+                return server_mutex_;
+            }
+
+            inline common::RWLock& get_writable_mutex()
+            {
+                return writable_mutex_;
+            }
+
+        private:
+            bool add_writable_block(const uint32_t block_id);
+
+            bool remove_writable_block(const uint32_t block_id);
+
+            inline bool is_writable(const uint32_t block_id) const;
+
+            inline bool is_writable(const BlockCollect* block_collect) const;
+
+            void clear_ds();
+
+        private:
+            DISALLOW_COPY_AND_ASSIGN(LayoutManager);
+
+            common::SERVER_MAP ds_map_;
+            common::VUINT32 writable_block_list_;
+            NsGlobalInfo global_info_;
+            BlockChunkPtr* block_map_array_;
+            uint32_t max_block_id_;
+            mutable int64_t currnet_elect_seq_;
+            mutable int32_t alive_ds_size_;
+            int32_t block_chunk_num_;
+            common::RWLock global_mutex_;
+            common::RWLock server_mutex_;
+            common::RWLock writable_mutex_;
+        };
+    }
 }
 
 #endif

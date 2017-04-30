@@ -28,63 +28,68 @@
 #include "func.h"
 #include "file_queue.h"
 
-namespace tfs
-{
-  namespace common
-  {
-    class FileQueueThread
-    {
-      enum DESTROY_FLAG
-      {
-        DESTROY_FLAG_YES = 0x00,
-        DESTROY_FLAG_NO
-      };
-      struct QueueThreadParam
-      {
-        int32_t thread_index_;
-        FileQueueThread *queue_thread_;
+namespace tfs {
+    namespace common {
+        class FileQueueThread {
+            enum DESTROY_FLAG {
+                DESTROY_FLAG_YES = 0x00,
+                DESTROY_FLAG_NO
+            };
 
-      private:
-        DISALLOW_COPY_AND_ASSIGN( QueueThreadParam);
-      };
+            struct QueueThreadParam {
+                int32_t thread_index_;
+                FileQueueThread* queue_thread_;
 
-      typedef int (*deal_func)(const void * const data, const int64_t len, const int32_t thread_index, void* arg);
+            private:
+                DISALLOW_COPY_AND_ASSIGN(QueueThreadParam);
+            };
 
-    public:
-      FileQueueThread(FileQueue *queue, const void *arg);
-      virtual ~FileQueueThread();
-      int initialize(const int32_t thread_num, deal_func df);
-      int write(const void* const data, const int32_t len);
-      void wait();
-      void destroy();
-      void run(const int32_t thread_index);
-      static void *thread_func(void *arg);
+            typedef int (* deal_func)(const void* const data, const int64_t len, const int32_t thread_index, void* arg);
 
-      inline void update_queue_information_header()
-      {
-        tbutil::Monitor<tbutil::Mutex>::Lock lock(monitor_);
-        QueueInformationHeader head = *file_queue_->get_queue_information_header();
-        TBSYS_LOG(INFO, "Update QinfoHead(before): readSeqNo(%d), readOffset(%d), writeSeqNo(%d),"
-          "writeFileSize(%d)", head.read_seqno_, head.read_offset_, head.write_seqno_, head.write_filesize_);
-        head.read_seqno_ = head.write_seqno_;
-        head.read_offset_ = head.write_filesize_;
-        file_queue_->update_queue_information_header(&head);
-        TBSYS_LOG(INFO, "Update QinfoHead(after): readSeqNo(%d), readOffset(%d), writeSeqNo(%d),"
-          "writeFileSize(%d)", head.read_seqno_, head.read_offset_, head.write_seqno_, head.write_filesize_);
-      }
+        public:
+            FileQueueThread(FileQueue* queue, const void* arg);
 
-    private:
-      DISALLOW_COPY_AND_ASSIGN( FileQueueThread);
+            virtual ~FileQueueThread();
 
-      void *args_;
-      FileQueue *file_queue_;
-      QueueThreadParam *queue_thread_param_;
-      vector<pthread_t> pids_;
-      deal_func deal_func_;
-      DESTROY_FLAG destroy_;
-      tbutil::Monitor<tbutil::Mutex> monitor_;
-    };
-  }
+            int initialize(const int32_t thread_num, deal_func df);
+
+            int write(const void* const data, const int32_t len);
+
+            void wait();
+
+            void destroy();
+
+            void run(const int32_t thread_index);
+
+            static void* thread_func(void* arg);
+
+            inline void update_queue_information_header()
+            {
+                tbutil::Monitor<tbutil::Mutex>::Lock lock(monitor_);
+                QueueInformationHeader head = *file_queue_->get_queue_information_header();
+                TBSYS_LOG(INFO, "Update QinfoHead(before): readSeqNo(%d), readOffset(%d), writeSeqNo(%d),"
+                                "writeFileSize(%d)", head.read_seqno_, head.read_offset_, head.write_seqno_,
+                        head.write_filesize_);
+                head.read_seqno_ = head.write_seqno_;
+                head.read_offset_ = head.write_filesize_;
+                file_queue_->update_queue_information_header(&head);
+                TBSYS_LOG(INFO, "Update QinfoHead(after): readSeqNo(%d), readOffset(%d), writeSeqNo(%d),"
+                                "writeFileSize(%d)", head.read_seqno_, head.read_offset_, head.write_seqno_,
+                        head.write_filesize_);
+            }
+
+        private:
+            DISALLOW_COPY_AND_ASSIGN(FileQueueThread);
+
+            void* args_;
+            FileQueue* file_queue_;
+            QueueThreadParam* queue_thread_param_;
+            vector <pthread_t> pids_;
+            deal_func deal_func_;
+            DESTROY_FLAG destroy_;
+            tbutil::Monitor <tbutil::Mutex> monitor_;
+        };
+    }
 }
 
 #endif

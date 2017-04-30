@@ -25,34 +25,39 @@
 #include <sys/stat.h>
 #include "dataserver_define.h"
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    class MMapFile
-    {
-      public:
-        MMapFile();
-        MMapFile(const int fd);
-        MMapFile(const MMapOption& mmap_option, const int fd);
-        ~MMapFile();
+namespace tfs {
+    namespace dataserver {
+        class MMapFile {
+        public:
+            MMapFile();
 
-        bool sync_file();
-        bool map_file(bool write = false);
-        bool remap_file();
-        void* get_data() const;
-        int32_t get_size() const;
-        bool munmap_file();
+            MMapFile(const int fd);
 
-      private:
-        bool ensure_file_size(const int32_t size);
+            MMapFile(const MMapOption& mmap_option, const int fd);
 
-      private:
-        int32_t size_;
-        int fd_;
-        void* data_;
-        MMapOption mmap_file_option_;
-    };
-  }
+            ~MMapFile();
+
+            bool sync_file();
+
+            bool map_file(bool write = false);
+
+            bool remap_file();
+
+            void* get_data() const;
+
+            int32_t get_size() const;
+
+            bool munmap_file();
+
+        private:
+            bool ensure_file_size(const int32_t size);
+
+        private:
+            int32_t size_;
+            int fd_;
+            void* data_;
+            MMapOption mmap_file_option_;
+        };
+    }
 }
 #endif //TFS_DATASERVER_MMAPFILE_H_

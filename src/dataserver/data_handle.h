@@ -21,41 +21,42 @@
 #include "physical_block.h"
 #include "common/interval.h"
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    class LogicBlock;
-    class DataHandle
-    {
-      public:
-        DataHandle(LogicBlock* logic_blk) :
-          logic_block_(logic_blk)
-        {
-        }
+namespace tfs {
+    namespace dataserver {
+        class LogicBlock;
 
-        ~DataHandle()
-        {
-        }
+        class DataHandle {
+        public:
+            DataHandle(LogicBlock* logic_blk)
+                    :
+                    logic_block_(logic_blk)
+            {
+            }
 
-      public:
-        int read_segment_info(common::FileInfo* inner_file_info, const int32_t offset);
-        int write_segment_info(const common::FileInfo* inner_file_info, const int32_t offset);
+            ~DataHandle()
+            {
+            }
 
-        int write_segment_data(const char* buf, const int32_t nbytes, const int32_t offset);
-        int read_segment_data(char* buf, const int32_t nbytes, const int32_t offset);
+        public:
+            int read_segment_info(common::FileInfo* inner_file_info, const int32_t offset);
 
-      private:
-        int choose_physic_block(PhysicalBlock** tmp_physical_block, const int32_t offset, int32_t& inner_offset,
-            int32_t& inner_len);
+            int write_segment_info(const common::FileInfo* inner_file_info, const int32_t offset);
 
-      private:
-        DataHandle();
-        DISALLOW_COPY_AND_ASSIGN(DataHandle);
+            int write_segment_data(const char* buf, const int32_t nbytes, const int32_t offset);
 
-        LogicBlock* logic_block_; // associate logic block id
-    };
+            int read_segment_data(char* buf, const int32_t nbytes, const int32_t offset);
 
-  }
+        private:
+            int choose_physic_block(PhysicalBlock** tmp_physical_block, const int32_t offset, int32_t& inner_offset,
+                    int32_t& inner_len);
+
+        private:
+            DataHandle();
+            DISALLOW_COPY_AND_ASSIGN(DataHandle);
+
+            LogicBlock* logic_block_; // associate logic block id
+        };
+
+    }
 }
 #endif //TFS_DATASERVER_DATAHANDLE_H_

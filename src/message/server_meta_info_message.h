@@ -25,53 +25,64 @@
 #include "common/interval.h"
 #include "message.h"
 
-namespace tfs
-{
-  namespace message
-  {
-    class ServerMetaInfoMessage: public Message
-    {
-    public:
-      ServerMetaInfoMessage();
-      virtual ~ServerMetaInfoMessage();
+namespace tfs {
+    namespace message {
+        class ServerMetaInfoMessage : public Message {
+        public:
+            ServerMetaInfoMessage();
 
-      virtual int parse(char* data, int32_t len);
-      virtual int build(char* data, int32_t len);
-      virtual int32_t message_length();
-      virtual char* get_name();
-      static Message* create(const int32_t type);
-    protected:
-      int32_t status_;
-      char* str_;
-    };
+            virtual ~ServerMetaInfoMessage();
 
-    class RespServerMetaInfoMessage: public Message
-    {
-    public:
-      RespServerMetaInfoMessage();
-      virtual ~RespServerMetaInfoMessage();
+            virtual int parse(char* data, int32_t len);
 
-      void alloc_data();
-      inline void set_server_inode_info(common::ServerMetaInfo* const server_meta_info)
-      {
-        server_meta_info_ = server_meta_info;
-      }
-      inline common::ServerMetaInfo* get_server_inode_info() const
-      {
-        return server_meta_info_;
-      }
-      void set_data(const common::ServerMetaInfo* server_meta_info);
+            virtual int build(char* data, int32_t len);
 
-      virtual int parse(char* data, int32_t len);
-      virtual int build(char* data, int32_t len);
-      virtual int32_t message_length();
-      virtual char* get_name();
-      static Message* create(const int32_t type);
-    protected:
-      common::ServerMetaInfo* server_meta_info_;
-      int32_t length_;
-      bool alloc_;
-    };
-  }
+            virtual int32_t message_length();
+
+            virtual char* get_name();
+
+            static Message* create(const int32_t type);
+
+        protected:
+            int32_t status_;
+            char* str_;
+        };
+
+        class RespServerMetaInfoMessage : public Message {
+        public:
+            RespServerMetaInfoMessage();
+
+            virtual ~RespServerMetaInfoMessage();
+
+            void alloc_data();
+
+            inline void set_server_inode_info(common::ServerMetaInfo* const server_meta_info)
+            {
+                server_meta_info_ = server_meta_info;
+            }
+
+            inline common::ServerMetaInfo* get_server_inode_info() const
+            {
+                return server_meta_info_;
+            }
+
+            void set_data(const common::ServerMetaInfo* server_meta_info);
+
+            virtual int parse(char* data, int32_t len);
+
+            virtual int build(char* data, int32_t len);
+
+            virtual int32_t message_length();
+
+            virtual char* get_name();
+
+            static Message* create(const int32_t type);
+
+        protected:
+            common::ServerMetaInfo* server_meta_info_;
+            int32_t length_;
+            bool alloc_;
+        };
+    }
 }
 #endif

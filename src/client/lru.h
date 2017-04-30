@@ -21,113 +21,105 @@
 #include "common/define.h"
 
 /* A simple LRU map implementation */
-namespace tfs
-{
-  namespace client
-  {
-    template<class T1, class T2>
-    class lru
-    {
-    public:
-      typedef std::list<std::pair<T1, T2> > List;
-      typedef typename List::iterator iterator;
-      typedef __gnu_cxx ::hash_map<T1, iterator> Map;
+namespace tfs {
+    namespace client {
+        template<class T1, class T2>
+        class lru {
+        public:
+            typedef std::list<std::pair<T1, T2> > List;
+            typedef typename List::iterator iterator;
+            typedef __gnu_cxx::hash_map<T1, iterator> Map;
 
-      lru()
-      {
-        size_ = 1000;
-        index_.resize(size_);
-        list_.resize(size_);
-      }
+            lru()
+            {
+                size_ = 1000;
+                index_.resize(size_);
+                list_.resize(size_);
+            }
 
-      ~lru()
-      {
-        clear();
-      }
+            ~lru()
+            {
+                clear();
+            }
 
-      void resize(int32_t size)
-      {
-        size_ = size;
-        index_.resize(size_);
-        list_.resize(size_);
-      }
+            void resize(int32_t size)
+            {
+                size_ = size;
+                index_.resize(size_);
+                list_.resize(size_);
+            }
 
-      T2 *find(const T1 &first)
-      {
-        typename Map::iterator i = index_.find(first);
+            T2* find(const T1& first)
+            {
+                typename Map::iterator i = index_.find(first);
 
-        if (i == index_.end())
-        {
-          return NULL;
-        }
-        else
-        {
-          typename List::iterator n = i->second;
-          list_.splice(list_.begin(), list_, n);
-          return &(list_.front().second);
-        }
-      }
+                if (i==index_.end()) {
+                    return NULL;
+                }
+                else {
+                    typename List::iterator n = i->second;
+                    list_.splice(list_.begin(), list_, n);
+                    return &(list_.front().second);
+                }
+            }
 
-      void insert(const T1 &first, const T2 &second)
-      {
-        typename Map::iterator i = index_.find(first);
-        if (i != index_.end())
-        { // found
-          typename List::iterator n = i->second;
-          list_.splice(list_.begin(), list_, n);
-          index_.erase(n->first);
-          n->first = first;
-          n->second = second;
-          index_[first] = n;
-        }
-        else if ((int) list_.size() >= size_)
-        { // erase the last element
-          typename List::iterator n = list_.end();
-          --n; // the last element
-          list_.splice(list_.begin(), list_, n);
-          index_.erase(n->first);
-          n->first = first;
-          n->second = second;
-          index_[first] = n;
-        }
-        else
-        {
-          list_.push_front(make_pair(first, second));
-          typename List::iterator n = list_.begin();
-          index_[first] = n;
-        }
-      }
+            void insert(const T1& first, const T2& second)
+            {
+                typename Map::iterator i = index_.find(first);
+                if (i!=index_.end()) { // found
+                    typename List::iterator n = i->second;
+                    list_.splice(list_.begin(), list_, n);
+                    index_.erase(n->first);
+                    n->first = first;
+                    n->second = second;
+                    index_[first] = n;
+                }
+                else if ((int) list_.size()>=size_) { // erase the last element
+                    typename List::iterator n = list_.end();
+                    --n; // the last element
+                    list_.splice(list_.begin(), list_, n);
+                    index_.erase(n->first);
+                    n->first = first;
+                    n->second = second;
+                    index_[first] = n;
+                }
+                else {
+                    list_.push_front(make_pair(first, second));
+                    typename List::iterator n = list_.begin();
+                    index_[first] = n;
+                }
+            }
 
-      /// Random access to items
-      iterator begin()
-      {
-        return list_.begin();
-      }
+            /// Random access to items
+            iterator begin()
+            {
+                return list_.begin();
+            }
 
-      iterator end()
-      {
-        return list_.end();
-      }
+            iterator end()
+            {
+                return list_.end();
+            }
 
-      int size()
-      {
-        return index_.size();
-      }
+            int size()
+            {
+                return index_.size();
+            }
 
-      /// Clear cache
-      void clear()
-      {
-        index_.clear();
-        list_.clear();
-      }
+            /// Clear cache
+            void clear()
+            {
+                index_.clear();
+                list_.clear();
+            }
 
-    private:
-      int32_t size_;
-      List list_;
-      Map index_;
-    };
+        private:
+            int32_t size_;
+            List list_;
+            Map index_;
+        };
 
-  }
+    }
 
 }
 #endif

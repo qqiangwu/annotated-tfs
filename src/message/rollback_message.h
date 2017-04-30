@@ -25,58 +25,60 @@
 #include "common/interval.h"
 #include "message.h"
 
-namespace tfs
-{
-  namespace message
-  {
-    class RollbackMessage: public Message
-    {
-    public:
-      RollbackMessage();
-      virtual ~RollbackMessage();
+namespace tfs {
+    namespace message {
+        class RollbackMessage : public Message {
+        public:
+            RollbackMessage();
 
-      virtual int parse(char* data, int32_t len);
-      virtual int build(char* data, int32_t len);
-      virtual int32_t message_length();
-      virtual char* get_name();
+            virtual ~RollbackMessage();
 
-      static Message* create(const int32_t type);
-    public:
-      inline int32_t get_act_type() const
-      {
-        return act_type_;
-      }
+            virtual int parse(char* data, int32_t len);
 
-      inline void set_act_type(const int32_t type)
-      {
-        act_type_ = type;
-      }
+            virtual int build(char* data, int32_t len);
 
-      inline common::BlockInfo* get_block_info() const
-      {
-        return block_info_;
-      }
+            virtual int32_t message_length();
 
-      inline void set_block_info(common::BlockInfo* const block_info)
-      {
-        block_info_ = block_info;
-      }
+            virtual char* get_name();
 
-      inline common::FileInfo* get_file_info() const
-      {
-        return file_info_;
-      }
+            static Message* create(const int32_t type);
 
-      inline void set_file_info(common::FileInfo* const file_info)
-      {
-        file_info_ = file_info;
-      }
+        public:
+            inline int32_t get_act_type() const
+            {
+                return act_type_;
+            }
 
-    private:
-      int32_t act_type_;
-      common::BlockInfo* block_info_;
-      common::FileInfo* file_info_;
-    };
-  }
+            inline void set_act_type(const int32_t type)
+            {
+                act_type_ = type;
+            }
+
+            inline common::BlockInfo* get_block_info() const
+            {
+                return block_info_;
+            }
+
+            inline void set_block_info(common::BlockInfo* const block_info)
+            {
+                block_info_ = block_info;
+            }
+
+            inline common::FileInfo* get_file_info() const
+            {
+                return file_info_;
+            }
+
+            inline void set_file_info(common::FileInfo* const file_info)
+            {
+                file_info_ = file_info;
+            }
+
+        private:
+            int32_t act_type_;
+            common::BlockInfo* block_info_;
+            common::FileInfo* file_info_;
+        };
+    }
 }
 #endif

@@ -30,43 +30,50 @@
  * Block managers, manage all blocks
  * I don't know why they call it `Chunk`.
  */
-namespace tfs
-{
-  namespace nameserver
-  {
-    class BlockChunk: public tbutil::Shared
-    {
-    public:
-      BlockChunk();
-      virtual ~BlockChunk();
+namespace tfs {
+    namespace nameserver {
+        class BlockChunk : public tbutil::Shared {
+        public:
+            BlockChunk();
 
-      BlockCollect* find(const uint32_t block_id) const;
-      BlockCollect* create(const uint32_t block_id);
+            virtual ~BlockChunk();
 
-      bool exist(const uint32_t block_id) const;
-      bool remove(const uint32_t block_id);
-      bool connect(const uint32_t block_id, const uint64_t server_id, const bool master = false);
-      bool release(const uint32_t block_id, const uint64_t server_id);
-      bool insert(const BlockCollect* blkcol, const bool overwrite);
+            BlockCollect* find(const uint32_t block_id) const;
 
-      uint32_t calc_max_block_id() const;
-      int64_t calc_all_block_bytes() const;
+            BlockCollect* create(const uint32_t block_id);
 
-      inline const common::BLOCK_MAP & get_block_map() const
-      {
-        return block_map_;
-      }
+            bool exist(const uint32_t block_id) const;
 
-    private:
-      DISALLOW_COPY_AND_ASSIGN( BlockChunk);
-      void remove_all();
-      common::BLOCK_MAP block_map_;
+            bool remove(const uint32_t block_id);
 
-    public:
-      common::RWLock mutex_;
-    };
-    typedef tbutil::Handle<BlockChunk> BlockChunkPtr;
-  }
+            bool connect(const uint32_t block_id, const uint64_t server_id, const bool master = false);
+
+            bool release(const uint32_t block_id, const uint64_t server_id);
+
+            bool insert(const BlockCollect* blkcol, const bool overwrite);
+
+            uint32_t calc_max_block_id() const;
+
+            int64_t calc_all_block_bytes() const;
+
+            inline const common::BLOCK_MAP& get_block_map() const
+            {
+                return block_map_;
+            }
+
+        private:
+            DISALLOW_COPY_AND_ASSIGN(BlockChunk);
+
+            void remove_all();
+
+            common::BLOCK_MAP block_map_;
+
+        public:
+            common::RWLock mutex_;
+        };
+
+        typedef tbutil::Handle <BlockChunk> BlockChunkPtr;
+    }
 }
 
 #endif

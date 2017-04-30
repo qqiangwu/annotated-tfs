@@ -20,34 +20,39 @@
 #include "message.h"
 #include "async_client.h"
 
-namespace tfs
-{
-  namespace message
-  {
-    class Client: public Callee
-    {
-      public:
-        Client(const uint64_t ip);
-        ~Client();
-        virtual int connect();
-        virtual int disconnect();
-        virtual Message* call(Message* message);
-        virtual int handlePacket(tbnet::Packet* packet, void* args);
-        // server ip
-        inline uint64_t get_mip()
-        {
-          return ip_;
-        }
+namespace tfs {
+    namespace message {
+        class Client : public Callee {
+        public:
+            Client(const uint64_t ip);
 
-      private:
-        uint64_t ip_;
-        Message* ret_msg_;
-        tbsys::CThreadCond cond_;
-    };
+            ~Client();
 
-    int send_message_to_server(const uint64_t server_id, Message* ds_message, Message** ret_message);
-    int post_message_to_server(const uint64_t server_id, Message* message);
-    int test_server_alive(const uint64_t server_id);
-  }
+            virtual int connect();
+
+            virtual int disconnect();
+
+            virtual Message* call(Message* message);
+
+            virtual int handlePacket(tbnet::Packet* packet, void* args);
+
+            // server ip
+            inline uint64_t get_mip()
+            {
+                return ip_;
+            }
+
+        private:
+            uint64_t ip_;
+            Message* ret_msg_;
+            tbsys::CThreadCond cond_;
+        };
+
+        int send_message_to_server(const uint64_t server_id, Message* ds_message, Message** ret_message);
+
+        int post_message_to_server(const uint64_t server_id, Message* message);
+
+        int test_server_alive(const uint64_t server_id);
+    }
 }
 #endif

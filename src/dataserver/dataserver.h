@@ -23,30 +23,33 @@
 #include "message/tfs_packet_streamer.h"
 #include "dataservice.h"
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    class DataServer 
-    {
-      public:
-        DataServer();
-        DataServer(std::string server_index);
-        virtual ~DataServer();
-        int start();
-        void stop();
-        std::string get_server_index();
+namespace tfs {
+    namespace dataserver {
+        class DataServer {
+        public:
+            DataServer();
 
-      private:
-        DISALLOW_COPY_AND_ASSIGN(DataServer);
-        static const int32_t SPEC_LEN = 32;
+            DataServer(std::string server_index);
 
-        std::string server_index_;         // int index
-        message::MessageFactory msg_factory_;
-        message::TfsPacketStreamer packet_streamer_;
-        tbnet::Transport tran_sport_;
-        DataService data_service_;
-    };
-  }
+            virtual ~DataServer();
+
+            int start();
+
+            void stop();
+
+            std::string get_server_index();
+
+        private:
+            DISALLOW_COPY_AND_ASSIGN(DataServer);
+
+            static const int32_t SPEC_LEN = 32;
+
+            std::string server_index_;         // int index
+            message::MessageFactory msg_factory_;
+            message::TfsPacketStreamer packet_streamer_;
+            tbnet::Transport tran_sport_;
+            DataService data_service_;
+        };
+    }
 }
 #endif //TFS_DATASERVER_DATASERVER_H_

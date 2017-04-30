@@ -17,29 +17,35 @@
 #define TFS_COMMON_DIRECTORYOP_H_
 
 #include "define.h"
-namespace tfs
-{
-  namespace common
-  {
+
+namespace tfs {
+    namespace common {
 #ifndef S_IRWXUGO
 #define S_IRWXUGO (S_IRWXU | S_IRWXG | S_IRWXO)
 #endif
 
-    class DirectoryOp
-    {
-    public:
-      static bool exists(const char* filename);
-      static bool delete_file(const char* filename);
-      static bool is_directory(const char* dirname);
-      static bool delete_directory(const char *dirname);
-      static bool delete_directory_recursively(const char* directory, bool delete_flag = false);
-      static bool create_directory(const char* dirname);
-      static bool create_full_path(const char* fullpath, bool with_file = false);
-      static bool rename(const char* srcfilename, const char* destfilename);
-      static int64_t get_size(const char* filename);
-    };
+        class DirectoryOp {
+        public:
+            static bool exists(const char* filename);
 
-  }
+            static bool delete_file(const char* filename);
+
+            static bool is_directory(const char* dirname);
+
+            static bool delete_directory(const char* dirname);
+
+            static bool delete_directory_recursively(const char* directory, bool delete_flag = false);
+
+            static bool create_directory(const char* dirname);
+
+            static bool create_full_path(const char* fullpath, bool with_file = false);
+
+            static bool rename(const char* srcfilename, const char* destfilename);
+
+            static int64_t get_size(const char* filename);
+        };
+
+    }
 }
 
 #endif //TFS_COMMON_DIRECTORYOP_H_

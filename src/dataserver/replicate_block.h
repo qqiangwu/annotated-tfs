@@ -27,50 +27,55 @@
 #include <Mutex.h>
 #include <Monitor.h>
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    class ReplicateBlock
-    {
-      public:
-        ReplicateBlock(tbutil::Mutex* mutex, message::Client* client);
-        ~ReplicateBlock();
+namespace tfs {
+    namespace dataserver {
+        class ReplicateBlock {
+        public:
+            ReplicateBlock(tbutil::Mutex* mutex, message::Client* client);
 
-        void stop();
-        static void* do_replicate_block(void* args);
+            ~ReplicateBlock();
 
-        int add_repl_task(common::ReplBlock* repl_blk);
+            void stop();
 
-        int add_cloned_block_map(const uint32_t block_id);
-        int del_cloned_block_map(const uint32_t block_id);
-        int expire_cloned_block_map();
+            static void* do_replicate_block(void* args);
 
-      private:
-        void init();
-        int run_replicate_block();
-        int replicate_block_to_server(const common::ReplBlock* b);
-        int send_repl_block_complete_info(const int status, const common::ReplBlock* b);
-        int clear_cloned_block_map();
+            int add_repl_task(common::ReplBlock* repl_blk);
 
-      private:
-        ReplicateBlock();
-        DISALLOW_COPY_AND_ASSIGN(ReplicateBlock);
+            int add_cloned_block_map(const uint32_t block_id);
 
-        int stop_;
-        std::deque<common::ReplBlock*> repl_block_queue_; // repl block queue
-        ReplBlockMap replicating_block_map_; // replicating
-        tbutil::Monitor<tbutil::Mutex> repl_block_monitor_;
+            int del_cloned_block_map(const uint32_t block_id);
 
-        ClonedBlockMap cloned_block_map_;
-        tbutil::Mutex cloned_block_mutex_;
-        int32_t expire_cloned_interval_; // check interval
-        int32_t last_expire_cloned_block_time_;
+            int expire_cloned_block_map();
 
-        tbutil::Mutex* client_mutex_;
-        message::Client* client_;
-    };
+        private:
+            void init();
 
-  }
+            int run_replicate_block();
+
+            int replicate_block_to_server(const common::ReplBlock* b);
+
+            int send_repl_block_complete_info(const int status, const common::ReplBlock* b);
+
+            int clear_cloned_block_map();
+
+        private:
+            ReplicateBlock();
+            DISALLOW_COPY_AND_ASSIGN(ReplicateBlock);
+
+            int stop_;
+            std::deque<common::ReplBlock*> repl_block_queue_; // repl block queue
+            ReplBlockMap replicating_block_map_; // replicating
+            tbutil::Monitor <tbutil::Mutex> repl_block_monitor_;
+
+            ClonedBlockMap cloned_block_map_;
+            tbutil::Mutex cloned_block_mutex_;
+            int32_t expire_cloned_interval_; // check interval
+            int32_t last_expire_cloned_block_time_;
+
+            tbutil::Mutex* client_mutex_;
+            message::Client* client_;
+        };
+
+    }
 }
 #endif  //TFS_DATASERVER_REPLICATEBLOCK_H_

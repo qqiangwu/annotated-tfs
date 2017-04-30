@@ -25,31 +25,38 @@
 #include "common/interval.h"
 #include "message.h"
 
-namespace tfs
-{
-  namespace message
-  {
-    class ReloadConfigMessage: public Message
-    {
-    public:
-      ReloadConfigMessage();
-      ReloadConfigMessage(const int32_t status);
-      void set_message(const int32_t status);
-      virtual ~ReloadConfigMessage();
-      virtual int parse(char* data, int32_t len);
-      virtual int build(char* data, int32_t len);
-      virtual int32_t message_length();
-      virtual char* get_name();
-      char* get_error() const;
-      void set_switch_cluster_flag(const int32_t flag);
-      int32_t get_switch_cluster_flag() const;
+namespace tfs {
+    namespace message {
+        class ReloadConfigMessage : public Message {
+        public:
+            ReloadConfigMessage();
 
-      static Message* create(const int32_t type);
+            ReloadConfigMessage(const int32_t status);
 
-    protected:
-      int32_t flag_;
-    };
+            void set_message(const int32_t status);
 
-  }
+            virtual ~ReloadConfigMessage();
+
+            virtual int parse(char* data, int32_t len);
+
+            virtual int build(char* data, int32_t len);
+
+            virtual int32_t message_length();
+
+            virtual char* get_name();
+
+            char* get_error() const;
+
+            void set_switch_cluster_flag(const int32_t flag);
+
+            int32_t get_switch_cluster_flag() const;
+
+            static Message* create(const int32_t type);
+
+        protected:
+            int32_t flag_;
+        };
+
+    }
 }
 #endif

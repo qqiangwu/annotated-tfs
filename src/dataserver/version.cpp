@@ -15,13 +15,11 @@
  */
 #include "version.h"
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    const char* Version::get_build_description()
-    {
-      return _build_description;
+namespace tfs {
+    namespace dataserver {
+        const char* Version::get_build_description()
+        {
+            return _build_description;
+        }
     }
-  }
 }

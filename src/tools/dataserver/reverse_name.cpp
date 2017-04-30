@@ -20,12 +20,12 @@ using namespace tfs::client;
 
 int main(int argc, char** argv)
 {
-  if (argc < 2)
-  {
-    printf("%s tfsname\n", argv[0]);
-    return -1;
-  }
-  FSName name(argv[1]);
-  printf("blockid: %u, fileid: %" PRI64_PREFIX "u, seqid: %u\n", name.get_block_id(), name.get_file_id(), name.get_seq_id());
-  return 0;
+    if (argc<2) {
+        printf("%s tfsname\n", argv[0]);
+        return -1;
+    }
+    FSName name(argv[1]);
+    printf("blockid: %u, fileid: %" PRI64_PREFIX "u, seqid: %u\n", name.get_block_id(), name.get_file_id(),
+            name.get_seq_id());
+    return 0;
 }

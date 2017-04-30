@@ -22,104 +22,90 @@
 
 using namespace tfs::common;
 
-namespace tfs
-{
-  namespace nameserver
-  {
+namespace tfs {
+    namespace nameserver {
 
-    ScannerManager::ScannerManager(MetaManager & m) :
-      meta_mgr_(m), destroy_(false)
-    {
+        ScannerManager::ScannerManager(MetaManager& m)
+                :
+                meta_mgr_(m), destroy_(false)
+        {
 
+        }
+
+        ScannerManager::~ScannerManager()
+        {
+
+        }
+
+        bool ScannerManager::add_scanner(const int32_t id, Scanner* scanner)
+        {
+            std::map<int32_t, Scanner*>::iterator iter = scanners_.find(id);
+            if (iter==scanners_.end()) {
+                scanners_.insert(make_pair(id, scanner));
+                return true;
+            }
+            iter->second = scanner;
+            return true;
+        }
+
+        int ScannerManager::run()
+        {
+            if (destroy_) {
+                return TFS_SUCCESS;
+            }
+
+            // call this->process() to check
+            meta_mgr_.get_block_ds_mgr().foreach(*this);
+
+            std::map<int32_t, Scanner*>::iterator iter = scanners_.begin();
+            for (; iter!=scanners_.end(); ++iter) {
+                Scanner* scanner = iter->second;
+                if (scanner==NULL) {
+                    continue;
+                }
+
+                if (scanner->result_.size()>0) {
+                    // push blocks to scanners that are interested in them
+                    scanner->launcher_.build_plan(scanner->result_);
+                }
+
+                if (destroy_) {
+                    return MetaScanner::BREAK;
+                }
+            }
+
+            return TFS_SUCCESS;
+        }
+
+        int ScannerManager::process(const BlockCollect* block_collect) const
+        {
+            if (destroy_) {
+                return MetaScanner::BREAK;
+            }
+
+            std::map<int32_t, Scanner*>::iterator it = scanners_.begin();
+            for (; it!=scanners_.end(); ++it) {
+                Scanner* scanner = it->second;
+                if (scanner==NULL) {
+                    continue;
+                }
+
+                if (scanner->is_check_) {
+                    if (static_cast<int32_t> (scanner->result_.size())>scanner->limits_) {
+                        TBSYS_LOG(DEBUG, "result size(%u) > limits(%d)", scanner->result_.size(), scanner->limits_);
+                        continue;
+                    }
+                    bool bret = scanner->launcher_.check(block_collect);
+                    if (bret) {
+                        scanner->result_.push_back(block_collect->get_block_info()->block_id_);
+                    }
+                }
+
+                if (destroy_) {
+                    return MetaScanner::BREAK;
+                }
+            }
+            return MetaScanner::CONTINUE;
+        }
     }
-
-    ScannerManager::~ScannerManager()
-    {
-
-    }
-
-    bool ScannerManager::add_scanner(const int32_t id, Scanner* scanner)
-    {
-      std::map<int32_t, Scanner*>::iterator iter = scanners_.find(id);
-      if (iter == scanners_.end())
-      {
-        scanners_.insert(make_pair(id, scanner));
-        return true;
-      }
-      iter->second = scanner;
-      return true;
-    }
-
-    int ScannerManager::run()
-    {
-      if (destroy_)
-      {
-        return TFS_SUCCESS;
-      }
-      
-      // call this->process() to check
-      meta_mgr_.get_block_ds_mgr().foreach(*this);
-      
-      std::map<int32_t, Scanner*>::iterator iter = scanners_.begin();
-      for (; iter != scanners_.end(); ++iter)
-      {
-        Scanner* scanner = iter->second;
-        if (scanner == NULL)
-        {
-          continue;
-        }
-
-        if (scanner->result_.size() > 0)
-        {
-            // push blocks to scanners that are interested in them
-          scanner->launcher_.build_plan(scanner->result_);
-        }
-        
-        if (destroy_)
-        {
-          return MetaScanner::BREAK;
-        }
-      }
-      
-      return TFS_SUCCESS;
-    }
-
-    int ScannerManager::process(const BlockCollect* block_collect) const
-    {
-      if (destroy_)
-      {
-        return MetaScanner::BREAK;
-      }
-
-      std::map<int32_t, Scanner*>::iterator it = scanners_.begin();
-      for (; it != scanners_.end(); ++it)
-      {
-        Scanner * scanner = it->second;
-        if (scanner == NULL)
-        {
-          continue;
-        }
-
-        if (scanner->is_check_)
-        {
-          if (static_cast<int32_t> (scanner->result_.size()) > scanner->limits_)
-          {
-            TBSYS_LOG(DEBUG, "result size(%u) > limits(%d)", scanner->result_.size(), scanner->limits_);
-            continue;
-          }
-          bool bret = scanner->launcher_.check(block_collect);
-          if (bret)
-          {
-            scanner->result_.push_back(block_collect->get_block_info()->block_id_);
-          }
-        }
-
-        if (destroy_)
-        {
-          return MetaScanner::BREAK;
-        }
-      }
-      return MetaScanner::CONTINUE;
-    }
-  }
 }

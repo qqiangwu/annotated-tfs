@@ -33,47 +33,53 @@
 #include <Monitor.h>
 #include <Mutex.h>
 
-namespace tfs
-{
-  namespace dataserver
-  {
+namespace tfs {
+    namespace dataserver {
 
-    class SyncBase
-    {
-      public:
-        SyncBase(const int32_t type);
-        ~SyncBase();
-        void stop();
+        class SyncBase {
+        public:
+            SyncBase(const int32_t type);
 
-        int write_sync_log(const int32_t cmd, const uint32_t block_id, const uint64_t file_id, const uint64_t old_file_id = 0);
-        int reset_log();
-        int disable_log();
-        void set_pause(const int32_t v);
-        int reload_slave_ip();
+            ~SyncBase();
 
-        static void* do_sync_mirror(void* args);
-        static int do_second_sync(const void* data, const int64_t len, const int32_t thread_index, void* arg);
+            void stop();
 
-      private:
-        SyncBase();
-        DISALLOW_COPY_AND_ASSIGN(SyncBase);
+            int write_sync_log(const int32_t cmd, const uint32_t block_id, const uint64_t file_id,
+                    const uint64_t old_file_id = 0);
 
-        static const int32_t SYNC_WORK_DIR = 256;
-        int32_t stop_;
-        int32_t pause_;
-        int32_t need_sync_;
-        int32_t need_sleep_;
-        tbutil::Monitor<tbutil::Mutex> sync_mirror_monitor_;
-        common::FileQueue* file_queue_;
-        common::FileQueue* second_file_queue_;
-        common::FileQueueThread* second_file_queue_thread_;
-        SyncBackup* backup_;
+            int reset_log();
 
-      private:
-        int run_sync_mirror();
-        int do_sync(const char* data, const int32_t len, const bool second = false);
-    };
+            int disable_log();
 
-  }
+            void set_pause(const int32_t v);
+
+            int reload_slave_ip();
+
+            static void* do_sync_mirror(void* args);
+
+            static int do_second_sync(const void* data, const int64_t len, const int32_t thread_index, void* arg);
+
+        private:
+            SyncBase();
+            DISALLOW_COPY_AND_ASSIGN(SyncBase);
+
+            static const int32_t SYNC_WORK_DIR = 256;
+            int32_t stop_;
+            int32_t pause_;
+            int32_t need_sync_;
+            int32_t need_sleep_;
+            tbutil::Monitor <tbutil::Mutex> sync_mirror_monitor_;
+            common::FileQueue* file_queue_;
+            common::FileQueue* second_file_queue_;
+            common::FileQueueThread* second_file_queue_thread_;
+            SyncBackup* backup_;
+
+        private:
+            int run_sync_mirror();
+
+            int do_sync(const char* data, const int32_t len, const bool second = false);
+        };
+
+    }
 }
 #endif //TFS_DATASERVER_SYNCBASE_H_

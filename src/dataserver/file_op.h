@@ -22,53 +22,57 @@
 #include <string>
 #include "common/interval.h"
 
-namespace tfs
-{
-  namespace dataserver
-  {
-    class FileOperation
-    {
-      public:
-        FileOperation(const std::string& file_name, const int open_flags = O_RDWR | O_LARGEFILE);
-        virtual ~FileOperation();
+namespace tfs {
+    namespace dataserver {
+        class FileOperation {
+        public:
+            FileOperation(const std::string& file_name, const int open_flags = O_RDWR | O_LARGEFILE);
 
-        int open_file();
-        void close_file();
-        virtual int flush_file();
+            virtual ~FileOperation();
 
-        int flush_data();
-        int unlink_file();
+            int open_file();
 
-        virtual int pread_file(char* buf, const int32_t nbytes, const int64_t offset);
-        virtual int pwrite_file(const char* buf, const int32_t nbytes, const int64_t offset);
+            void close_file();
 
-        int write_file(const char* buf, const int32_t nbytes);
+            virtual int flush_file();
 
-        int64_t get_file_size();
-        int ftruncate_file(const int64_t length);
-        int seek_file(const int64_t offset);
+            int flush_data();
 
-        int get_fd() const
-        {
-          return fd_;
-        }
+            int unlink_file();
 
-      protected:
-        FileOperation();
-        DISALLOW_COPY_AND_ASSIGN(FileOperation);
+            virtual int pread_file(char* buf, const int32_t nbytes, const int64_t offset);
 
-        int check_file();
+            virtual int pwrite_file(const char* buf, const int32_t nbytes, const int64_t offset);
 
-      protected:
-        static const int MAX_DISK_TIMES = 5;
-        static const mode_t OPEN_MODE = 0644;
+            int write_file(const char* buf, const int32_t nbytes);
 
-      protected:
-        int fd_;                // file handle
-        int open_flags_;        // open flags
-        char* file_name_;       // file path name
-    };
-  }
+            int64_t get_file_size();
+
+            int ftruncate_file(const int64_t length);
+
+            int seek_file(const int64_t offset);
+
+            int get_fd() const
+            {
+                return fd_;
+            }
+
+        protected:
+            FileOperation();
+            DISALLOW_COPY_AND_ASSIGN(FileOperation);
+
+            int check_file();
+
+        protected:
+            static const int MAX_DISK_TIMES = 5;
+            static const mode_t OPEN_MODE = 0644;
+
+        protected:
+            int fd_;                // file handle
+            int open_flags_;        // open flags
+            char* file_name_;       // file path name
+        };
+    }
 }
 
 #endif //TFS_DATASERVER_FILE_OP_H_

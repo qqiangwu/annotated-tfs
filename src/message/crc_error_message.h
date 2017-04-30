@@ -24,76 +24,82 @@
 #include "common/interval.h"
 #include "message.h"
 
-namespace tfs
-{
-  namespace message
-  {
-    class CrcErrorMessage: public Message
-    {
-      public:
-        CrcErrorMessage();
-        virtual ~CrcErrorMessage();
-        virtual int parse(char* data, int32_t len);
-        virtual int build(char* data, int32_t len);
-        virtual int32_t message_length();
-        virtual char* get_name();
-        static Message* create(const int32_t type);
+namespace tfs {
+    namespace message {
+        class CrcErrorMessage : public Message {
+        public:
+            CrcErrorMessage();
 
-        inline void set_block_id(const uint32_t block_id)
-        {
-          block_id_ = block_id;
-        }
+            virtual ~CrcErrorMessage();
 
-        inline uint32_t get_block_id() const
-        {
-          return block_id_;
-        }
+            virtual int parse(char* data, int32_t len);
 
-        inline void set_file_id(const uint64_t file_id)
-        {
-          file_id_ = file_id;
-        }
+            virtual int build(char* data, int32_t len);
 
-        inline uint64_t get_file_id() const
-        {
-          return file_id_;
-        }
-        inline void set_crc(const uint32_t crc)
-        {
-          crc_ = crc;
-        }
+            virtual int32_t message_length();
 
-        inline uint32_t get_crc() const
-        {
-          return crc_;
-        }
-        inline void set_error_flag(const common::CheckDsBlockType flag)
-        {
-          error_flag_ = flag;
-        }
+            virtual char* get_name();
 
-        inline common::CheckDsBlockType get_error_flag() const
-        {
-          return error_flag_;
-        }
+            static Message* create(const int32_t type);
 
-        inline void add_fail_server(const uint64_t server_id)
-        {
-          fail_server_.push_back(server_id);
-        }
+            inline void set_block_id(const uint32_t block_id)
+            {
+                block_id_ = block_id;
+            }
 
-        inline const common::VUINT64* get_fail_server() const
-        {
-          return &fail_server_;
-        }
-      protected:
-        uint32_t block_id_;
-        uint64_t file_id_;
-        uint32_t crc_; // client report the correct crc
-        common::CheckDsBlockType error_flag_;
-        common::VUINT64 fail_server_;
-    };
-  }
+            inline uint32_t get_block_id() const
+            {
+                return block_id_;
+            }
+
+            inline void set_file_id(const uint64_t file_id)
+            {
+                file_id_ = file_id;
+            }
+
+            inline uint64_t get_file_id() const
+            {
+                return file_id_;
+            }
+
+            inline void set_crc(const uint32_t crc)
+            {
+                crc_ = crc;
+            }
+
+            inline uint32_t get_crc() const
+            {
+                return crc_;
+            }
+
+            inline void set_error_flag(const common::CheckDsBlockType flag)
+            {
+                error_flag_ = flag;
+            }
+
+            inline common::CheckDsBlockType get_error_flag() const
+            {
+                return error_flag_;
+            }
+
+            inline void add_fail_server(const uint64_t server_id)
+            {
+                fail_server_.push_back(server_id);
+            }
+
+            inline const common::VUINT64* get_fail_server() const
+            {
+                return &fail_server_;
+            }
+
+        protected:
+            uint32_t block_id_;
+            uint64_t file_id_;
+            uint32_t crc_; // client report the correct crc
+            common::CheckDsBlockType error_flag_;
+            common::VUINT64 fail_server_;
+        };
+    }
 }
 
 #endif

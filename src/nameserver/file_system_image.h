@@ -33,45 +33,45 @@
 #include "block_collect.h"
 #include "layout_manager.h"
 
-namespace tfs
-{
-  namespace nameserver
-  {
-    class MetaManager;
-    class FileSystemImage: public MetaScanner
-    {
-      struct ImageHeader
-      {
-        int32_t flag_;
-        int32_t version_;
-        int64_t block_count_;
-        int64_t total_bytes_;
-        int64_t total_file_count_;
-      };
+namespace tfs {
+    namespace nameserver {
+        class MetaManager;
 
-    public:
-      FileSystemImage(MetaManager* mm);
-      virtual ~FileSystemImage();
+        class FileSystemImage : public MetaScanner {
+            struct ImageHeader {
+                int32_t flag_;
+                int32_t version_;
+                int64_t block_count_;
+                int64_t total_bytes_;
+                int64_t total_file_count_;
+            };
 
-      virtual int process(const BlockCollect* blkcol) const;
+        public:
+            FileSystemImage(MetaManager* mm);
 
-      int initialize(LayoutManager& block_ds_map, const OpLogRotateHeader& head, common::FileQueue* file_queue);
-      int save(const LayoutManager& blockServerMap);
+            virtual ~FileSystemImage();
 
-    private:
-      static const int64_t IMAGE_FLAG = 0x49534654; //TFSI
-      char image_file_path_[common::MAX_PATH_LENGTH];
-      char image_file_new_path_[common::MAX_PATH_LENGTH];
-      mutable int32_t fd_;
-      mutable ImageHeader header_;
-      MetaManager* meta_;
-    private:
-      FileSystemImage();
-      DISALLOW_COPY_AND_ASSIGN( FileSystemImage);
-      int save_new_image(const LayoutManager & blockServerMap);
-    };
+            virtual int process(const BlockCollect* blkcol) const;
 
-  }// end namesapce nameserver
+            int initialize(LayoutManager& block_ds_map, const OpLogRotateHeader& head, common::FileQueue* file_queue);
+
+            int save(const LayoutManager& blockServerMap);
+
+        private:
+            static const int64_t IMAGE_FLAG = 0x49534654; //TFSI
+            char image_file_path_[common::MAX_PATH_LENGTH];
+            char image_file_new_path_[common::MAX_PATH_LENGTH];
+            mutable int32_t fd_;
+            mutable ImageHeader header_;
+            MetaManager* meta_;
+        private:
+            FileSystemImage();
+            DISALLOW_COPY_AND_ASSIGN(FileSystemImage);
+
+            int save_new_image(const LayoutManager& blockServerMap);
+        };
+
+    }// end namesapce nameserver
 }// end namespace tfs
 
 #endif
