@@ -12,204 +12,139 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5472a489-6776-413a-abd2-c00c7f25db32" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/adminserver/adminserver.cpp" afterPath="$PROJECT_DIR$/src/adminserver/adminserver.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/adminserver/adminserver.h" afterPath="$PROJECT_DIR$/src/adminserver/adminserver.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/fsname.cpp" afterPath="$PROJECT_DIR$/src/client/fsname.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/fsname.h" afterPath="$PROJECT_DIR$/src/client/fsname.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/lru.h" afterPath="$PROJECT_DIR$/src/client/lru.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_client_api.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_client_api.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_client_api.h" afterPath="$PROJECT_DIR$/src/client/tfs_client_api.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_client_metrics.h" afterPath="$PROJECT_DIR$/src/client/tfs_client_metrics.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_file.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_file.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_file.h" afterPath="$PROJECT_DIR$/src/client/tfs_file.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_session.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session.h" afterPath="$PROJECT_DIR$/src/client/tfs_session.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session_pool.cpp" afterPath="$PROJECT_DIR$/src/client/tfs_session_pool.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/tfs_session_pool.h" afterPath="$PROJECT_DIR$/src/client/tfs_session_pool.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/config.cpp" afterPath="$PROJECT_DIR$/src/common/config.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/config.h" afterPath="$PROJECT_DIR$/src/common/config.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/config_item.h" afterPath="$PROJECT_DIR$/src/common/config_item.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/define.h" afterPath="$PROJECT_DIR$/src/common/define.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/directory_op.cpp" afterPath="$PROJECT_DIR$/src/common/directory_op.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/directory_op.h" afterPath="$PROJECT_DIR$/src/common/directory_op.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/error_msg.h" afterPath="$PROJECT_DIR$/src/common/error_msg.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue.cpp" afterPath="$PROJECT_DIR$/src/common/file_queue.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue.h" afterPath="$PROJECT_DIR$/src/common/file_queue.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue_thread.cpp" afterPath="$PROJECT_DIR$/src/common/file_queue_thread.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/file_queue_thread.h" afterPath="$PROJECT_DIR$/src/common/file_queue_thread.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/func.cpp" afterPath="$PROJECT_DIR$/src/common/func.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/func.h" afterPath="$PROJECT_DIR$/src/common/func.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/interval.h" afterPath="$PROJECT_DIR$/src/common/interval.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/lock.cpp" afterPath="$PROJECT_DIR$/src/common/lock.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/lock.h" afterPath="$PROJECT_DIR$/src/common/lock.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/parameter.cpp" afterPath="$PROJECT_DIR$/src/common/parameter.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/parameter.h" afterPath="$PROJECT_DIR$/src/common/parameter.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/bit_map.cpp" afterPath="$PROJECT_DIR$/src/dataserver/bit_map.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/bit_map.h" afterPath="$PROJECT_DIR$/src/dataserver/bit_map.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/block_checker.cpp" afterPath="$PROJECT_DIR$/src/dataserver/block_checker.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/block_checker.h" afterPath="$PROJECT_DIR$/src/dataserver/block_checker.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/block_status.h" afterPath="$PROJECT_DIR$/src/dataserver/block_status.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/blockfile_format.h" afterPath="$PROJECT_DIR$/src/dataserver/blockfile_format.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/blockfile_manager.cpp" afterPath="$PROJECT_DIR$/src/dataserver/blockfile_manager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/blockfile_manager.h" afterPath="$PROJECT_DIR$/src/dataserver/blockfile_manager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/compact_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/compact_block.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/compact_block.h" afterPath="$PROJECT_DIR$/src/dataserver/compact_block.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/cpu_metrics.cpp" afterPath="$PROJECT_DIR$/src/dataserver/cpu_metrics.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/cpu_metrics.h" afterPath="$PROJECT_DIR$/src/dataserver/cpu_metrics.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_file.cpp" afterPath="$PROJECT_DIR$/src/dataserver/data_file.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_file.h" afterPath="$PROJECT_DIR$/src/dataserver/data_file.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_handle.cpp" afterPath="$PROJECT_DIR$/src/dataserver/data_handle.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_handle.h" afterPath="$PROJECT_DIR$/src/dataserver/data_handle.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_management.cpp" afterPath="$PROJECT_DIR$/src/dataserver/data_management.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/data_management.h" afterPath="$PROJECT_DIR$/src/dataserver/data_management.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataserver.cpp" afterPath="$PROJECT_DIR$/src/dataserver/dataserver.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataserver.h" afterPath="$PROJECT_DIR$/src/dataserver/dataserver.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataserver_define.h" afterPath="$PROJECT_DIR$/src/dataserver/dataserver_define.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataservice.cpp" afterPath="$PROJECT_DIR$/src/dataserver/dataservice.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/dataservice.h" afterPath="$PROJECT_DIR$/src/dataserver/dataservice.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_op.cpp" afterPath="$PROJECT_DIR$/src/dataserver/file_op.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_op.h" afterPath="$PROJECT_DIR$/src/dataserver/file_op.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_repair.cpp" afterPath="$PROJECT_DIR$/src/dataserver/file_repair.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/file_repair.h" afterPath="$PROJECT_DIR$/src/dataserver/file_repair.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/index_handle.cpp" afterPath="$PROJECT_DIR$/src/dataserver/index_handle.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/index_handle.h" afterPath="$PROJECT_DIR$/src/dataserver/index_handle.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/logic_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/logic_block.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/logic_block.h" afterPath="$PROJECT_DIR$/src/dataserver/logic_block.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file.cpp" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file.h" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file_op.cpp" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file_op.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/mmap_file_op.h" afterPath="$PROJECT_DIR$/src/dataserver/mmap_file_op.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/physical_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/physical_block.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/physical_block.h" afterPath="$PROJECT_DIR$/src/dataserver/physical_block.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/replicate_block.cpp" afterPath="$PROJECT_DIR$/src/dataserver/replicate_block.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/replicate_block.h" afterPath="$PROJECT_DIR$/src/dataserver/replicate_block.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/requester.cpp" afterPath="$PROJECT_DIR$/src/dataserver/requester.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/requester.h" afterPath="$PROJECT_DIR$/src/dataserver/requester.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/superblock.h" afterPath="$PROJECT_DIR$/src/dataserver/superblock.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/superblock_impl.cpp" afterPath="$PROJECT_DIR$/src/dataserver/superblock_impl.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/superblock_impl.h" afterPath="$PROJECT_DIR$/src/dataserver/superblock_impl.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_backup.cpp" afterPath="$PROJECT_DIR$/src/dataserver/sync_backup.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_backup.h" afterPath="$PROJECT_DIR$/src/dataserver/sync_backup.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_base.cpp" afterPath="$PROJECT_DIR$/src/dataserver/sync_base.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/sync_base.h" afterPath="$PROJECT_DIR$/src/dataserver/sync_base.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/version.cpp" afterPath="$PROJECT_DIR$/src/dataserver/version.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/version.h" afterPath="$PROJECT_DIR$/src/dataserver/version.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/visit_stat.cpp" afterPath="$PROJECT_DIR$/src/dataserver/visit_stat.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dataserver/visit_stat.h" afterPath="$PROJECT_DIR$/src/dataserver/visit_stat.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/admin_cmd_message.cpp" afterPath="$PROJECT_DIR$/src/message/admin_cmd_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/admin_cmd_message.h" afterPath="$PROJECT_DIR$/src/message/admin_cmd_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/async_client.cpp" afterPath="$PROJECT_DIR$/src/message/async_client.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/async_client.h" afterPath="$PROJECT_DIR$/src/message/async_client.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/block_info_message.cpp" afterPath="$PROJECT_DIR$/src/message/block_info_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/block_info_message.h" afterPath="$PROJECT_DIR$/src/message/block_info_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client.cpp" afterPath="$PROJECT_DIR$/src/message/client.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client.h" afterPath="$PROJECT_DIR$/src/message/client.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_cmd_message.cpp" afterPath="$PROJECT_DIR$/src/message/client_cmd_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_cmd_message.h" afterPath="$PROJECT_DIR$/src/message/client_cmd_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_pool.cpp" afterPath="$PROJECT_DIR$/src/message/client_pool.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/client_pool.h" afterPath="$PROJECT_DIR$/src/message/client_pool.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/close_file_message.cpp" afterPath="$PROJECT_DIR$/src/message/close_file_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/close_file_message.h" afterPath="$PROJECT_DIR$/src/message/close_file_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/compact_block_message.cpp" afterPath="$PROJECT_DIR$/src/message/compact_block_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/compact_block_message.h" afterPath="$PROJECT_DIR$/src/message/compact_block_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/crc_error_message.cpp" afterPath="$PROJECT_DIR$/src/message/crc_error_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/crc_error_message.h" afterPath="$PROJECT_DIR$/src/message/crc_error_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/create_filename_message.cpp" afterPath="$PROJECT_DIR$/src/message/create_filename_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/create_filename_message.h" afterPath="$PROJECT_DIR$/src/message/create_filename_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/dataserver_message.cpp" afterPath="$PROJECT_DIR$/src/message/dataserver_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/dataserver_message.h" afterPath="$PROJECT_DIR$/src/message/dataserver_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/file_info_message.cpp" afterPath="$PROJECT_DIR$/src/message/file_info_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/file_info_message.h" afterPath="$PROJECT_DIR$/src/message/file_info_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/heart_message.cpp" afterPath="$PROJECT_DIR$/src/message/heart_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/heart_message.h" afterPath="$PROJECT_DIR$/src/message/heart_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/message.h" afterPath="$PROJECT_DIR$/src/message/message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/message_factory.cpp" afterPath="$PROJECT_DIR$/src/message/message_factory.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/message_factory.h" afterPath="$PROJECT_DIR$/src/message/message_factory.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/oplog_sync_message.cpp" afterPath="$PROJECT_DIR$/src/message/oplog_sync_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/oplog_sync_message.h" afterPath="$PROJECT_DIR$/src/message/oplog_sync_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/read_data_message.cpp" afterPath="$PROJECT_DIR$/src/message/read_data_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/read_data_message.h" afterPath="$PROJECT_DIR$/src/message/read_data_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/reload_message.cpp" afterPath="$PROJECT_DIR$/src/message/reload_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/reload_message.h" afterPath="$PROJECT_DIR$/src/message/reload_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rename_file_message.cpp" afterPath="$PROJECT_DIR$/src/message/rename_file_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rename_file_message.h" afterPath="$PROJECT_DIR$/src/message/rename_file_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/replicate_block_message.cpp" afterPath="$PROJECT_DIR$/src/message/replicate_block_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/replicate_block_message.h" afterPath="$PROJECT_DIR$/src/message/replicate_block_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rollback_message.cpp" afterPath="$PROJECT_DIR$/src/message/rollback_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/rollback_message.h" afterPath="$PROJECT_DIR$/src/message/rollback_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_meta_info_message.cpp" afterPath="$PROJECT_DIR$/src/message/server_meta_info_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_meta_info_message.h" afterPath="$PROJECT_DIR$/src/message/server_meta_info_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_status_message.cpp" afterPath="$PROJECT_DIR$/src/message/server_status_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/server_status_message.h" afterPath="$PROJECT_DIR$/src/message/server_status_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/status_message.cpp" afterPath="$PROJECT_DIR$/src/message/status_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/status_message.h" afterPath="$PROJECT_DIR$/src/message/status_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/tfs_packet_streamer.cpp" afterPath="$PROJECT_DIR$/src/message/tfs_packet_streamer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/tfs_packet_streamer.h" afterPath="$PROJECT_DIR$/src/message/tfs_packet_streamer.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/unlink_file_message.cpp" afterPath="$PROJECT_DIR$/src/message/unlink_file_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/unlink_file_message.h" afterPath="$PROJECT_DIR$/src/message/unlink_file_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/write_data_message.cpp" afterPath="$PROJECT_DIR$/src/message/write_data_message.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/write_data_message.h" afterPath="$PROJECT_DIR$/src/message/write_data_message.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/monitor/cibrsc.xml" afterPath="$PROJECT_DIR$/src/monitor/cibrsc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/monitor/nameserver_ha_monitor.cpp" afterPath="$PROJECT_DIR$/src/monitor/nameserver_ha_monitor.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/block_chunk.cpp" afterPath="$PROJECT_DIR$/src/nameserver/block_chunk.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/block_chunk.h" afterPath="$PROJECT_DIR$/src/nameserver/block_chunk.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/block_collect.h" afterPath="$PROJECT_DIR$/src/nameserver/block_collect.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/compact.cpp" afterPath="$PROJECT_DIR$/src/nameserver/compact.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/compact.h" afterPath="$PROJECT_DIR$/src/nameserver/compact.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/data_container.h" afterPath="$PROJECT_DIR$/src/nameserver/data_container.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/file_system_image.cpp" afterPath="$PROJECT_DIR$/src/nameserver/file_system_image.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/file_system_image.h" afterPath="$PROJECT_DIR$/src/nameserver/file_system_image.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/heart_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/heart_manager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/heart_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/heart_manager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/layout_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/layout_manager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/layout_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/layout_manager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/lease_clerk.cpp" afterPath="$PROJECT_DIR$/src/nameserver/lease_clerk.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/lease_clerk.h" afterPath="$PROJECT_DIR$/src/nameserver/lease_clerk.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/meta_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/meta_manager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/meta_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/meta_manager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/meta_scanner.h" afterPath="$PROJECT_DIR$/src/nameserver/meta_scanner.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/nameserver.cpp" afterPath="$PROJECT_DIR$/src/nameserver/nameserver.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/nameserver.h" afterPath="$PROJECT_DIR$/src/nameserver/nameserver.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/ns_define.h" afterPath="$PROJECT_DIR$/src/nameserver/ns_define.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog.cpp" afterPath="$PROJECT_DIR$/src/nameserver/oplog.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog.h" afterPath="$PROJECT_DIR$/src/nameserver/oplog.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/oplog_sync_manager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/proactor_data_pipe.h" afterPath="$PROJECT_DIR$/src/nameserver/proactor_data_pipe.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/redundant.cpp" afterPath="$PROJECT_DIR$/src/nameserver/redundant.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/redundant.h" afterPath="$PROJECT_DIR$/src/nameserver/redundant.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/replicate.cpp" afterPath="$PROJECT_DIR$/src/nameserver/replicate.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/replicate.h" afterPath="$PROJECT_DIR$/src/nameserver/replicate.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/scanner_manager.cpp" afterPath="$PROJECT_DIR$/src/nameserver/scanner_manager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/scanner_manager.h" afterPath="$PROJECT_DIR$/src/nameserver/scanner_manager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/server_collect.h" afterPath="$PROJECT_DIR$/src/nameserver/server_collect.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/service.cpp" afterPath="$PROJECT_DIR$/src/nameserver/service.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/service.h" afterPath="$PROJECT_DIR$/src/nameserver/service.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/strategy.cpp" afterPath="$PROJECT_DIR$/src/nameserver/strategy.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nameserver/strategy.h" afterPath="$PROJECT_DIR$/src/nameserver/strategy.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/adminserver/admintool.cpp" afterPath="$PROJECT_DIR$/src/tools/adminserver/admintool.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/clear_file_system.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/clear_file_system.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/convert_name.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/convert_name.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_client.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_client.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_lib.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_task.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_task.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_task.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_task.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_util.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_util.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/ds_util.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/ds_util.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/format_file_system.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/format_file_system.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/modify_super_block.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/modify_super_block.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/read_index_tool.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/read_index_tool.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/read_super_block.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/read_super_block.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/reloadconfig.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/reloadconfig.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/replblk.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/replblk.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/reverse_name.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/reverse_name.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/stat.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/stat.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/stat.h" afterPath="$PROJECT_DIR$/src/tools/dataserver/stat.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataserver/tfsping.cpp" afterPath="$PROJECT_DIR$/src/tools/dataserver/tfsping.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/nameserver/showssm.cpp" afterPath="$PROJECT_DIR$/src/tools/nameserver/showssm.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/nameserver/showsyncoplog.cpp" afterPath="$PROJECT_DIR$/src/tools/nameserver/showsyncoplog.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/nameserver/tfstool.cpp" afterPath="$PROJECT_DIR$/src/tools/nameserver/tfstool.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Cond.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Cond.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/CtrlCHandler.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/CtrlCHandler.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/EventHandler.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Exception.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Exception.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Functional.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Handle.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Lock.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Makefile.am" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Memory.hpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Monitor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Mutex.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Mutex.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Network.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Network.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/PublicDefine.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/RecMutex.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/RecMutex.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Service.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Service.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Shared.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Shared.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/StaticMutex.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/StaticMutex.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/TbThread.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/TbThread.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/ThreadException.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/ThreadException.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/ThreadPool.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/ThreadPool.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Time.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Time.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Timer.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Timer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Utility.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/Utility.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/atomic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/bytebuffer.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/bytebuffer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/channel.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/channel.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/channelpool.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/channelpool.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/config.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/config.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/connection.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/connection.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/connectionmanager.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/connectionmanager.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/controlpacket.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/controlpacket.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/databuffer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/defaultpacketstreamer.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/defaultpacketstreamer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/defaultrunnable.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/defaultrunnable.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/epollsocketevent.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/epollsocketevent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/filequeue.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/filequeue.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/filequeuethread.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/filequeuethread.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/fileutil.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/fileutil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/httppacketstreamer.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/httppacketstreamer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/httprequestpacket.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/httprequestpacket.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/httpresponsepacket.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/httpresponsepacket.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/iocomponent.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/iocomponent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/ipacketfactory.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/ipackethandler.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/ipacketstreamer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/iqueuehandler.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/iserveradapter.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/linklist.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/packet.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/packet.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/packetqueue.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/packetqueue.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/packetqueuethread.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/packetqueuethread.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/process.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/process.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/profiler.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/profiler.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/queuethread.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/queuethread.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/runnable.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/serversocket.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/serversocket.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/socket.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/socket.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/socketevent.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/socketevent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/stats.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/stats.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/stringutil.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/stringutil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tblockguard.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tblog.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tblog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbnet.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbnetutil.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbnetutil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbrwlock.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbrwlock.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbsys.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbtimeutil.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tbtimeutil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tcpacceptor.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tcpacceptor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tcpcomponent.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tcpcomponent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tcpconnection.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/tcpconnection.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/thread.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/threadcond.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/threadmutex.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/transport.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/transport.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/udpacceptor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/udpcomponent.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/udpcomponent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/udpconnection.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/import/udpconnection.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -222,14 +157,108 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="service.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/nameserver/service.cpp">
+      <file leaf-file-name="atomic.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/import/atomic.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1830">
-              <caret line="201" column="47" lean-forward="true" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
+            <state relative-caret-position="-240">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connectionmanager.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/import/connectionmanager.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-54">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bytebuffer.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/import/bytebuffer.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="38" lean-forward="false" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_container.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nameserver/data_container.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-287">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Exception.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/import/Exception.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-475">
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
               <folding>
-                <element signature="e#905#1409#0" expanded="false" />
+                <element signature="e#354#374#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="block_collect.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nameserver/block_collect.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+              <folding>
+                <element signature="e#610#632#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compact.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nameserver/compact.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+              <folding>
+                <element signature="e#592#617#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="block_chunk.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nameserver/block_chunk.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bytebuffer.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/import/bytebuffer.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-219">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -255,8 +284,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/nameserver/service.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -316,7 +345,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="conf" />
+              <option name="myItemId" value="import" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -511,29 +540,40 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1130000" />
+    <option name="totallyTimeSpent" value="1663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25274727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25579977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25274727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -549,6 +589,158 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/common/parameter.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1107">
+          <caret line="66" column="22" lean-forward="false" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/adminserver/adminserver.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="211" column="31" lean-forward="true" selection-start-line="211" selection-start-column="31" selection-end-line="211" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/nameserver.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="253" column="24" lean-forward="false" selection-start-line="253" selection-start-column="24" selection-end-line="253" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/service.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding>
+            <element signature="e#905#1409#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/heart_manager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/oplog_sync_manager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/channel.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/bytebuffer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/atomic.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/config.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/connection.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/connection.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/packetqueuethread.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/atomic.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/connectionmanager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/bytebuffer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-219">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/bytebuffer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="30" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/bytebuffer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -561,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -569,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1330">
           <caret line="70" column="22" lean-forward="true" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -577,7 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -585,7 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -593,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,7 +788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6436">
           <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,7 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -633,7 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1648">
           <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -642,17 +824,8 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="228">
             <caret line="12" column="46" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-            <folding />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -668,7 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-394">
           <caret line="59" column="11" lean-forward="true" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -676,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="102" column="3" lean-forward="true" selection-start-line="102" selection-start-column="3" selection-end-line="102" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -684,7 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,7 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4973">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -700,7 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
           <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -708,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="41" lean-forward="false" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -716,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="88" column="8" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -724,7 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -732,7 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
           <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -740,7 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1107">
           <caret line="66" column="22" lean-forward="false" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -748,7 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="211" column="31" lean-forward="true" selection-start-line="211" selection-start-column="31" selection-end-line="211" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,6 +927,60 @@
           <caret line="201" column="47" lean-forward="true" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
           <folding>
             <element signature="e#905#1409#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/block_collect.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding>
+            <element signature="e#610#632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/compact.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding>
+            <element signature="e#592#617#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/block_chunk.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="38" lean-forward="false" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nameserver/data_container.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-287">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/import/Exception.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="e#354#374#0" expanded="true" />
           </folding>
         </state>
       </provider>
