@@ -1,22 +1,3 @@
-/*
- * (C) 2007-2010 Alibaba Group Holding Limited.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
- *
- *
- * Version: $Id: nameserver.cpp 42 2010-11-12 07:32:15Z nayan@taobao.com $
- *
- * Authors:
- *   duolong <duolong@taobao.com>
- *      - initial release
- *   qushan<qushan@taobao.com>
- *      - modify 2009-03-27
- *   duanfei <duanfei@taobao.com>
- *      - modify 2010-04-23
- *
- */
 #include <Memory.hpp>
 #include "common/error_msg.h"
 #include "nameserver.h"

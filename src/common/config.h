@@ -1,18 +1,3 @@
-/*
- * (C) 2007-2010 Alibaba Group Holding Limited.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
- *
- *
- * Version: $Id: config.h 5 2010-09-29 07:44:56Z duanfei@taobao.com $
- *
- * Authors:
- *   duolong <duolong@taobao.com>
- *      - initial release
- *
- */
 #ifndef TFS_COMMON_CONFIG_H_
 #define TFS_COMMON_CONFIG_H_
 
@@ -22,6 +7,7 @@
 #include "func.h"
 
 /* read tfs.conf and provide a global configuration object */
+// Shared State: used by SysParam
 namespace tfs {
     namespace common {
         /* identify sections in the config file */

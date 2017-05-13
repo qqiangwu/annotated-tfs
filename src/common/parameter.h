@@ -1,22 +1,9 @@
-/*
- * (C) 2007-2010 Alibaba Group Holding Limited.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
- *
- *
- * Version: $Id: parameter.h 50 2010-11-17 02:04:35Z nayan@taobao.com $
- *
- * Authors:
- *   duolong <duolong@taobao.com>
- *      - initial release
- *
- */
 #ifndef TFS_COMMON_PARAMETER_H_
 #define TFS_COMMON_PARAMETER_H_
 
 #include "define.h"
+
+// Shard State: Read only
 
 namespace tfs {
     namespace common {
